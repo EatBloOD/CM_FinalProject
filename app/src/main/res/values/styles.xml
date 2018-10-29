@@ -1,0 +1,73 @@
+<resources>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <!-- THEMES -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#00b6e3</item>
+        <item name="colorPrimaryDark">#0070cb</item>
+        <item name="colorAccent">#002aff</item>
+        <item name="android:windowBackground">@color/backgroundCOLOR</item>
+        <item name="android:textColor">@color/colorBlue</item>
+    </style>
+
+    <style name="RedTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#d81010</item>
+        <item name="colorPrimaryDark">#c00000</item>
+        <item name="colorAccent">#622e2e</item>
+        <item name="android:windowBackground">@color/backgroundCOLOR</item>
+        <item name="android:textColor">#622e2e</item>
+    </style>
+
+    <style name="DayliTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#00b6e3</item>
+        <item name="colorPrimaryDark">#0070cb</item>
+        <item name="colorAccent">#002aff</item>
+        <item name="android:windowBackground">@color/backgroundCOLOR</item>
+        <item name="android:textColor">@color/colorBlue</item>
+    </style>
+
+    <style name="GreenTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#00b40c</item>
+        <item name="colorPrimaryDark">#00a10b</item>
+        <item name="colorAccent">#006006</item>
+        <item name="android:textColor">#005906</item>
+    </style>
+
+    <style name="YellowTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#d8d110</item>
+        <item name="colorPrimaryDark">#ffdd00</item>
+        <item name="colorAccent">#ff9999</item>
+    </style>
+    <!--  -->
+
+
+    <!-- OBJECTS STYLES -->
+    <style name="linearLayoutStyle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/cl_linearlayout</item>
+    </style>
+
+    <style name="titlesStyle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/cl_titlestyle</item>
+    </style>
+    <!--  -->
+
+
+
+</resources>

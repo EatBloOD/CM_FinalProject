@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+        <item android:id="@+id/enviar_email"
+            android:icon="@drawable/letter"
+            android:title="email"
+            android:onClick="createEmailAction"
+            android:visible="true"
+            app:showAsAction="always" />
+        <item android:id="@+id/guardar_nota"
+            android:icon="@drawable/save"
+            android:title=""
+            android:visible="true"
+            android:onClick="saveAction"
+            app:showAsAction="always" />
+
+</menu>
+

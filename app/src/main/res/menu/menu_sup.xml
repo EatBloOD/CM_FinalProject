@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <item android:id="@+id/action_budgetNotes"
+            android:icon="@drawable/ic_cash_notes"
+            android:showAsAction="always|withText"
+            android:title="Adicionar BudgetNotes" />
+        <item android:id="@+id/action_textNotes"
+            android:icon="@drawable/ic_writing_notes"
+            android:showAsAction="ifRoom"
+            android:title="Adicionar Notas" />
+        <item android:id="@+id/action_settings"
+            android:icon="@drawable/ic_settings"
+            android:showAsAction="ifRoom"
+            android:title="Settings" />
+
+</menu>
