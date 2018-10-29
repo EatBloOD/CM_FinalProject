@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorBlue">#006198</color>
+    <color name="colorSpinner">#006198</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="backgroundCOLOR">#ffffff</color>
+    <color name="navColor">#cecece</color>
+    <color name="linearLayoutColor">#00ffffff</color>
+    <color name="backgroundBGcolor">#f9f9f9</color>
+</resources>

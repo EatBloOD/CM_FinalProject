@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.jorge.tpamov.Activity.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#efefef"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/llresumo_cMain"
+                style="@style/linearLayoutStyle"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:text="@string/contentMainResume"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvResumo_cMain"
+                    android:textStyle="normal|bold"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:text="@string/contentMainToday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvResumoDia_cMain"
+                    android:textStyle="normal|bold"
+                    android:layout_marginBottom="10dp" />
+
+                <LinearLayout
+                    android:id="@+id/llresumo_in1_cMain"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:src="@drawable/lucro"
+                                android:id="@+id/imageView2"
+                                android:layout_weight="1"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginBottom="5dp" />
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/despesa"
+                                android:id="@+id/imageView3"
+                                android:layout_weight="1" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llresumo_in2_cMain"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:text="@string/contentMainProffit"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tvResumoReceitas_cMain"
+                                android:gravity="center"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:text="@string/contentMainExpenses"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tvResumoDespesas_cMain"
+                                android:gravity="center"
+                                android:layout_weight="1" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:text="TextView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tvResumoReceitasV_cMain"
+                                tools:text="0.00€"
+                                android:textColor="@android:color/holo_green_dark"
+                                android:layout_weight="1"
+                                android:gravity="left|center" />
+
+                            <TextView
+                                android:text="0.00€"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tvResumoDespesasV_cMain"
+                                android:textColor="@android:color/holo_red_light"
+                                android:layout_weight="1"
+                                android:gravity="left|center" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llresumo_in3_cMain"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/budgetnotes"
+                            android:id="@+id/imageView4"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center_vertical" />
+
+                        <TextView
+                            android:text="@string/contentMaintotal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvResumoTotal_cMain"
+                            android:layout_weight="1"
+                            android:layout_gravity="center" />
+
+                        <TextView
+                            android:text="0.00€"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvResumoTotalV_cMain"
+                            android:layout_weight="1"
+                            android:layout_gravity="center" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/llresumoNote_cMain"
+                style="@style/linearLayoutStyle"
+                android:layout_below="@+id/llresumoWallet_cMain"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:onClick="goNoteList">
+
+                <TextView
+                    android:text="@string/contentMainultimas_notas_tiradas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvResumoNote_cMain"
+                    android:textStyle="normal|bold"
+                    android:textAlignment="center"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="@string/contentMainultimas_notas_tiradas_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView32"
+                        android:layout_weight="1"
+                        android:textSize="16sp"
+                        android:textStyle="normal|bold"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:text="@string/contentMainultimas_notas_tiradas_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView31"
+                        android:layout_weight="1"
+                        android:textStyle="normal|bold"
+                        android:textSize="16sp"
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/linearLayoutStyle">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/signing"
+                            android:id="@+id/ivNote1"
+                            android:layout_gravity="top|left"
+                            android:layout_marginRight="10dp" />
+
+                        <TextView
+                            android:text="TextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvNote1_cMain"
+                            android:layout_weight="1"
+                            android:textStyle="normal|bold" />
+
+                        <TextView
+                            android:text="TextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvNote1oBS_cMain"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/linearLayoutStyle">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/signing"
+                            android:id="@+id/ivNote2"
+                            android:layout_gravity="top|left"
+                            android:layout_marginRight="10dp" />
+
+                        <TextView
+                            android:text="TextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvNote2_cMain"
+                            android:layout_weight="1"
+                            android:textStyle="normal|bold" />
+
+                        <TextView
+                            android:text="TextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvNote2OBS_cMain"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/linearLayoutStyle">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/signing"
+                            android:id="@+id/ivNote3"
+                            android:layout_gravity="top|left"
+                            android:layout_marginRight="10dp" />
+
+                        <TextView
+                            android:text="TextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvNote3_cMain"
+                            android:layout_weight="1"
+                            android:textStyle="normal|bold" />
+
+                        <TextView
+                            android:text="TextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvNote3OBS_cMain"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/llresumoGroupNote_cMain"
+                style="@style/linearLayoutStyle"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/llresumoNote_cMain"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:text="@string/ultimas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="normal|bold"
+                    android:textAlignment="center"
+                    android:layout_marginBottom="20dp"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="Author"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvGlobalNote_AUTHOR"
+                        android:layout_weight="1"
+                        android:textSize="16sp"
+                        android:textStyle="normal|bold"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:text="Title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvGlobalNote_TITLE"
+                        android:layout_weight="1"
+                        android:textStyle="normal|bold"
+                        android:textSize="16sp"
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/linearLayoutStyle">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/avatar"
+                            android:id="@+id/ivGlobalNote1"
+                            android:layout_gravity="top|left"
+                            android:layout_marginRight="10dp" />
+
+                        <TextView
+                            android:text="TextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvGlobalNote_author1"
+                            android:layout_weight="1"
+                            android:textStyle="normal|bold" />
+
+                        <TextView
+                            android:text="TextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvGlobalNote_title1"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/linearLayoutStyle">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/avatar"
+                            android:id="@+id/ivGlobalNote2"
+                            android:layout_gravity="top|left"
+                            android:layout_marginRight="10dp" />
+
+                        <TextView
+                            android:text="TextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvGlobalNote_author2"
+                            android:layout_weight="1"
+                            android:textStyle="normal|bold" />
+
+                        <TextView
+                            android:text="TextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvGlobalNote_title2"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        style="@style/linearLayoutStyle">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/avatar"
+                            android:id="@+id/ivGlobalNote3"
+                            android:layout_gravity="top|left"
+                            android:layout_marginRight="10dp" />
+
+                        <TextView
+                            android:text="TextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvGlobalNote_author3"
+                            android:layout_weight="1"
+                            android:textStyle="normal|bold" />
+
+                        <TextView
+                            android:text="TextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tvGlobalNote_title3"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/llresumoWallet_cMain"
+                style="@style/linearLayoutStyle"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/llresumo_cMain"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <TextView
+                    android:text="@string/contentMaincarteiras"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvResumoWallet_cMain"
+                    android:textStyle="normal|bold"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:id="@+id/llresumoWallet_in1_cMain"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_height="20dp"
+                                android:src="@drawable/carteira"
+                                android:id="@+id/ivWallet1"
+                                android:layout_width="20dp" />
+
+                            <ImageView
+                                android:layout_height="20dp"
+                                android:src="@drawable/carteira"
+                                android:id="@+id/ivWallet2"
+                                android:layout_width="20dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llresumoWallet_in2_cMain"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:text="Acount 1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tvWallet1_cMain"
+                                android:gravity="left|center"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="10dp" />
+
+                            <TextView
+                                android:text="Acount 2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tvWallet2_cMain"
+                                android:gravity="left|center"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="10dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:id="@+id/llresumo_in2v_cMain">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tvWallet_1_Value_cMain"
+                                android:textColor="@android:color/black"
+                                android:textAlignment="viewEnd"
+                                android:text="0.00€"
+                                tools:text="0.00€"
+                                android:layout_weight="1"
+                                android:gravity="right|center" />
+
+                            <TextView
+                                android:text="0.00€"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tvWallet_2_Value_cMain"
+                                android:textColor="@android:color/black"
+                                android:textAlignment="viewEnd"
+                                android:layout_weight="1"
+                                android:gravity="right|center" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>
