@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categoria">
+        <item>N/D</item>
+        <item>@string/bar</item>
+        <item>@string/cantina</item>
+        <item>@string/material</item>
+        <item>@string/compras</item>
+        <item>@string/jantares</item>
+        <item>@string/viagens</item>
+        <item>@string/propinas</item>
+        <item>@string/apostas</item>
+        <item>@string/trabalho</item>
+        <item>@string/alojamento</item>
+        <item>@string/animais</item>
+        <item>@string/roupa</item>
+        <item>@string/comida</item>
+        <item>@string/saude</item>
+        <item>@string/outro</item>
+    </string-array>
+
+
+    <integer-array name="imagens_categoria">
+        <item>@drawable/bar</item>
+        <item>@drawable/cantina</item>
+        <item>@drawable/material</item>
+        <item>@drawable/compras</item>
+        <item>@drawable/jantares</item>
+        <item>@drawable/viagens</item>
+        <item>@drawable/propinas</item>
+        <item>@drawable/apostas</item>
+        <item>@drawable/trabalho</item>
+    </integer-array>
+
+    <string-array name="tipo">
+        <item>N/D</item>
+        <item>Profits</item>
+        <item>Expenses</item>
+    </string-array>
+
+    <string-array name="theme_list_values">
+        <item>RedTheme</item>
+        <item>DayliTheme</item>
+        <item>YellowTheme</item>
+        <item>GreenTheme</item>
+    </string-array>
+    <string-array name="font_size_list_values">
+        <item>smallest</item>
+        <item>small</item>
+        <item>normal</item>
+        <item>large</item>
+        <item>largest</item>
+    </string-array>
+
+    <string-array name="theme_list">
+        <item>Light / sans serif</item>
+        <item>Light / serif</item>
+        <item>Light / monospace</item>
+        <item>Dark / sans serif</item>
+        <item>Dark / serif</item>
+        <item>Dark / monospace</item>
+    </string-array>
+
+    <string-array name="font_size_list">
+        <item>Smallest</item>
+        <item>Small</item>
+        <item>Normal</item>
+        <item>Large</item>
+        <item>Largest</item>
+    </string-array>
+</resources>

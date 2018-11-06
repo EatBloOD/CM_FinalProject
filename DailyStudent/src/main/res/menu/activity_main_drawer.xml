@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/drawerHome" />
+        <item
+            android:id="@+id/nav_global_notes"
+            android:icon="@drawable/global"
+            android:title="@string/notas_partilhadas" />
+        <item
+            android:id="@+id/nav_notes"
+            android:icon="@drawable/ic_note_add_black_24dp"
+            android:title="@string/drawerNotas_textuais" />
+        <item
+            android:id="@+id/nav_budget"
+            android:icon="@drawable/ic_shopping_cart_black_24dp"
+            android:title="@string/drawerNotas_budget" />
+        <item
+            android:icon="@drawable/barchart"
+            android:title="@string/drawerEstatisticas"
+            android:id="@+id/nav_statistics" />
+        </group>
+
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/settings"
+                android:title="@string/drawerSettings" />
+            <item
+                android:id="@+id/nav_credits"
+                android:icon="@drawable/avatar"
+                android:title="@string/drawerCreditos" />
+            <item
+                android:id="@+id/nav_sair"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="@string/drawerSair" />
+
+        </menu>
+    </item>
+
+
+</menu>

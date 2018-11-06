@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:key="group_category"
+        android:title="@string/preferencesCategoryInfoFroup">
+
+        <EditTextPreference
+            android:defaultValue="000.000.000"
+            android:dialogMessage="@string/preferencesIPDialogMessage"
+            android:dialogTitle="@string/preferencesIPDialogTitle"
+            android:inputType="text"
+            android:key="serverKey"
+            android:summary="@string/preferencesIPSummary"
+            android:title="@string/preferencesIP" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="personal_category"
+        android:title="@string/preferencesCategoryInfo">
+
+
+        <EditTextPreference
+            android:defaultValue=""
+            android:dialogMessage="@string/preferencesNameDialogMessage"
+            android:dialogTitle="@string/preferencesNameDialogTitle"
+            android:inputType="textCapWords"
+            android:key="nameKey"
+            android:summary="@string/preferencesNameSummary"
+            android:title="@string/preferencesName" />
+
+        <EditTextPreference
+            android:defaultValue=""
+            android:dialogMessage="@string/preferencesEmailDialogMessage"
+            android:dialogTitle="@string/preferencesEmailDialogTitle"
+            android:inputType="textEmailAddress"
+            android:key="emailKey"
+            android:summary="@string/preferencesEmailSummary"
+            android:title="@string/preferencesEmail" />
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        android:key="custom_category"
+        android:title="Customisations">
+
+
+        <ListPreference
+            android:defaultValue="light-sans"
+            android:entries="@array/theme_list_values"
+            android:entryValues="@array/theme_list_values"
+            android:key="themeKey"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="@string/preferencesTheme" />
+        <ListPreference
+            android:defaultValue="normal"
+            android:entries="@array/font_size_list"
+            android:entryValues="@array/font_size_list_values"
+            android:key="fontSizeKey"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="@string/preferencesFontSize" />
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

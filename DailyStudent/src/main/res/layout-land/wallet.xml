@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:orientation="vertical" android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:layout_weight="1">
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		style="@style/linearLayoutStyle"
+		android:layout_marginBottom="10dp"
+		android:layout_marginTop="10dp">
+
+		<TextView
+			android:text="@string/walletActivityTitle"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/textView17"
+			android:layout_weight="1"
+			android:textStyle="normal|bold"
+			android:textAlignment="center" />
+
+		<EditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:inputType="text"
+			android:ems="10"
+			android:id="@+id/edtTituloWallet"
+			android:layout_weight="1"
+			android:textAlignment="center"
+			android:hint="@string/walletActivitynome_da_carteira"
+			android:foreground="@android:color/darker_gray" />
+
+	</LinearLayout>
+
+	<LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+		style="@style/linearLayoutStyle"
+        android:layout_weight="1"
+		android:layout_marginBottom="10dp">
+
+		<LinearLayout android:orientation="horizontal"
+            android:layout_width="match_parent"
+			android:layout_height="50dp">
+
+            <TextView
+                android:text="@string/walletActivityvalor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView7"
+                android:layout_weight="1" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+				android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/edtValorWallet"
+                android:layout_weight="1"
+                android:hint="@string/walletActivityMoney" />
+        </LinearLayout>
+
+		<LinearLayout android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                android:text="@string/walletActivitytipo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvTiipo"
+                android:layout_weight="1" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edtTipoWallet"
+                android:layout_weight="1"
+                android:hint="@string/walletActivityinsira_um_tipo_ex_carteira_banco_etc" />
+        </LinearLayout>
+
+		<LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/llwallet">
+
+            <TextView
+                android:text="@string/walletActivitybudget_notes_from_this_wallet"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/tvNotasDestaCarteira"
+                android:textAlignment="center"
+                android:gravity="center_vertical|center_horizontal" />
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/lvWallet" />
+        </LinearLayout>
+
+	</LinearLayout>
+
+	<Button
+		android:text="@string/btconfirme"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/btConfirmarWallet"
+		android:background="@drawable/button_custom"/>
+
+</LinearLayout>
