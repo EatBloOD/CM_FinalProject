@@ -20,20 +20,12 @@ public class CreditsActivity extends AppCompatActivity {
         readPreferencesUser();
         setContentView(R.layout.creditos);
 
-        ImageView imgLinkedIn = findViewById(R.id.ivLINKEDIN);
-        imgLinkedIn.setOnClickListener(v -> {
-            Intent intent = new Intent();
-            intent.setAction(Intent.ACTION_VIEW);
-            intent.addCategory(Intent.CATEGORY_BROWSABLE);
-            intent.setData(Uri.parse("https://www.linkedin.com/in/jorge-silva-b5b194b0?trk=nav_responsive_tab_profile_pic"));
-            startActivity(intent);
-        });
-        ImageView imgGit = findViewById(R.id.ivGITHUB);
+        ImageView imgGit = findViewById(R.id.ivGithub);
         imgGit.setOnClickListener(v -> {
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_VIEW);
             intent.addCategory(Intent.CATEGORY_BROWSABLE);
-            intent.setData(Uri.parse("https://github.com/EatBloOD"));
+            intent.setData(Uri.parse(getString(R.string.github_url)));
             startActivity(intent);
         });
     }

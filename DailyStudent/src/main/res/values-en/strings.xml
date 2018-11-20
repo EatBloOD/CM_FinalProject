@@ -128,7 +128,7 @@
     <string name="ultimas_notas_partilhadas">Last Shared Notes</string>
     <string name="ultimas">Last Shared Notes</string>
     <string name="alojamento">House Rent</string>
-    <string name="amov_2016_2017">AMOV 2016/2017</string>
+    <string name="course">Mobile Computing 2018/2019</string>
     <string name="animais">Pets</string>
     <string name="comida">Food</string>
     <string name="other">Others</string>
@@ -139,7 +139,7 @@
     <string name="statistics_media">Expenses Average</string>
     <string name="statistics_total_ganhos">Total Gains</string>
     <string name="statistics_total_gastos">Total Expenses</string>
-    <string name="trabalho_realizado_por">Work done by:</string>
+    <string name="team">Team:</string>
     <string name="waitingConection">Waiting Conection</string>
     <string name="criar_carteira">Create Wallet</string>
     <string name="apaga_nota">Delete Note</string>
