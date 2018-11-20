@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="CM_Project_Prev" company="" webLink="http://" view-date="2018-12-04" view-index="0" gantt-divider-location="947" resource-divider-location="300" version="2.8.9" locale="en_GB">
+    <description/>
+    <view zooming-state="default:2" id="gantt-chart">
+        <field id="tpd3" name="Name" width="397" order="0"/>
+        <field id="tpd4" name="Begin date" width="273" order="1"/>
+        <field id="tpd5" name="End date" width="273" order="2"/>
+        <option id="color.recent"><![CDATA[#000000 #33ff33]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Name" width="210" order="0"/>
+        <field id="1" name="Default role" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="8" name="Sprint #1" color="#000000" meeting="false" start="2018-10-31" duration="5" complete="0" thirdDate="2018-10-31" thirdDate-constraint="1" expand="true">
+            <depend id="14" type="2" difference="0" hardness="Strong"/>
+            <task id="9" name="01 - Statement of work." color="#8cb6ce" meeting="false" start="2018-10-31" duration="2" complete="0" thirdDate="2018-10-31" thirdDate-constraint="1" expand="true">
+                <depend id="45" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="45" name="02 - Requirements specification." color="#8cb6ce" meeting="false" start="2018-11-02" duration="3" complete="0" thirdDate="2018-11-07" thirdDate-constraint="0" expand="true">
+                <depend id="46" type="2" difference="0" hardness="Strong"/>
+            </task>
+        </task>
+        <task id="14" name="Sprint #2" color="#000000" meeting="false" start="2018-11-07" duration="6" complete="0" thirdDate="2018-11-07" thirdDate-constraint="0" expand="true">
+            <depend id="24" type="2" difference="0" hardness="Strong"/>
+            <task id="46" name="03 - UI Prototype." color="#8cb6ce" meeting="false" start="2018-11-07" duration="1" complete="0" thirdDate="2018-11-06" thirdDate-constraint="0" expand="true">
+                <depend id="48" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="48" name="04 - Storyboarding." color="#8cb6ce" meeting="false" start="2018-11-08" duration="2" complete="0" thirdDate="2018-11-08" thirdDate-constraint="0" expand="true">
+                <depend id="68" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="68" name="05 - Architecture specification." color="#8cb6ce" meeting="false" start="2018-11-12" duration="3" complete="0" thirdDate="2018-11-06" thirdDate-constraint="0" expand="true">
+                <depend id="31" type="2" difference="0" hardness="Strong"/>
+            </task>
+        </task>
+        <task id="24" name="Sprint #3" color="#000000" meeting="false" start="2018-11-15" duration="11" complete="0" thirdDate="2018-11-15" thirdDate-constraint="1" expand="true">
+            <depend id="25" type="2" difference="0" hardness="Strong"/>
+            <task id="31" name="06 - Implement Activities." color="#8cb6ce" meeting="false" start="2018-11-15" duration="3" complete="0" thirdDate="2018-11-15" thirdDate-constraint="1" expand="true">
+                <depend id="33" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="33" name="07 - Implement Fragments." color="#8cb6ce" meeting="false" start="2018-11-20" duration="3" complete="0" thirdDate="2018-11-06" thirdDate-constraint="0" expand="true">
+                <depend id="34" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="34" name="08 - Implement Database." color="#8cb6ce" meeting="false" start="2018-11-23" duration="2" complete="0" thirdDate="2018-11-20" thirdDate-constraint="0" expand="true">
+                <depend id="35" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="35" name="09 - Implement Sensors." color="#8cb6ce" meeting="false" start="2018-11-27" duration="3" complete="0" thirdDate="2018-11-20" thirdDate-constraint="0" expand="true">
+                <depend id="25" type="2" difference="0" hardness="Strong"/>
+                <depend id="40" type="2" difference="0" hardness="Strong"/>
+            </task>
+        </task>
+        <task id="25" name="Sprint #4" meeting="false" start="2018-11-30" duration="10" complete="0" expand="true">
+            <depend id="26" type="2" difference="0" hardness="Strong"/>
+            <task id="40" name="10 - Implement Parallelism." color="#8cb6ce" meeting="false" start="2018-11-30" duration="3" complete="0" thirdDate="2018-11-30" thirdDate-constraint="0" expand="true">
+                <depend id="42" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="42" name="11 - Implement networking." color="#8cb6ce" meeting="false" start="2018-12-05" duration="4" complete="0" thirdDate="2018-11-30" thirdDate-constraint="0" expand="true">
+                <depend id="39" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="39" name="12 - Implement Distributed Computing Mechanisms." color="#8cb6ce" meeting="false" start="2018-12-11" duration="3" complete="0" thirdDate="2018-11-30" thirdDate-constraint="0" expand="true">
+                <depend id="43" type="2" difference="0" hardness="Strong"/>
+            </task>
+        </task>
+        <task id="26" name="Sprint #5" color="#000000" meeting="false" start="2018-12-14" duration="10" complete="0" thirdDate="2018-12-14" thirdDate-constraint="0" expand="true">
+            <task id="43" name="13 - User manual." color="#8cb6ce" meeting="false" start="2018-12-14" duration="4" complete="0" thirdDate="2018-12-14" thirdDate-constraint="0" expand="true">
+                <depend id="44" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="44" name="14 - Report final version." color="#8cb6ce" meeting="false" start="2018-12-20" duration="6" complete="0" thirdDate="2018-12-14" thirdDate-constraint="0" expand="true"/>
+        </task>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>
