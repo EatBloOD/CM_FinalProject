@@ -80,14 +80,11 @@
                 <depend id="39" type="2" difference="0" hardness="Strong"/>
             </task>
             <task id="39" name="12 - Implement Distributed Computing Mechanisms." color="#8cb6ce" meeting="false" start="2018-12-11" duration="3" complete="0" thirdDate="2018-11-30" thirdDate-constraint="0" expand="true">
-                <depend id="43" type="2" difference="0" hardness="Strong"/>
+                <depend id="44" type="2" difference="0" hardness="Strong"/>
             </task>
         </task>
         <task id="26" name="Sprint #5" color="#000000" meeting="false" start="2018-12-14" duration="10" complete="0" thirdDate="2018-12-14" thirdDate-constraint="0" expand="true">
-            <task id="43" name="13 - User manual." color="#8cb6ce" meeting="false" start="2018-12-14" duration="4" complete="0" thirdDate="2018-12-14" thirdDate-constraint="0" expand="true">
-                <depend id="44" type="2" difference="0" hardness="Strong"/>
-            </task>
-            <task id="44" name="14 - Report final version." color="#8cb6ce" meeting="false" start="2018-12-20" duration="6" complete="0" thirdDate="2018-12-14" thirdDate-constraint="0" expand="true"/>
+            <task id="44" name="13 - Report final version." color="#8cb6ce" meeting="false" start="2018-12-14" duration="10" complete="0" thirdDate="2018-12-14" thirdDate-constraint="0" expand="true"/>
         </task>
     </tasks>
     <resources/>
