@@ -129,8 +129,8 @@
     <string name="outro">Outro</string>
     <string name="ultimas_notas_partilhadas">Ultimas Notas Partilhadas</string>
     <string name="ultimas">Ultimas Notas Partilhadas</string>
-    <string name="amov_2016_2017">AMOV 2016/2017</string>
-    <string name="trabalho_realizado_por">Trabalho realizado por:</string>
+    <string name="course">Computação Móvel 2018/2019</string>
+    <string name="team">Equipa:</string>
     <string name="statistics_total_gastos">Total de Gastos</string>
     <string name="statistics_total_ganhos">Total de Ganhos</string>
     <string name="statistics_media">Média de Gastos</string>
@@ -145,4 +145,11 @@
     <string name="animais">Animais de Estimação</string>
     <string name="criar_carteira">Criar Carteira</string>
     <string name="apaga_nota">Apaga Nota</string>
+    <string name="github_url">https://github.com/EatBloOD/CM_FinalProject</string>
+    <string name="team_member_1">André Pascoal Bento</string>
+    <string name="team_member_number_1">Nº2017234390</string>
+    <string name="team_member_2">Jorge André Dias Silva</string>
+    <string name="team_member_number_2">Nº2017234557</string>
+    <string name="team_member_3">Rúben Filipe Ramos Alves</string>
+    <string name="team_member_number_3">Nº2012142647</string>
 </resources>
