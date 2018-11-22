@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.StrictMode;
 import android.preference.PreferenceManager;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -22,6 +25,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import pt.uc.cm.daily_student.activities.StructureActivity;
 import pt.uc.cm.daily_student.adapters.BudgetDbAdapter;
 import pt.uc.cm.daily_student.adapters.NotesDbAdapter;
 import pt.uc.cm.daily_student.adapters.WalletDbAdapter;
@@ -30,7 +34,7 @@ import pt.uc.cm.daily_student.activities.CameraActivity;
 import pt.uc.cm.daily_student.adapters.MySpinnerAdapter;
 
 // TODO: Change this to a fragment
-public class NoteBudget extends AppCompatActivity {
+public class NoteBudget extends StructureActivity {
     private final String TAG = NoteBudget.class.getSimpleName();
 
     EditText edtxtTitle, edtxtValor, edtxtDesc;
@@ -41,8 +45,6 @@ public class NoteBudget extends AppCompatActivity {
     String tipo[], categoria[], imageURL;
     private static final int ACTIVITY_PHOTO = 0;
     String photo;
-
-    SharedPreferences sharedPreferences;
 
     //ARRAYS DE IMAGENS QUE POSTERIORMENTE NÃO VAO ESTAR AQUI
     Integer[] images_categoria = {0, R.drawable.bar, R.drawable.cantina, R.drawable.material,
@@ -164,42 +166,6 @@ public class NoteBudget extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    private void readPreferencesUser() {
-        int textSize = -1;
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(NoteBudget.this);
-
-        switch (sharedPreferences.getString("themeKey", "YellowTheme")) {
-            case "RedTheme":
-                setTheme(R.style.RedTheme);
-                break;
-            case "YellowTheme":
-                setTheme(R.style.YellowTheme);
-                break;
-            case "GreenTheme":
-                setTheme(R.style.GreenTheme);
-                break;
-        }
-
-        Log.i(TAG, "selected size: " + sharedPreferences.getString("fontSizeKey", "darkab"));
-        switch (sharedPreferences.getString("fontSizeKey", "normal")) {
-            case "smallest":
-                textSize = 12;
-                break;
-            case "small":
-                textSize = 14;
-                break;
-            case "normal":
-                textSize = 16;
-                break;
-            case "large":
-                textSize = 18;
-                break;
-            case "largest":
-                textSize = 20;
-                break;
-        }
-    }
-
     //OBTER O INDEX DA LINHA DO SPINNER
     private int getIndex(Spinner spinner, String myString) {
         int index = 0;
@@ -291,10 +257,18 @@ public class NoteBudget extends AppCompatActivity {
     }
 
     public void openGallery(View view) {
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_VIEW);
-        Uri imgUri = Uri.parse("file://" + photo);
-        intent.setDataAndType(imgUri, "image/*");
-        startActivity(intent);
+        if(photo != null) {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
+            File root = new File(photo);
+            Intent intent = new Intent();
+            intent.setAction(android.content.Intent.ACTION_VIEW);
+            intent.setData(Uri.fromFile(root));
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.setDataAndType(Uri.fromFile(root), "image/*");
+            startActivityForResult(intent, 1);
+        }else {
+            Log.i(TAG, "Não tens foto");
+        }
     }
 }

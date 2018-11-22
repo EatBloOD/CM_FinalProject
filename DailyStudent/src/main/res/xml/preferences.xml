@@ -42,7 +42,7 @@
 
     <PreferenceCategory
         android:key="custom_category"
-        android:title="Customisations">
+        android:title="@string/customization">
 
 
         <ListPreference

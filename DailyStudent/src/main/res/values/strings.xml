@@ -11,7 +11,7 @@
     <string name="dayliStudentActivityTitle">Notas Textuais</string>
     <string name="DayliStudentActivityDeleteNote">Apagar</string>
     <string name="mainActivityTitle">DayliStudent</string>
-    <string name="mainActivityWelcomeDialog">Bem vindo ao DayliStudent! @ISEC @JorgeSilva</string>
+    <string name="mainActivityWelcomeDialog">Bem vindo ao DayliStudent!</string>
     <string name="mainActivityRegister">Efectua o Registo :</string>
     <string name="mainActivityRegisterEmptyFields">Campos Vazios</string>
     <string name="mainActivityRegisterPasNotMatch">Passwords não são iguais</string>
@@ -49,7 +49,6 @@
     <string name="preferencesIPDialogTitle">IP do Servidor</string>
     <string name="preferencesIPDialogMessage">Introduz IP</string>
     <string name="preferencesCategoryInfoFroup">Informação do Grupo</string>
-    <string name="isec">\@ISEC</string>
     <string name="bgNoteActTitle">Titulo</string>
     <string name="bgNoteActTitleinsira_um_t_tulo">Insira um título</string>
     <string name="bgNoteActTitleCaracter_sticas">Características</string>
@@ -102,9 +101,9 @@
     <string name="drawerLigar">Ligar</string>
     <string name="drawerCreditos">Créditos</string>
     <string name="drawerSair">Sair</string>
-    <string name="Statisticsgastos"><![CDATA[chdl=Gastos&]]></string>
+    <string name="Statisticsgastos">Gastos</string>
     <string name="despesa">Despesa</string>
-    <string name="Statisticsganhos"><![CDATA[chdl=Ganhos&]]></string>
+    <string name="Statisticsganhos">Ganhos</string>
     <string name="DayliStudentActivityShareNote">Partilhar</string>
     <string name="DayliStudentActivitySharedNote">Notas Partilhadas</string>
     <string name="DayliStudentActivitySendingSharedNote">Enviar</string>
@@ -154,4 +153,5 @@
     <string name="team_member_number_2">Nº2017234557</string>
     <string name="team_member_3">Rúben Filipe Ramos Alves</string>
     <string name="team_member_number_3">Nº2012142647</string>
+    <string name="customization">Definições</string>
 </resources>

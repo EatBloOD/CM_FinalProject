@@ -6,7 +6,6 @@ import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -31,7 +30,7 @@ import pt.uc.cm.daily_student.interfaces.INetworkReceiveEvents;
 import pt.uc.cm.daily_student.models.MessagePacket;
 import pt.uc.cm.daily_student.utils.NetworkUtils;
 
-public class GlobalNotes extends AppCompatActivity {
+public class GlobalNotes extends StructureActivity {
     private final String TAG = GlobalNotes.class.getSimpleName();
 
     private static final int ACTIVITY_CREATE = 0;
@@ -49,7 +48,6 @@ public class GlobalNotes extends AppCompatActivity {
 
     private ProgressDialog progressDialog = null;
 
-    SharedPreferences sharedPreferences;
     int id_noti = 0;
 
     @Override
@@ -206,43 +204,128 @@ public class GlobalNotes extends AppCompatActivity {
         });
     }
 
-    private void readPreferencesUser() {
-        int textSize = -1;
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(GlobalNotes.this);
+    public void receiveNote(MenuItem item) {
+        String ip = getLocalIpAddress();
+        pd = new ProgressDialog(this);
+        pd.setMessage(getString(R.string.waitingConection) + "\n(IP: " + ip
+                + ")");
+        pd.setTitle(getString(R.string.receive));
+        pd.setOnCancelListener(dialog -> {
+            if (receiverSocket != null) {
+                try {
+                    receiverSocket.close();
+                } catch (IOException ignored) {
+                }
+                receiverSocket = null;
+            }
+        });
+        pd.show();
 
-        author = sharedPreferences.getString("nameKey", "DEFAULT");
-        ip = sharedPreferences.getString("serverKey", "0.0.0.0");
+        Thread t = new Thread(new waitConnection());
+        t.start();
+    }
 
-        switch (sharedPreferences.getString("themeKey", "YellowTheme")) {
-            case "RedTheme":
-                setTheme(R.style.RedTheme);
-                break;
-            case "YellowTheme":
-                setTheme(R.style.YellowTheme);
-                break;
-            case "GreenTheme":
-                setTheme(R.style.GreenTheme);
-                break;
+    //TODO: CONVERT TO ASYNC
+    public class waitConnection implements Runnable {
+        @Override
+        public void run() {
+            try {
+                receiverSocket = new ServerSocket(9001);
+                senderSocket = receiverSocket.accept();
+                receiverSocket.close();
+                receiverSocket = null;
+                Thread t = new Thread(new receiveMSG());
+                t.start();
+            } catch (Exception e) {
+                e.printStackTrace();
+                senderSocket = null;
+            }
+            procMsg.post(() -> {
+                pd.dismiss();
+                if (receiverSocket != null)
+                    try {
+                        receiverSocket.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+            });
         }
+    }
 
-        Log.i(TAG, "selected size: " + sharedPreferences.getString("fontSizeKey", "darkab"));
-        switch (sharedPreferences.getString("fontSizeKey", "normal")) {
-            case "smallest":
-                textSize = 12;
-                break;
-            case "small":
-                textSize = 14;
-                break;
-            case "normal":
-                textSize = 16;
-                break;
-            case "large":
-                textSize = 18;
-                break;
-            case "largest":
-                textSize = 20;
-                break;
+    //TODO: CONVERT TO ASYNC(2)
+    public class receiveMSG implements Runnable {
+
+        public void run() {
+            try {
+                inObj = new ObjectInputStream(senderSocket.getInputStream());
+
+                final MessagePacket read = (MessagePacket) (inObj.readObject());
+
+                procMsg.post(() -> {
+                    mDbHelper.createGlobalNote(read.getAuthor(), read.getTitle(), read.getObs());
+
+                    fillData();
+
+                    Toast.makeText(getApplicationContext(), getString(R.string.DayliStudentActivityReceivedSharedNote) +
+                            read.getTitle() + getString(R.string.DayliStudentActivityReceived2SharedNote) + read.getAuthor() + ".", Toast.LENGTH_LONG).show();
+
+                    buildNotification(read);
+                });
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                procMsg.post(() -> {
+                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+                    // Refresh main activity upon close of dialog box
+                    Intent refresh = new Intent(getApplicationContext(), GlobalNotes.class);
+                    startActivity(refresh);
+                    finish();
+                });
+            }
         }
+    }
+
+    public class sendMSG implements Runnable {
+        MessagePacket msg;
+
+        public void run() {
+            try {
+                outObj = new ObjectOutputStream(senderSocket.getOutputStream());
+
+                msg = mDbHelper.getGlobalNoteToSend(id);
+
+                id = 0;
+
+                outObj.writeObject(msg);
+                outObj.flush();
+
+                procMsg.post(() -> Toast.makeText(getApplicationContext(),
+                        getString(R.string.DayliStudentActivitySuccessfullSendingSharedNote) + msg.getTitle() + " ]", Toast.LENGTH_LONG).show());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                procMsg.post(() -> {
+                });
+            }
+        }
+    }
+
+    public static String getLocalIpAddress() {
+        try {
+            for (Enumeration<NetworkInterface> en = NetworkInterface
+                    .getNetworkInterfaces(); en.hasMoreElements(); ) {
+                NetworkInterface intf = en.nextElement();
+                for (Enumeration<InetAddress> enumIpAddr = intf
+                        .getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
+                    InetAddress inetAddress = enumIpAddr.nextElement();
+                    if (!inetAddress.isLoopbackAddress()
+                            && inetAddress instanceof Inet4Address) {
+                        return inetAddress.getHostAddress();
+                    }
+                }
+            }
+        } catch (SocketException ex) {
+            ex.printStackTrace();
+        }
+        return null;
     }
 
     public void buildNotification(MessagePacket msg) {

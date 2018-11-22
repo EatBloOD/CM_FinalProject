@@ -13,18 +13,18 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import pt.uc.cm.daily_student.activities.StructureActivity;
 import pt.uc.cm.daily_student.adapters.NotesDbAdapter;
 import pt.uc.cm.daily_student.R;
 
 // TODO: Change this to a fragment
-public class NoteEdit extends AppCompatActivity {
+public class NoteEdit extends StructureActivity {
     private final String TAG = NoteEdit.class.getSimpleName();
 
     EditText mTitleText, mBodyText;
     Integer mRowId;
     NotesDbAdapter mDbHelper;
 
-    SharedPreferences sharedPreferences;
 
     @Override
     public void onBackPressed() {
@@ -32,42 +32,6 @@ public class NoteEdit extends AppCompatActivity {
         setResult(RESULT_CANCELED, mIntent);
         super.onBackPressed();
 
-    }
-
-    private void readPreferencesUser() {
-        int textSize = -1;
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(NoteEdit.this);
-
-        switch (sharedPreferences.getString("themeKey", "YellowTheme")) {
-            case "RedTheme":
-                setTheme(R.style.RedTheme);
-                break;
-            case "YellowTheme":
-                setTheme(R.style.YellowTheme);
-                break;
-            case "GreenTheme":
-                setTheme(R.style.GreenTheme);
-                break;
-        }
-
-        Log.i(TAG, "TAMANHO ESCOLHIDO : " + sharedPreferences.getString("fontSizeKey", "darkab"));
-        switch (sharedPreferences.getString("fontSizeKey", "normal")) {
-            case "smallest":
-                textSize = 12;
-                break;
-            case "small":
-                textSize = 14;
-                break;
-            case "normal":
-                textSize = 16;
-                break;
-            case "large":
-                textSize = 18;
-                break;
-            case "largest":
-                textSize = 20;
-                break;
-        }
     }
 
     @Override
