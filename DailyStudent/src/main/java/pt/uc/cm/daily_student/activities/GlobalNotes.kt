@@ -71,10 +71,10 @@ class GlobalNotes : AppCompatActivity() {
         id = 0
 
         registerForContextMenu(lvGlobalNotes)
-        lvGlobalNotes!!.setOnItemClickListener { _, _, position, id ->
+        lvGlobalNotes!!.setOnItemClickListener { _, _, position, _ ->
             mNotesCursor.moveToPosition(position)
             val i = Intent(applicationContext, NoteEdit::class.java)
-            i.putExtra(GlobalNotesDbAdapter.KEY_ROWID, id)
+            i.putExtra(GlobalNotesDbAdapter.KEY_ROWID, position + 1) // Bug from the DB.
             i.putExtra(GlobalNotesDbAdapter.KEY_AUTHOR, mNotesCursor.getString(mNotesCursor.getColumnIndexOrThrow(GlobalNotesDbAdapter.KEY_AUTHOR)))
             i.putExtra(GlobalNotesDbAdapter.KEY_TITLE, mNotesCursor.getString(mNotesCursor.getColumnIndexOrThrow(GlobalNotesDbAdapter.KEY_TITLE)))
             i.putExtra(GlobalNotesDbAdapter.KEY_BODY, mNotesCursor.getString(mNotesCursor.getColumnIndexOrThrow(GlobalNotesDbAdapter.KEY_BODY)))
