@@ -2,19 +2,23 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <ListView android:id="@+id/lv_global_notes"
+    <ListView
+        android:id="@+id/lvGlobalNotes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-    <TextView android:id="@+id/android:empty"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/empty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/noteBudgetListno_notes"
         android:fontFamily="sans-serif-condensed"
-        android:textSize="36sp"
         android:gravity="center"
+        android:paddingLeft="100dp"
         android:paddingTop="100dp"
-        android:paddingLeft="100dp" />
+        android:text="@string/noteBudgetListno_notes"
+        android:textSize="36sp" />
 
 </LinearLayout>

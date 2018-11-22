@@ -141,8 +141,18 @@
     <string name="statistics_total_ganhos">Total Gains</string>
     <string name="statistics_total_gastos">Total Expenses</string>
     <string name="team">Team:</string>
-    <string name="waitingConection">Waiting Conection</string>
+    <string name="waitingConnection">Waiting Connection</string>
     <string name="criar_carteira">Create Wallet</string>
     <string name="apaga_nota">Delete Note</string>
+    <string name="github_url">https://github.com/EatBloOD/CM_FinalProject</string>
+    <string name="team_member_1">André Pascoal Bento</string>
+    <string name="team_member_number_1">Nº2017234390</string>
+    <string name="team_member_2">Jorge André Dias Silva</string>
+    <string name="team_member_number_2">Nº2017234557</string>
+    <string name="team_member_3">Rúben Filipe Ramos Alves</string>
+    <string name="team_member_number_3">Nº2012142647</string>
+    <string name="cancel">Cancel</string>
+    <string name="error">Error</string>
+    <string name="uc_url">https://www.uc.pt/</string>
     <string name="customization">Customizations</string>
 </resources>

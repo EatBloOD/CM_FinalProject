@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:android="http://schemas.android.com/apk/res/android">
-<item android:id="@+id/action_budgetNotes"
-    android:icon="@drawable/budgetnotes"
-    android:title=""
-    android:onClick="createBudgetAction"
-    android:visible="true"
-    app:showAsAction="always" />
-<item android:id="@+id/action_wallet"
-    android:icon="@drawable/wallet"
-    android:onClick="createWalletAction"
-    android:title=""
-    android:showAsAction="always"
-    android:visible="true"
-    app:showAsAction="always" />
+    <item
+        android:id="@+id/action_budgetNotes"
+        android:icon="@drawable/budgetnotes"
+        android:onClick="createBudgetAction"
+        android:title=""
+        android:visible="true"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_wallet"
+        android:icon="@drawable/wallet"
+        android:onClick="createWalletAction"
+        android:title=""
+        android:visible="true"
+        app:showAsAction="always" />
 
 </menu>
