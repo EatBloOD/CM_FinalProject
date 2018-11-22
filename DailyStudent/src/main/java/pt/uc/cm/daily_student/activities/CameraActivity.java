@@ -1,19 +1,23 @@
 package pt.uc.cm.daily_student.activities;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.media.MediaPlayer;
 import android.media.MediaScannerConnection;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
@@ -96,6 +100,11 @@ public class CameraActivity extends Activity {
             @Override
             public void surfaceCreated(SurfaceHolder holder) {
                 try {
+                    if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                        // TODO: Consider calling
+                        Toast.makeText(getApplicationContext(), "nÃO TENS ACESSO", Toast.LENGTH_LONG);
+                        return;
+                    }
                     cameraSource.start(cameraView.getHolder());
                 } catch (IOException ie) {
                     Log.e(TAG, ie.getMessage());

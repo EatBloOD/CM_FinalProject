@@ -1,6 +1,7 @@
 package pt.uc.cm.daily_student.activities;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,10 @@ import android.util.Log;
 import android.webkit.WebView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.io.File;
 import java.text.DateFormat;
@@ -23,11 +28,9 @@ import pt.uc.cm.daily_student.R;
 import pt.uc.cm.daily_student.adapters.BudgetDbAdapter;
 import pt.uc.cm.daily_student.models.BudgetNote;
 
-public class StatisticsActivity extends AppCompatActivity {
+public class StatisticsActivity extends StructureActivity {
     private final String TAG = StatisticsActivity.class.getSimpleName();
 
-    WebView wvGrafico, wvGraficoGanhos;
-    String strURL, strURLGanhos;
     List<Integer> diasDaSemana;
     Double totalGastos = 0.00, totalGanhos = 0.00, media = 0.00;
 
@@ -43,8 +46,6 @@ public class StatisticsActivity extends AppCompatActivity {
     TextView tvTotalGastos, tvTotalGanhos, tvMedia;
 
     private BudgetDbAdapter mDbBudgetHelper;
-
-    SharedPreferences sharedPreferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,9 +66,9 @@ public class StatisticsActivity extends AppCompatActivity {
         notas = new ArrayList<>();
 
         //INICIALIZA OS TEXTVIEWS
-        tvTotalGanhos = (TextView) findViewById(R.id.tvTotalGanhos);
-        tvTotalGastos = (TextView) findViewById(R.id.tvTotalGastos);
-        tvMedia = (TextView) findViewById(R.id.tvMedia);
+        tvTotalGanhos = findViewById(R.id.tvTotalGanhos);
+        tvTotalGastos = findViewById(R.id.tvTotalGastos);
+        tvMedia = findViewById(R.id.tvMedia);
 
         mDbBudgetHelper = new BudgetDbAdapter(this);
         mDbBudgetHelper.open();
@@ -99,92 +100,33 @@ public class StatisticsActivity extends AppCompatActivity {
         //VERIFICA SE EXISTE DIAS DA SEMANA ACTUAL PARA A A LISTA DE NOTAS
         compareDays();
 
-        //try {
-/*
-        String strFich = dir.getAbsolutePath() + "/userStatistics.txt";
-        Toast.makeText(getApplicationContext(), strFich, Toast.LENGTH_SHORT).show();
-        FileOutputStream fos = null;
-        fos = new FileOutputStream(strFich, true);
-        PrintStream ps = new PrintStream(fos);
-        String str = userName + " " + password + " " + email;
-        ps.println(userName);ps.println(password);ps.println(email);
-        fos.close();
-        Toast.makeText(getApplicationContext(), "ES Escrevi: " + str, Toast.LENGTH_SHORT).show();
-        } catch (FileNotFoundException e1) {
-            e1.printStackTrace();
-        }
-*/
-
-        strURL = "https://chart.googleapis.com/chart?" +
-                "cht=lc&" + //define o tipo do gráfico "linha"
-                "chxt=x,y&" + //imprime os valores dos eixos X, Y
-                "chs=350x350&" + //define o tamanho da imagem
-                "chd=t:" + valorDiasDaSemanaGastos.get(0) + "," + valorDiasDaSemanaGastos.get(1) + "," + valorDiasDaSemanaGastos.get(2) + "," + valorDiasDaSemanaGastos.get(3) + "," + valorDiasDaSemanaGastos.get(4) + "," + valorDiasDaSemanaGastos.get(5) + "," + valorDiasDaSemanaGastos.get(6) + "&" + //valor de cada coluna do gráfico
-                "chl=" + diasDaSemana.get(0) + "|" + diasDaSemana.get(1) + "|" + diasDaSemana.get(2) + "|" + diasDaSemana.get(3) + "|" + diasDaSemana.get(4) + "|" + diasDaSemana.get(5) + "|" + diasDaSemana.get(6) + "&" + //rótulo para cada coluna
-                getString(R.string.Statisticsgastos) + //legenda do gráfico
-                "chxr=1,0,50&" + //define o valor de início e fim do eixo
-                "chds=0,50&" + //define o valor de escala dos dados
-                "chg=0,5,0,0&" + //desenha linha horizontal na grade
-                "chco=960000&" + //cor da linha do gráfico
-                "chtt=" + mes.toUpperCase() + "&" + //cabeçalho do gráfico
-                "chm=B,ff7a7a,0,0,0"; //fundo verde
-
-        strURLGanhos = "https://chart.googleapis.com/chart?" +
-                "cht=lc&" + //define o tipo do gráfico "linha"
-                "chxt=x,y&" + //imprime os valores dos eixos X, Y
-                "chs=350x350&" + //define o tamanho da imagem
-                "chd=t:" + valorDiasDaSemanaGanhos.get(0) + "," + valorDiasDaSemanaGanhos.get(1) + "," + valorDiasDaSemanaGanhos.get(2) + "," + valorDiasDaSemanaGanhos.get(3) + "," + valorDiasDaSemanaGanhos.get(4) + "," + valorDiasDaSemanaGanhos.get(5) + "," + valorDiasDaSemanaGanhos.get(6) + "&" + //valor de cada coluna do gráfico
-                "chl=" + diasDaSemana.get(0) + "|" + diasDaSemana.get(1) + "|" + diasDaSemana.get(2) + "|" + diasDaSemana.get(3) + "|" + diasDaSemana.get(4) + "|" + diasDaSemana.get(5) + "|" + diasDaSemana.get(6) + "&" + //rótulo para cada coluna
-                getString(R.string.Statisticsganhos) + //legenda do gráfico
-                "chxr=1,0,50&" + //define o valor de início e fim do eixo
-                "chds=0,50&" + //define o valor de escala dos dados
-                "chg=0,5,0,0&" + //desenha linha horizontal na grade
-                "chco=24b700&" + //cor da linha do gráfico
-                "chtt=" + mes.toUpperCase() + "&" + //cabeçalho do gráfico
-                "chm=B,bdffad,0,0,0"; //fundo verde
-
-        wvGrafico = (WebView) findViewById(R.id.wvGrafico);
-        wvGrafico.loadUrl(strURL);
-
-        wvGraficoGanhos = (WebView) findViewById(R.id.wvGraficoGanhos);
-        wvGraficoGanhos.loadUrl(strURLGanhos);
-
-    }
-
-    private void readPreferencesUser() {
-        int textSize = -1;
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(StatisticsActivity.this);
-
-        switch (sharedPreferences.getString("themeKey", "YellowTheme")) {
-            case "RedTheme":
-                setTheme(R.style.RedTheme);
-                break;
-            case "YellowTheme":
-                setTheme(R.style.YellowTheme);
-                break;
-            case "GreenTheme":
-                setTheme(R.style.GreenTheme);
-                break;
+        DataPoint[] arrayGains = new DataPoint[7];
+        DataPoint[] arrayExpenses = new DataPoint[7];
+        for (int i = 0; i < valorDiasDaSemanaGanhos.size(); i++){
+            arrayGains[i] = new DataPoint(Integer.valueOf(diasDaSemana.get(i)), (int)valorDiasDaSemanaGanhos.get(i).doubleValue());
+            arrayExpenses[i] = new DataPoint(Integer.valueOf(diasDaSemana.get(i)), (int)valorDiasDaSemanaGastos.get(i).doubleValue());
         }
 
-        Log.i(TAG, "selected size: " + sharedPreferences.getString("fontSizeKey", "darkab"));
-        switch (sharedPreferences.getString("fontSizeKey", "normal")) {
-            case "smallest":
-                textSize = 12;
-                break;
-            case "small":
-                textSize = 14;
-                break;
-            case "normal":
-                textSize = 16;
-                break;
-            case "large":
-                textSize = 18;
-                break;
-            case "largest":
-                textSize = 20;
-                break;
-        }
+        //Gains
+        GraphView graph = findViewById(R.id.graph);
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(arrayGains);
+        // styling series
+        series.setColor(Color.GREEN);
+        series.setDrawDataPoints(true);
+        series.setDataPointsRadius(10);
+        series.setThickness(8);
+        graph.addSeries(series);
+
+        //Expenses
+        GraphView graphExpenses = findViewById(R.id.graphExpenses);
+        LineGraphSeries<DataPoint> seriesExpenses = new LineGraphSeries<>(arrayExpenses);
+        // styling series
+        seriesExpenses.setColor(Color.RED);
+        seriesExpenses.setDrawDataPoints(true);
+        seriesExpenses.setDataPointsRadius(10);
+        seriesExpenses.setThickness(8);
+        graphExpenses.addSeries(seriesExpenses);
+
     }
 
     private void compareDays() {
