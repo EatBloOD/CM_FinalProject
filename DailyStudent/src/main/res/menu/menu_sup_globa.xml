@@ -14,5 +14,5 @@
         android:showAsAction="always"
         android:visible="true"
         app:showAsAction="always"
-        android:onClick="receiveNote" />
+        android:onClick="onReceiveNoteClick" />
 </menu>

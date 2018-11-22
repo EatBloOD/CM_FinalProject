@@ -123,7 +123,9 @@
     <string name="DayliStudentActivityButtonSendingSharedNote">Call</string>
     <string name="DayliStudentActivityReceived2SharedNote">\" ] of \"</string>
     <string name="DayliStudentActivityReceivedSharedNote">\"SUCCESSFULLY RECEIVED THE NOTE [\"</string>
-    <string name="DayliStudentActivitySuccessfullSendingSharedNote">\"SUCCESSFULLY SENDED THE NOTE [\"</string>
+    <string name="SendingSharedNoteSuccess">"Note successfully sent"</string>
+    <string name="SendingSharedNoteFail">"Note not sent"</string>
+    <string name="PleaseTryAgainLater">"Please try again later"</string>
     <string name="DayliStudentActivityIPSendingSharedNote">Cellphone IP to send:</string>
     <string name="ultimas_notas_partilhadas">Last Shared Notes</string>
     <string name="ultimas">Last Shared Notes</string>

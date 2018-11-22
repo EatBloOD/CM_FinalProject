@@ -4,11 +4,11 @@ import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -24,22 +24,12 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.Inet4Address;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.SocketException;
-import java.net.SocketTimeoutException;
-import java.util.Enumeration;
-
 import pt.uc.cm.daily_student.R;
 import pt.uc.cm.daily_student.adapters.GlobalNotesDbAdapter;
 import pt.uc.cm.daily_student.fragments.NoteEdit;
+import pt.uc.cm.daily_student.interfaces.INetworkReceiveEvents;
 import pt.uc.cm.daily_student.models.MessagePacket;
+import pt.uc.cm.daily_student.utils.NetworkUtils;
 
 public class GlobalNotes extends AppCompatActivity {
     private final String TAG = GlobalNotes.class.getSimpleName();
@@ -50,27 +40,24 @@ public class GlobalNotes extends AppCompatActivity {
     private static final int DELETE_ID = Menu.FIRST + 1;
     private static final int SHARE_ID = Menu.FIRST + 2;
 
-    static ListView lv_global_notes;
-    long id;
-    String autor = null, ip = null;
-
-    private GlobalNotesDbAdapter mDbHelper;
+    private GlobalNotesDbAdapter mGlobalNotesDbAdapter;
     private Cursor mNotesCursor;
 
+    private ListView lvGlobalNotes;
+    private long id;
+    private String author = null, ip = null;
+
+    private ProgressDialog progressDialog = null;
+
     SharedPreferences sharedPreferences;
-
-    // Communication
-    ProgressDialog pd = null;
-    ServerSocket receiverSocket = null;
-    Socket senderSocket = null;
-    private static final int LISTENING_PORT = 9001;
-
-    ObjectInputStream inObj;
-    ObjectOutputStream outObj;
-
-    Handler procMsg = null;
-
     int id_noti = 0;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,20 +65,19 @@ public class GlobalNotes extends AppCompatActivity {
         readPreferencesUser();
         setContentView(R.layout.activity_global_notes);
         setTitle(getString(R.string.DayliStudentActivitySharedNote));
-        procMsg = new Handler();
 
         //abrir a base de dados das notas textuais
-        mDbHelper = new GlobalNotesDbAdapter(this);
-        mDbHelper.open();
+        mGlobalNotesDbAdapter = new GlobalNotesDbAdapter(this);
+        mGlobalNotesDbAdapter.open();
 
         fillData();
 
         id = 0;
 
-        lv_global_notes = findViewById(R.id.lv_global_notes);
-        registerForContextMenu(lv_global_notes);
+        lvGlobalNotes = findViewById(R.id.lv_global_notes);
+        registerForContextMenu(lvGlobalNotes);
 
-        lv_global_notes.setOnItemClickListener((adapterView, view, position, id) -> {
+        lvGlobalNotes.setOnItemClickListener((adapterView, view, position, id) -> {
             Cursor c = mNotesCursor;
             c.moveToPosition(position);
             Intent i = new Intent(getApplicationContext(), NoteEdit.class);
@@ -105,7 +91,7 @@ public class GlobalNotes extends AppCompatActivity {
 
     private void fillData() {
         // Get all of the rows from the database and create the item list
-        mNotesCursor = mDbHelper.fetchAllGlobalNotes();
+        mNotesCursor = mGlobalNotesDbAdapter.fetchAllGlobalNotes();
         startManagingCursor(mNotesCursor);
 
         // Create an array to specify the fields we want to display in the list (only TITLE)
@@ -117,8 +103,8 @@ public class GlobalNotes extends AppCompatActivity {
         // Now create a simple cursor adapter and set it to display
         SimpleCursorAdapter notes =
                 new SimpleCursorAdapter(this, R.layout.notes_global_row, mNotesCursor, from, to);
-        lv_global_notes = findViewById(R.id.lv_global_notes);
-        lv_global_notes.setAdapter(notes);
+        lvGlobalNotes = findViewById(R.id.lv_global_notes);
+        lvGlobalNotes.setAdapter(notes);
     }
 
     @Override
@@ -141,7 +127,7 @@ public class GlobalNotes extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch (item.getItemId()) {
             case DELETE_ID:
-                mDbHelper.deleteGlobalNote(info.id);
+                mGlobalNotesDbAdapter.deleteGlobalNote(info.id);
                 fillData();
                 return true;
             case SHARE_ID:
@@ -167,7 +153,7 @@ public class GlobalNotes extends AppCompatActivity {
                 case ACTIVITY_CREATE:
                     String title = extras.getString(GlobalNotesDbAdapter.KEY_TITLE);
                     String body = extras.getString(GlobalNotesDbAdapter.KEY_BODY);
-                    mDbHelper.createGlobalNote(autor, title, body);
+                    mGlobalNotesDbAdapter.createGlobalNote(author, title, body);
                     fillData();
                     break;
                 case ACTIVITY_EDIT:
@@ -175,7 +161,7 @@ public class GlobalNotes extends AppCompatActivity {
                     if (mRowId != null) {
                         String editTitle = extras.getString(GlobalNotesDbAdapter.KEY_TITLE);
                         String editBody = extras.getString(GlobalNotesDbAdapter.KEY_BODY);
-                        mDbHelper.updateGlobalNote(mRowId, autor, editTitle, editBody);
+                        mGlobalNotesDbAdapter.updateGlobalNote(mRowId, author, editTitle, editBody);
                     }
                     fillData();
                     break;
@@ -186,15 +172,18 @@ public class GlobalNotes extends AppCompatActivity {
 
     private void senderDialog() {
         final EditText edtIP = new EditText(this);
-        //FALTA IMPLEMENTAR A LER DAS SHARED PREFERENCES
+
+        // TODO: implement get IP from QRCode
         edtIP.setText(ip);
         AlertDialog ad = new AlertDialog.Builder(this)
                 .setTitle(R.string.DayliStudentActivitySendingSharedNote)
                 .setMessage(R.string.DayliStudentActivityIPSendingSharedNote)
                 .setView(edtIP)
                 .setPositiveButton(R.string.DayliStudentActivityButtonSendingSharedNote, (dialogInterface, i) -> {
-                    //CHAMAAQUI O CONSTRUTOR
-                    sender(edtIP.getText().toString());
+                    // TODO: check for permissions Internet
+                    NetworkUtils networkUtils = NetworkUtils.getInstance();
+                    networkUtils.sendData(mGlobalNotesDbAdapter.getGlobalNoteToSend(this.id),
+                            this::posDataSend);
                 })
                 .setOnCancelListener(dialogInterface -> {
                 })
@@ -202,153 +191,26 @@ public class GlobalNotes extends AppCompatActivity {
         ad.show();
     }
 
-    void sender(final String ip) {
-        Thread t = new Thread(() -> {
-            try {
-                senderSocket = new Socket(ip, GlobalNotes.LISTENING_PORT);
-            } catch (SocketTimeoutException e) {
-                senderSocket = null;
-            } catch (IOException e) {
-                e.printStackTrace();
+    public void onReceiveNoteClick(MenuItem item) {
+        NetworkUtils networkUtils = NetworkUtils.getInstance();
+        networkUtils.receiveData(new INetworkReceiveEvents() {
+            @Override
+            public void onPreDataReceived() {
+                preDataReceived();
             }
 
-            if (senderSocket == null) {
-                procMsg.post(() -> Toast.makeText(getApplicationContext(), "SENDERSOCKET = NULL", Toast.LENGTH_LONG).show());
-                return;
-            }
-            Thread commThread = new Thread(new sendMSG());
-            commThread.start();
-        });
-        t.start();
-    }
-
-    public void receiveNote(MenuItem item) {
-        String ip = getLocalIpAddress();
-        pd = new ProgressDialog(this);
-        pd.setMessage(getString(R.string.waitingConection) + "\n(IP: " + ip
-                + ")");
-        pd.setTitle(getString(R.string.receive));
-        pd.setOnCancelListener(dialog -> {
-            if (receiverSocket != null) {
-                try {
-                    receiverSocket.close();
-                } catch (IOException ignored) {
-                }
-                receiverSocket = null;
+            @Override
+            public void onPosDataReceived(MessagePacket messagePacket) {
+                posDataReceived(messagePacket);
             }
         });
-        pd.show();
-
-        Thread t = new Thread(new waitConnection());
-        t.start();
-    }
-
-    public class waitConnection implements Runnable {
-        @Override
-        public void run() {
-            try {
-                receiverSocket = new ServerSocket(9001);
-                senderSocket = receiverSocket.accept();
-                receiverSocket.close();
-                receiverSocket = null;
-                Thread t = new Thread(new receiveMSG());
-                t.start();
-            } catch (Exception e) {
-                e.printStackTrace();
-                senderSocket = null;
-            }
-            procMsg.post(() -> {
-                pd.dismiss();
-                if (receiverSocket != null)
-                    try {
-                        receiverSocket.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-            });
-        }
-    }
-
-    public class receiveMSG implements Runnable {
-
-        public void run() {
-            try {
-                inObj = new ObjectInputStream(senderSocket.getInputStream());
-
-                final MessagePacket read = (MessagePacket) (inObj.readObject());
-
-                procMsg.post(() -> {
-                    mDbHelper.createGlobalNote(read.getAuthor(), read.getTitle(), read.getObs());
-
-                    fillData();
-
-                    Toast.makeText(getApplicationContext(), getString(R.string.DayliStudentActivityReceivedSharedNote) +
-                            read.getTitle() + getString(R.string.DayliStudentActivityReceived2SharedNote) + read.getAuthor() + ".", Toast.LENGTH_LONG).show();
-
-                    buildNotification(read);
-                });
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                procMsg.post(() -> {
-                    Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
-                    // Refresh main activity upon close of dialog box
-                    Intent refresh = new Intent(getApplicationContext(), GlobalNotes.class);
-                    startActivity(refresh);
-                    finish();
-                });
-            }
-        }
-    }
-
-    public class sendMSG implements Runnable {
-        MessagePacket msg;
-
-        public void run() {
-            try {
-                outObj = new ObjectOutputStream(senderSocket.getOutputStream());
-
-                msg = mDbHelper.getGlobalNoteToSend(id);
-
-                id = 0;
-
-                outObj.writeObject(msg);
-                outObj.flush();
-
-                procMsg.post(() -> Toast.makeText(getApplicationContext(),
-                        getString(R.string.DayliStudentActivitySuccessfullSendingSharedNote) + msg.getTitle() + " ]", Toast.LENGTH_LONG).show());
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                procMsg.post(() -> {
-                });
-            }
-        }
-    }
-
-    public static String getLocalIpAddress() {
-        try {
-            for (Enumeration<NetworkInterface> en = NetworkInterface
-                    .getNetworkInterfaces(); en.hasMoreElements(); ) {
-                NetworkInterface intf = en.nextElement();
-                for (Enumeration<InetAddress> enumIpAddr = intf
-                        .getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
-                    InetAddress inetAddress = enumIpAddr.nextElement();
-                    if (!inetAddress.isLoopbackAddress()
-                            && inetAddress instanceof Inet4Address) {
-                        return inetAddress.getHostAddress();
-                    }
-                }
-            }
-        } catch (SocketException ex) {
-            ex.printStackTrace();
-        }
-        return null;
     }
 
     private void readPreferencesUser() {
         int textSize = -1;
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(GlobalNotes.this);
 
-        autor = sharedPreferences.getString("nameKey", "DEFAULT");
+        author = sharedPreferences.getString("nameKey", "DEFAULT");
         ip = sharedPreferences.getString("serverKey", "0.0.0.0");
 
         switch (sharedPreferences.getString("themeKey", "YellowTheme")) {
@@ -403,5 +265,63 @@ public class GlobalNotes extends AppCompatActivity {
         NotificationManager mNotifyMgr =
                 (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         mNotifyMgr.notify(id_noti, mBuilder.build());
+    }
+
+    private void preDataReceived() {
+        // TODO: implement show IP from QRCode
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(getString(R.string.waitingConection) + "\n(IP: " + ip + ")");
+        progressDialog.setTitle(getString(R.string.receive));
+        /* TODO: remove this if cancel works!
+        progressDialog.setOnCancelListener(dialog -> {
+            if (receiverSocket != null) {
+                try {
+                    receiverSocket.close();
+                } catch (IOException ignored) {
+                }
+                receiverSocket = null;
+            }
+        });*/
+        progressDialog.show();
+    }
+
+    private void posDataReceived(MessagePacket messagePacket) {
+        if (messagePacket != null) {
+            progressDialog.dismiss();
+
+            mGlobalNotesDbAdapter.createGlobalNote(messagePacket.getAuthor(),
+                    messagePacket.getTitle(),
+                    messagePacket.getObs());
+
+            fillData();
+
+            Toast.makeText(getApplicationContext(),
+                    getString(R.string.DayliStudentActivityReceivedSharedNote) +
+                            messagePacket.getTitle()
+                            + getString(R.string.DayliStudentActivityReceived2SharedNote)
+                            + messagePacket.getAuthor() + ".", Toast.LENGTH_LONG).show();
+
+            buildNotification(messagePacket);
+        } else {
+            Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
+            // Refresh main activity upon close of dialog box
+            Intent refresh = new Intent(getApplicationContext(), GlobalNotes.class);
+            startActivity(refresh);
+            finish();
+        }
+    }
+
+    private void posDataSend(MessagePacket messagePacket, boolean success) {
+        Context context = getApplicationContext();
+        Toast toast = success ?
+                Toast.makeText(context, context.getString(R.string.SendingSharedNoteSuccess)
+                        + ": " + messagePacket.getTitle(), Toast.LENGTH_LONG)
+                :
+                Toast.makeText(context,
+                        context.getString(R.string.SendingSharedNoteFail)
+                                + ": " + messagePacket.getTitle()
+                                + context.getString(R.string.PleaseTryAgainLater),
+                        Toast.LENGTH_LONG);
+        toast.show();
     }
 }

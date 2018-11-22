@@ -112,7 +112,9 @@
     <string name="DayliStudentActivityButtonSendingSharedNote">Ligar</string>
     <string name="DayliStudentActivityReceivedSharedNote">"RECEBIDA COM SUCESSO A NOTA [ "</string>
     <string name="DayliStudentActivityReceived2SharedNote">" ] de "</string>
-    <string name="DayliStudentActivitySuccessfullSendingSharedNote">"ENVIEI COM SUCESSO A NOTA [ "</string>
+    <string name="SendingSharedNoteSuccess">"Nota enviada com sucesso"</string>
+    <string name="SendingSharedNoteFail">"Nota não enviada"</string>
+    <string name="PleaseTryAgainLater">"Por favor, tenta novamente"</string>
     <string name="notas_partilhadas">Notas Partilhadas</string>
     <string name="contentMainultimas_notas_tiradas_title">Titulo</string>
     <string name="contentMainultimas_notas_tiradas_description">Descrição</string>
