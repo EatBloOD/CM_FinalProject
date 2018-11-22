@@ -41,7 +41,7 @@ import pt.uc.cm.daily_student.adapters.GlobalNotesDbAdapter;
 import pt.uc.cm.daily_student.fragments.NoteEdit;
 import pt.uc.cm.daily_student.models.MessagePacket;
 
-public class GlobalNotes extends AppCompatActivity {
+public class GlobalNotes extends StructureActivity {
     private final String TAG = GlobalNotes.class.getSimpleName();
 
     private static final int ACTIVITY_CREATE = 0;
@@ -56,8 +56,6 @@ public class GlobalNotes extends AppCompatActivity {
 
     private GlobalNotesDbAdapter mDbHelper;
     private Cursor mNotesCursor;
-
-    SharedPreferences sharedPreferences;
 
     // Communication
     ProgressDialog pd = null;
@@ -202,6 +200,7 @@ public class GlobalNotes extends AppCompatActivity {
         ad.show();
     }
 
+    //TODO: NETWORK ACTIVITY
     void sender(final String ip) {
         Thread t = new Thread(() -> {
             try {
@@ -243,6 +242,7 @@ public class GlobalNotes extends AppCompatActivity {
         t.start();
     }
 
+    //TODO: CONVERT TO ASYNC
     public class waitConnection implements Runnable {
         @Override
         public void run() {
@@ -269,6 +269,7 @@ public class GlobalNotes extends AppCompatActivity {
         }
     }
 
+    //TODO: CONVERT TO ASYNC(2)
     public class receiveMSG implements Runnable {
 
         public void run() {
@@ -342,45 +343,6 @@ public class GlobalNotes extends AppCompatActivity {
             ex.printStackTrace();
         }
         return null;
-    }
-
-    private void readPreferencesUser() {
-        int textSize = -1;
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(GlobalNotes.this);
-
-        autor = sharedPreferences.getString("nameKey", "DEFAULT");
-        ip = sharedPreferences.getString("serverKey", "0.0.0.0");
-
-        switch (sharedPreferences.getString("themeKey", "YellowTheme")) {
-            case "RedTheme":
-                setTheme(R.style.RedTheme);
-                break;
-            case "YellowTheme":
-                setTheme(R.style.YellowTheme);
-                break;
-            case "GreenTheme":
-                setTheme(R.style.GreenTheme);
-                break;
-        }
-
-        Log.i(TAG, "selected size: " + sharedPreferences.getString("fontSizeKey", "darkab"));
-        switch (sharedPreferences.getString("fontSizeKey", "normal")) {
-            case "smallest":
-                textSize = 12;
-                break;
-            case "small":
-                textSize = 14;
-                break;
-            case "normal":
-                textSize = 16;
-                break;
-            case "large":
-                textSize = 18;
-                break;
-            case "largest":
-                textSize = 20;
-                break;
-        }
     }
 
     public void buildNotification(MessagePacket msg) {

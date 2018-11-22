@@ -1,10 +1,22 @@
 package pt.uc.cm.daily_student.activities;
 
+import android.Manifest;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -21,11 +33,12 @@ import pt.uc.cm.daily_student.fragments.NoteEdit;
 import pt.uc.cm.daily_student.adapters.BudgetDbAdapter;
 import pt.uc.cm.daily_student.adapters.NotesDbAdapter;
 
-public class DailyStudentActivity extends AppCompatActivity {
+public class DailyStudentActivity extends StructureActivity {
     private final String TAG = DailyStudentActivity.class.getSimpleName();
 
     private static final int ACTIVITY_CREATE = 0;
     private static final int ACTIVITY_EDIT = 1;
+    private static final int REQUEST_CAMERA_PERMISSION = 1;
 
     private static final int DELETE_ID = Menu.FIRST + 1;
 
@@ -34,52 +47,15 @@ public class DailyStudentActivity extends AppCompatActivity {
 
     private Cursor mNotesCursor;
 
-    SharedPreferences sharedPreferences;
-
     static ListView lv_notes;
-
-    private void readPreferencesUser() {
-        int textSize = -1;
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(DailyStudentActivity.this);
-
-        switch (sharedPreferences.getString("themeKey", "YellowTheme")) {
-            case "RedTheme":
-                setTheme(R.style.RedTheme);
-                break;
-            case "YellowTheme":
-                setTheme(R.style.YellowTheme);
-                break;
-            case "GreenTheme":
-                setTheme(R.style.GreenTheme);
-                break;
-        }
-
-        Log.i(TAG, "selected size: " + sharedPreferences.getString("fontSizeKey", "darkab"));
-        switch (sharedPreferences.getString("fontSizeKey", "normal")) {
-            case "smallest":
-                textSize = 12;
-                break;
-            case "small":
-                textSize = 14;
-                break;
-            case "normal":
-                textSize = 16;
-                break;
-            case "large":
-                textSize = 18;
-                break;
-            case "largest":
-                textSize = 20;
-                break;
-        }
-
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         readPreferencesUser();
         setContentView(R.layout.notes_list);
+
+
         setTitle(getString(R.string.dayliStudentActivityTitle));
 
         mDbHelper = new NotesDbAdapter(this);
@@ -102,6 +78,46 @@ public class DailyStudentActivity extends AppCompatActivity {
             i.putExtra(NotesDbAdapter.KEY_BODY, c.getString(c.getColumnIndexOrThrow(NotesDbAdapter.KEY_BODY)));
             startActivityForResult(i, ACTIVITY_EDIT);
         });
+
+        isReadStoragePermissionGranted();
+        isWriteStoragePermissionGranted();
+    }
+
+    public  boolean isReadStoragePermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v(TAG,"Permission is granted1");
+                return true;
+            } else {
+
+                Log.v(TAG,"Permission is revoked1");
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 3);
+                return false;
+            }
+        }
+        else { //permission is automatically granted on sdk<23 upon installation
+            Log.v(TAG,"Permission is granted1");
+            return true;
+        }
+    }
+
+    public  boolean isWriteStoragePermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v(TAG, "Permission is granted2");
+                return true;
+            } else {
+
+                Log.v(TAG, "Permission is revoked2");
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
+                return false;
+            }
+        } else { //permission is automatically granted on sdk<23 upon installation
+            Log.v(TAG, "Permission is granted2");
+            return true;
+        }
     }
 
     private void fillData() {

@@ -15,13 +15,14 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import pt.uc.cm.daily_student.R;
+import pt.uc.cm.daily_student.activities.StructureActivity;
 import pt.uc.cm.daily_student.adapters.ArrayWalletAdapter;
 import pt.uc.cm.daily_student.adapters.BudgetDbAdapter;
 import pt.uc.cm.daily_student.adapters.WalletDbAdapter;
 import pt.uc.cm.daily_student.models.BudgetNote;
 
 // TODO: Change this to a fragment
-public class Wallet extends AppCompatActivity {
+public class Wallet extends StructureActivity {
     private static final String TAG = Wallet.class.getSimpleName();
 
     EditText edtxtTitle, edtxtValor, edtxtTipo;
@@ -30,51 +31,12 @@ public class Wallet extends AppCompatActivity {
     Long mRowId;
     WalletDbAdapter mDbHelper;
     BudgetDbAdapter mDbBudgetHelper;
-    SharedPreferences sharedPreferences;
 
     @Override
     public void onBackPressed() {
         Intent mIntent = new Intent();
         setResult(RESULT_CANCELED, mIntent);
         super.onBackPressed();
-    }
-
-    private boolean readPreferencesUser() {
-        int textSize = -1;
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(Wallet.this);
-
-        switch (sharedPreferences.getString("themeKey", "YellowTheme")) {
-            case "RedTheme":
-                setTheme(R.style.RedTheme);
-                break;
-            case "YellowTheme":
-                setTheme(R.style.YellowTheme);
-                break;
-            case "GreenTheme":
-                setTheme(R.style.GreenTheme);
-                break;
-        }
-
-        Log.i(TAG, "selected size: " + sharedPreferences.getString("fontSizeKey", "darkab"));
-        switch (sharedPreferences.getString("fontSizeKey", "normal")) {
-            case "smallest":
-                textSize = 12;
-                break;
-            case "small":
-                textSize = 14;
-                break;
-            case "normal":
-                textSize = 16;
-                break;
-            case "large":
-                textSize = 18;
-                break;
-            case "largest":
-                textSize = 20;
-                break;
-        }
-
-        return true;
     }
 
     @Override

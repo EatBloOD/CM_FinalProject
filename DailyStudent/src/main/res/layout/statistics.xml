@@ -41,10 +41,11 @@
             </LinearLayout>
 
             <TextView
-                android:text="Total de Ganhos"
+                android:id="@+id/textView24"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView24"
+                android:paddingTop="20dp"
+                android:text="Total de Ganhos"
                 android:textAlignment="center"
                 android:textSize="24sp"
                 android:textStyle="normal|bold" />
@@ -65,10 +66,11 @@
                     android:layout_gravity="center_horizontal" />
 
                 <TextView
-                    android:text="Média de Gastos"
+                    android:id="@+id/textView26"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView26"
+                    android:paddingTop="20dp"
+                    android:text="Média de Gastos"
                     android:textAlignment="center"
                     android:textSize="24sp"
                     android:textStyle="normal|bold" />
@@ -83,21 +85,42 @@
                     android:theme="@style/linearLayoutStyle"
                     android:layout_gravity="center_horizontal" />
 
-                <WebView
-                    android:id="@+id/wvGrafico"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_x="38dp"
-                    android:layout_y="151dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true" />
 
-                <WebView
+                <TextView
+                    android:id="@+id/tvGains"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/wvGraficoGanhos" />
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:text="@string/Statisticsganhos"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:textStyle="normal|bold" />
+
+                <com.jjoe64.graphview.GraphView
+                    android:id="@+id/graph"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dip"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:id="@+id/tvExpenses"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:text="@string/Statisticsgastos"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:textStyle="normal|bold" />
+
+                <com.jjoe64.graphview.GraphView
+                    android:id="@+id/graphExpenses"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dip"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp" />
             </LinearLayout>
 
         </LinearLayout>
