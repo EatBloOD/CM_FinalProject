@@ -11,8 +11,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -24,7 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="pt.uc.cm.daily_student.activities.MainActivity"
+            android:name=".activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -33,19 +33,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="pt.uc.cm.daily_student.activities.CameraActivity" />
-        <activity android:name="pt.uc.cm.daily_student.fragments.NoteEdit" />
-        <activity android:name="pt.uc.cm.daily_student.fragments.NoteBudget" />
-        <activity android:name="pt.uc.cm.daily_student.activities.DailyStudentActivity" />
-        <activity android:name="pt.uc.cm.daily_student.activities.BudgetActivity" />
-        <activity android:name="pt.uc.cm.daily_student.fragments.Wallet" />
-        <activity android:name="pt.uc.cm.daily_student.activities.StatisticsActivity" />
-        <activity android:name="pt.uc.cm.daily_student.activities.CreditsActivity" />
-        <activity android:name="pt.uc.cm.daily_student.fragments.ScanQrCodeFragment" />
+        <activity android:name=".activities.CameraActivity" />
+        <activity android:name=".fragments.NoteEdit" />
+        <activity android:name=".fragments.NoteBudget" />
+        <activity android:name=".activities.DailyStudentActivity" />
+        <activity android:name=".activities.BudgetActivity" />
+        <activity android:name=".fragments.Wallet" />
+        <activity android:name=".activities.StatisticsActivity" />
+        <activity android:name=".activities.CreditsActivity" />
+        <activity android:name="fragments.ScanQrCodeFragment" />
         <activity
-            android:name="pt.uc.cm.daily_student.activities.SettingsActivity"
+            android:name=".activities.SettingsActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name="pt.uc.cm.daily_student.activities.GlobalNotes"></activity>
+        <activity android:name=".activities.GlobalNotes" />
+        <activity android:name=".activities.StructureActivity"></activity>
     </application>
 
 </manifest>

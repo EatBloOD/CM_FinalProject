@@ -1,13 +1,17 @@
 package pt.uc.cm.daily_student.activities;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -34,7 +38,7 @@ import pt.uc.cm.daily_student.adapters.GlobalNotesDbAdapter;
 import pt.uc.cm.daily_student.adapters.NotesDbAdapter;
 import pt.uc.cm.daily_student.adapters.WalletDbAdapter;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends StructureActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private final String TAG = MainActivity.class.getSimpleName();
 
@@ -57,8 +61,6 @@ public class MainActivity extends AppCompatActivity
     private GlobalNotesDbAdapter mDbGlobalNotesHelper;
 
     protected DrawerLayout drawer;
-
-    SharedPreferences sharedPreferences;
 
     @Override
     protected void onStart() {
@@ -108,6 +110,27 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle(getString(R.string.mainActivityTitle));
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CAMERA},
+                    1);
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    2);
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    3);
+        }
 
         drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -200,7 +223,7 @@ public class MainActivity extends AppCompatActivity
             wallet1_value.setVisibility(View.INVISIBLE);
             ivWallet1.setVisibility(View.INVISIBLE);
         } else {
-            wallet1.setText(walletsMoney.get(0)[1].toString());
+            wallet1.setText(walletsMoney.get(0)[1]);
             wallet1_value.setText(walletsMoney.get(0)[3] + getString(R.string.budgetActivityMoney));
         }
 
@@ -209,7 +232,7 @@ public class MainActivity extends AppCompatActivity
             wallet2_value.setVisibility(View.INVISIBLE);
             ivWallet2.setVisibility(View.INVISIBLE);
         } else {
-            wallet2.setText(walletsMoney.get(1)[1].toString());
+            wallet2.setText(walletsMoney.get(1)[1]);
             wallet2_value.setText(walletsMoney.get(1)[3] + getString(R.string.budgetActivityMoney));
         }
         if (notes.get(0)[0].equals("N/A")) {
@@ -278,11 +301,7 @@ public class MainActivity extends AppCompatActivity
             new AlertDialog.Builder(this).setCancelable(false)
                     .setTitle(R.string.mainActivityTitle)
                     .setMessage(R.string.mainActivityWelcomeDialog)
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            register();
-                        }
-                    }).setOnKeyListener((dialog, keyCode, event) -> {
+                    .setPositiveButton(android.R.string.yes, (dialog, which) -> register()).setOnKeyListener((dialog, keyCode, event) -> {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP)
                     return false;
                 return true;
@@ -305,12 +324,12 @@ public class MainActivity extends AppCompatActivity
         dialog.setOnKeyListener((dialog1, keyCode, event) ->
                 keyCode != KeyEvent.KEYCODE_BACK || event.getAction() != KeyEvent.ACTION_UP);
         // APANHA AS REFERÊNCIAS PARA TODOS OS OBJECTOS NECESSÁRIOS
-        final EditText editTextUserName = (EditText) dialog.findViewById(R.id.editTextUserName);
-        final EditText editTextPassword = (EditText) dialog.findViewById(R.id.editTextPassword);
-        final EditText editTextConfirmPassword = (EditText) dialog.findViewById(R.id.editTextConfirmPassword);
-        final EditText editTextEmail = (EditText) dialog.findViewById(R.id.editTextEmail);
+        final EditText editTextUserName = dialog.findViewById(R.id.editTextUserName);
+        final EditText editTextPassword = dialog.findViewById(R.id.editTextPassword);
+        final EditText editTextConfirmPassword = dialog.findViewById(R.id.editTextConfirmPassword);
+        final EditText editTextEmail = dialog.findViewById(R.id.editTextEmail);
 
-        final Button btnRegister = (Button) dialog.findViewById(R.id.buttonCreateAccount);
+        final Button btnRegister = dialog.findViewById(R.id.buttonCreateAccount);
 
         // REGISTAR LISTENER
         btnRegister.setOnClickListener((v) -> {
@@ -348,52 +367,6 @@ public class MainActivity extends AppCompatActivity
         });
 
         dialog.show();
-    }
-
-    private void readInfoUser() {
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-
-        //COLOCA A INFORMAÇÃO NA SIDEBAR
-        tvUserName.setText(sharedPreferences.getString(NOME, "DEFAULT"));
-        tvEmail.setText(sharedPreferences.getString(EMAIL, "DEFAULT"));
-    }
-
-    private void readPreferencesUser() {
-        int textSize = -1;
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-
-        System.out.println("TEMA ESCOLHIDO : " + sharedPreferences.getString("themeKey", "THEMERED"));
-        switch (sharedPreferences.getString("themeKey", "THEMEYELLOW")) {
-            case "RedTheme":
-                setTheme(R.style.RedTheme);
-                break;
-            case "YellowTheme":
-                setTheme(R.style.YellowTheme);
-                break;
-            case "GreenTheme":
-                setTheme(R.style.GreenTheme);
-                break;
-        }
-
-        System.out.println("TAMANHO ESCOLHIDO : " + sharedPreferences.getString("fontSizeKey", "darkab"));
-        switch (sharedPreferences.getString("fontSizeKey", "normal")) {
-            case "smallest":
-                textSize = 12;
-                break;
-            case "small":
-                textSize = 14;
-                break;
-            case "normal":
-                textSize = 16;
-                break;
-            case "large":
-                textSize = 18;
-                break;
-            case "largest":
-                textSize = 20;
-                break;
-        }
-
     }
 
     @Override

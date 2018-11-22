@@ -20,25 +20,24 @@
     <string name="budgetActivityTitle">Manage Budget</string>
     <string name="budgetActivityTotal">"TOTAL = "</string>
     <string name="contentMainExpenses">Expenses:</string>
-    <string name="contentMainProffit">Proffits:</string>
+    <string name="contentMainProffit">Profits:</string>
     <string name="contentMainResume">Resume</string>
     <string name="contentMainToday">Today</string>
     <string name="contentMaincarteiras">Wallets</string>
     <string name="contentMaindespesas">Expenses:</string>
     <string name="contentMainnotas_globais">Group Notes</string>
-    <string name="contentMainreceitas">Proffits:</string>
+    <string name="contentMainreceitas">Profits:</string>
     <string name="contentMaintotal">Total:</string>
     <string name="contentMainultimas_notas_tiradas">Latest written Notes:</string>
     <string name="ctxtMenuDeleteNote">Delete Note</string>
     <string name="ctxtMenuDeleteWallet">Delete Wallet</string>
     <string name="dayliStudentActivityTitle">Text Notes</string>
-    <string name="isec">\@ISEC</string>
     <string name="mainActivityRegister">Do register:</string>
     <string name="mainActivityRegisterEmail">Email is not Valid</string>
     <string name="mainActivityRegisterEmptyFields">Fields Without Content</string>
     <string name="mainActivityRegisterPasNotMatch">Password does not match</string>
     <string name="mainActivityTitle">DayliStudent</string>
-    <string name="mainActivityWelcomeDialog">" Welcome to DayliStudent! @ISEC @JorgeSilva"</string>
+    <string name="mainActivityWelcomeDialog">" Welcome to DayliStudent!"</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="noteBudgetEmpty">You have not selected any wallets</string>
@@ -101,8 +100,8 @@
     <string name="drawerNotas_textuais">Text Notes</string>
     <string name="drawerSair">Exit</string>
     <string name="drawerSettings">Settings</string>
-    <string name="Statisticsganhos"><![CDATA[chdl=Profits&]]></string>
-    <string name="Statisticsgastos"><![CDATA[chdl=Expenses&]]></string>
+    <string name="Statisticsganhos">Profits</string>
+    <string name="Statisticsgastos">Expenses</string>
     <string name="despesa">Expenses</string>
     <string name="trabalho">Work</string>
     <string name="viagens">Travelling</string>
@@ -155,4 +154,5 @@
     <string name="cancel">Cancel</string>
     <string name="error">Error</string>
     <string name="uc_url">https://www.uc.pt/</string>
+    <string name="customization">Customizations</string>
 </resources>

@@ -25,7 +25,7 @@ import pt.uc.cm.daily_student.adapters.BudgetDbAdapter;
 import pt.uc.cm.daily_student.adapters.WalletDbAdapter;
 import pt.uc.cm.daily_student.models.BudgetNote;
 
-public class BudgetActivity extends AppCompatActivity {
+public class BudgetActivity extends StructureActivity {
     private static final int ACTIVITY_CREATE = 0;
     private static final int ACTIVITY_EDIT = 1;
     private static final int ACTIVITY_WALLET_CREATE = 2;
@@ -40,8 +40,6 @@ public class BudgetActivity extends AppCompatActivity {
 
     private Cursor mBudgetCursor;
     private Cursor mWalletCursor;
-
-    SharedPreferences sharedPreferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,43 +63,6 @@ public class BudgetActivity extends AppCompatActivity {
         registerForContextMenu(lv_bgnotes);
     }
 
-    private void readPreferencesUser() {
-        int textSize = -1;
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(BudgetActivity.this);
-
-        System.out.println("TEMA ESCOLHIDO : " + sharedPreferences.getString("themeKey", "THEMERED"));
-        switch (sharedPreferences.getString("themeKey", "THEMEYELLOW")) {
-            case "RedTheme":
-                setTheme(R.style.RedTheme);
-                break;
-            case "YellowTheme":
-                setTheme(R.style.YellowTheme);
-                break;
-            case "GreenTheme":
-                setTheme(R.style.GreenTheme);
-                break;
-        }
-
-        System.out.println("TAMANHO ESCOLHIDO : " + sharedPreferences.getString("fontSizeKey", "darkab"));
-        switch (sharedPreferences.getString("fontSizeKey", "normal")) {
-            case "smallest":
-                textSize = 12;
-                break;
-            case "small":
-                textSize = 14;
-                break;
-            case "normal":
-                textSize = 16;
-                break;
-            case "large":
-                textSize = 18;
-                break;
-            case "largest":
-                textSize = 20;
-                break;
-        }
-    }
-
     private void fillData() {
         mBudgetCursor = mDbBudgetHelper.fetchAllNotes();
         mWalletCursor = mDbWalletHelper.fetchAllWallets();
@@ -109,13 +70,13 @@ public class BudgetActivity extends AppCompatActivity {
         startManagingCursor(mBudgetCursor);
         startManagingCursor(mWalletCursor);
 
-        //Cria um array para especificar os campos que queremos mostrar a partir da BD
+        //1 - Cria um array para especificar os campos que queremos mostrar a partir da BD
         String[] from = new String[]{BudgetDbAdapter.KEY_TITLE, BudgetDbAdapter.KEY_OBS,
                 BudgetDbAdapter.KEY_VALUE, BudgetDbAdapter.KEY_IMAGE};
-        // o array onde os queremos colocar
+        //2 - Inicializar o array onde os queremos colocar
         int[] to = new int[]{R.id.tvTitulo, R.id.tvBody, R.id.tvDate, R.id.imgGender};
 
-        // criamos um adapter e mostramos o conteudo no sitio certo
+        //3 - Criamos um adapter e mostramos o conteúdo no sítio certo
         SimpleCursorAdapter notes =
                 new SimpleCursorAdapter(this, R.layout.notesbudget_row, mBudgetCursor, from, to);
         lv_bgnotes.setAdapter(notes);
@@ -148,7 +109,7 @@ public class BudgetActivity extends AppCompatActivity {
             i.putExtra(BudgetDbAdapter.KEY_PHOTO, c.getString(c.getColumnIndexOrThrow(BudgetDbAdapter.KEY_PHOTO)));
             startActivityForResult(i, ACTIVITY_EDIT);
         });
-        //Actualiar o total em cima mostrado
+        //4- Actualizar o total em cima mostrado
         checkMoney(mDbBudgetHelper.fetchNotesByParameter(BudgetDbAdapter.KEY_VALUE), mDbBudgetHelper.fetchNotesByParameter(BudgetDbAdapter.KEY_GENDER));
     }
 

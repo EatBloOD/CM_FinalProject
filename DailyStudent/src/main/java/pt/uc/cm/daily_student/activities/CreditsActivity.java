@@ -10,9 +10,7 @@ import android.widget.ImageView;
 
 import pt.uc.cm.daily_student.R;
 
-public class CreditsActivity extends AppCompatActivity {
-
-    SharedPreferences sharedPreferences;
+public class CreditsActivity extends StructureActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,39 +37,4 @@ public class CreditsActivity extends AppCompatActivity {
         });
     }
 
-    private void readPreferencesUser() {
-        int textSize = -1;
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(CreditsActivity.this);
-
-        switch (sharedPreferences.getString("themeKey", "YellowTheme")) {
-            case "RedTheme":
-                setTheme(R.style.RedTheme);
-                break;
-            case "YellowTheme":
-                setTheme(R.style.YellowTheme);
-                break;
-            case "GreenTheme":
-                setTheme(R.style.GreenTheme);
-                break;
-        }
-
-        System.out.println("TAMANHO ESCOLHIDO : " + sharedPreferences.getString("fontSizeKey", "darkab"));
-        switch (sharedPreferences.getString("fontSizeKey", "normal")) {
-            case "smallest":
-                textSize = 12;
-                break;
-            case "small":
-                textSize = 14;
-                break;
-            case "normal":
-                textSize = 16;
-                break;
-            case "large":
-                textSize = 18;
-                break;
-            case "largest":
-                textSize = 20;
-                break;
-        }
-    }
 }
