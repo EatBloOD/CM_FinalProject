@@ -141,8 +141,9 @@ public class MainActivity extends StructureActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        tvUserName = navigationView.findViewById(R.id.tvUserName);
-        tvEmail = navigationView.findViewById(R.id.tvEmail);
+        View headerLayout = navigationView.getHeaderView(0);
+        tvUserName = headerLayout.findViewById(R.id.tvUserName);
+        tvEmail = headerLayout.findViewById(R.id.tvEmail);
 
         checkFirstRun();
 
