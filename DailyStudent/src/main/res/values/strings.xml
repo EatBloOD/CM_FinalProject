@@ -136,7 +136,7 @@
     <string name="statistics_total_gastos">Total de Gastos</string>
     <string name="statistics_total_ganhos">Total de Ganhos</string>
     <string name="statistics_media">Média de Gastos</string>
-    <string name="waitingConection">Esperando conecção...</string>
+    <string name="waitingConnection">Esperando conecção...</string>
     <string name="receive">RECEBER</string>
     <string name="statisticsTitle">Estatísticas</string>
     <string name="other">Outro</string>
@@ -154,4 +154,7 @@
     <string name="team_member_number_2">Nº2017234557</string>
     <string name="team_member_3">Rúben Filipe Ramos Alves</string>
     <string name="team_member_number_3">Nº2012142647</string>
+    <string name="cancel">Cancelar</string>
+    <string name="error">Erro</string>
+    <string name="uc_url">https://www.uc.pt/</string>
 </resources>

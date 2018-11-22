@@ -41,6 +41,7 @@
         <activity android:name="pt.uc.cm.daily_student.fragments.Wallet" />
         <activity android:name="pt.uc.cm.daily_student.activities.StatisticsActivity" />
         <activity android:name="pt.uc.cm.daily_student.activities.CreditsActivity" />
+        <activity android:name="pt.uc.cm.daily_student.fragments.ScanQrCodeFragment" />
         <activity
             android:name="pt.uc.cm.daily_student.activities.SettingsActivity"
             android:theme="@style/AppTheme" />

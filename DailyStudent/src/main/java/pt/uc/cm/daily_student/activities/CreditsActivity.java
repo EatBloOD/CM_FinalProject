@@ -20,6 +20,15 @@ public class CreditsActivity extends AppCompatActivity {
         readPreferencesUser();
         setContentView(R.layout.creditos);
 
+        ImageView imgUC = findViewById(R.id.ivUC);
+        imgUC.setOnClickListener(v -> {
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.addCategory(Intent.CATEGORY_BROWSABLE);
+            intent.setData(Uri.parse(getString(R.string.uc_url)));
+            startActivity(intent);
+        });
+
         ImageView imgGit = findViewById(R.id.ivGithub);
         imgGit.setOnClickListener(v -> {
             Intent intent = new Intent();

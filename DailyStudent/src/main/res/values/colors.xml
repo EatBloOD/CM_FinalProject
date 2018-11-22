@@ -10,4 +10,6 @@
     <color name="navColor">#cecece</color>
     <color name="linearLayoutColor">#00ffffff</color>
     <color name="backgroundBGcolor">#f9f9f9</color>
+
+    <color name="white">#FFFFFF</color>
 </resources>

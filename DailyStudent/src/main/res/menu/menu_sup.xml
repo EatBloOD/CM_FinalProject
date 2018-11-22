@@ -5,7 +5,7 @@
             android:icon="@drawable/ic_cash_notes"
             android:showAsAction="always|withText"
             android:title="Adicionar BudgetNotes" />
-        <item android:id="@+id/action_textNotes"
+        <item android:id="@+id/actionTextNotes"
             android:icon="@drawable/ic_writing_notes"
             android:showAsAction="ifRoom"
             android:title="Adicionar Notas" />
