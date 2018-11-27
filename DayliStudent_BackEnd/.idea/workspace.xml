@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aac17d9c-0640-4218-92c8-7fa55c430a98" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../DayliStudent_BackEnd/daylistudent/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/../DayliStudent_BackEnd/daylistudent/cli.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DayliStudent_BackEnd/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DayliStudent_BackEnd/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DayliStudent_BackEnd/daylistudent/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/../DayliStudent_BackEnd/daylistudent/server.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../DayliStudent_BackEnd/daylistudent/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1177">
-              <caret line="75" column="32" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
+            <state relative-caret-position="217">
+              <caret line="72" column="14" lean-forward="true" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -24,11 +25,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../DayliStudent_BackEnd/daylistudent/cli.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="18" column="65" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
+            <state relative-caret-position="404">
+              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../DayliStudent_BackEnd/install.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="23" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -182,8 +195,8 @@
         <option value="$PROJECT_DIR$/../DayliStudent_BackEnd/daylistudent/db/sqlitedb.py" />
         <option value="$PROJECT_DIR$/../DayliStudent_BackEnd/requirements.txt" />
         <option value="$PROJECT_DIR$/../DayliStudent_BackEnd/daylistudent/db/db_schema.sql" />
-        <option value="$PROJECT_DIR$/../DayliStudent_BackEnd/daylistudent/server.py" />
         <option value="$PROJECT_DIR$/../DayliStudent_BackEnd/daylistudent/cli.py" />
+        <option value="$PROJECT_DIR$/../DayliStudent_BackEnd/daylistudent/server.py" />
       </list>
     </option>
   </component>
@@ -346,9 +359,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49916247" visible="true" weight="0.14654718" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49916247" visible="true" weight="0.14654718" />
       <window_info id="Structure" order="1" sideWeight="0.5008375" side_tool="true" weight="0.18133895" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -359,7 +371,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3295964" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.45067266" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.45067266" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5002636" side_tool="true" weight="0.39955106" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32996634" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -601,13 +613,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../DayliStudent_BackEnd/install.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../DayliStudent_BackEnd/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -724,20 +729,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../DayliStudent_BackEnd/daylistudent/server.py">
+    <entry file="file://$PROJECT_DIR$/../DayliStudent_BackEnd/daylistudent/cli.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1177">
-          <caret line="75" column="32" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
+        <state relative-caret-position="404">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../DayliStudent_BackEnd/daylistudent/cli.py">
+    <entry file="file://$PROJECT_DIR$/../DayliStudent_BackEnd/install.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="18" column="65" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
+        <state relative-caret-position="34">
+          <caret line="2" column="23" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../DayliStudent_BackEnd/daylistudent/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="72" column="14" lean-forward="true" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
