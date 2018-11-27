@@ -20,8 +20,15 @@ app.config['DEBUG'] = True
 def getGroups():
     """ Query db to get all Groups """
     logger.info('getGroup()')
-    result = execute_select_query('SELECT * FROM Groups;')
-    return json.dumps(result), status.HTTP_200_OK
+    result_groups = execute_select_query('SELECT * FROM Groups;')
+    groups = []
+    for result in result_groups:
+        group = {
+            'id': result[0],
+            'name': result[1]
+        }
+        groups.append(group)
+    return json.dumps(groups), status.HTTP_200_OK
 
 
 @app.route('/group/<int:group_id>', methods=['GET'])
@@ -66,13 +73,31 @@ def getNotes(group_id):
 @app.route('/note', methods=['POST'])
 def postNote():
     """ Query db to create a new Note from received JSON data """
-    print(request.is_json)
+    if not request.is_json:
+        return status.HTTP_400_BAD_REQUEST
     content = request.get_json()
+    # groupId, username String, title String, body
+
     print(content)
     return 200
 
 
-# TODO: deleteNote && updateNote
+@app.route('/note/<int:note_id>', methods=['POST'])
+def updateNote(note_id):
+    """ Query db to update a certain Note from received JSON data with a certain note_id """
+    if not request.data:
+        return status.HTTP_400_BAD_REQUEST
+
+    note = json.loads(request.data)
+
+    username = note['username']
+    title = note['title']
+    body = note['body']
+
+    result = execute_update_query('UPDATE Notes SET username={}, title={}, body={} WHERE noteId={};'
+                                  .format(username, title, body, note_id))
+    return json.dumps(result), status.HTTP_200_OK
+
 
 @app.route("/note/<int:note_id>")
 def deleteNote(note_id):
