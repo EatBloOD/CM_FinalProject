@@ -14,7 +14,6 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
-app.config['PORT'] = 5001
 
 
 @app.route("/groups", methods=['GET'])
@@ -147,7 +146,7 @@ def execute_delete_query(delete_query):
 def run():
     setup_logging()
     logger.info('Dayli Student started')
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=8080)
 
 
 if __name__ == '__main__':
