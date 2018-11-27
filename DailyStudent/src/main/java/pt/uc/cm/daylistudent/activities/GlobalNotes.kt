@@ -30,6 +30,7 @@ import pt.uc.cm.daylistudent.utils.EncryptionUtils
 import pt.uc.cm.daylistudent.utils.NetworkUtils
 import pt.uc.cm.daylistudent.utils.QRCodeUtils
 import pt.uc.cm.daylistudent.utils.SharedPreferencesUtils
+import pt.uc.cm.daylistudent.utils.SharedPreferencesUtils.readUserName
 
 class GlobalNotes : AppCompatActivity() {
 
@@ -147,14 +148,14 @@ class GlobalNotes : AppCompatActivity() {
                 ACTIVITY_CREATE -> {
                     val title = extras!!.getString(GlobalNotesDbAdapter.KEY_TITLE)
                     val body = extras.getString(GlobalNotesDbAdapter.KEY_BODY)
-                    mGlobalNotesDbAdapter.createGlobalNote(author, title, body)
+                    mGlobalNotesDbAdapter.createGlobalNote(readUserName(), title, body)
                     fillData()
                 }
                 ACTIVITY_EDIT -> {
                     val mRowId = extras!!.getInt(GlobalNotesDbAdapter.KEY_ROWID)
                     val editTitle = extras.getString(GlobalNotesDbAdapter.KEY_TITLE)
                     val editBody = extras.getString(GlobalNotesDbAdapter.KEY_BODY)
-                    mGlobalNotesDbAdapter.updateGlobalNote(mRowId.toLong(), author, editTitle, editBody)
+                    mGlobalNotesDbAdapter.updateGlobalNote(mRowId.toLong(), readUserName(), editTitle, editBody)
                     fillData()
                 }
             }

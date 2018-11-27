@@ -34,4 +34,8 @@ object SharedPreferencesUtils {
             "GreenTheme" -> context.setTheme(R.style.GreenTheme)
         }
     }
+
+    fun readUserName(): String{
+        return sharedPreferences!!.getString(NOME, "Default")
+    }
 }
