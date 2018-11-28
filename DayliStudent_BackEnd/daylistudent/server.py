@@ -195,6 +195,7 @@ def execute_delete_query(delete_query):
     db_conn = get_db()
     curr = db_conn.cursor()
     curr.execute(delete_query)
+    db_conn.commit()
     return curr.rowcount
 
 
