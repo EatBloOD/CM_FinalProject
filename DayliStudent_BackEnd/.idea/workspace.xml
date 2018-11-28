@@ -15,8 +15,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/daylistudent/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="113" column="32" selection-start-line="113" selection-start-column="32" selection-end-line="113" selection-end-column="32" />
+            <state relative-caret-position="357">
+              <caret line="100" column="42" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/daylistudent/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -97,7 +106,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/graphy/models/endpoint.py" />
         <option value="$PROJECT_DIR$/graphy/logging.ini" />
         <option value="$PROJECT_DIR$/graphy/utils/profile.py" />
         <option value="$PROJECT_DIR$/graphy/models/binary_annotation.py" />
@@ -147,6 +155,7 @@
         <option value="$PROJECT_DIR$/daylistudent/models/group.py" />
         <option value="$PROJECT_DIR$/daylistudent/models/note.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/daylistudent/test.py" />
         <option value="$PROJECT_DIR$/daylistudent/server.py" />
       </list>
     </option>
@@ -192,12 +201,6 @@
               <item name="DayliStudent_BackEnd" type="b2602c69:ProjectViewProjectNode" />
               <item name="DayliStudent_BackEnd" type="462c0819:PsiDirectoryNode" />
               <item name="daylistudent" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DayliStudent_BackEnd" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DayliStudent_BackEnd" type="462c0819:PsiDirectoryNode" />
-              <item name="daylistudent" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DayliStudent_BackEnd" type="b2602c69:ProjectViewProjectNode" />
@@ -249,7 +252,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.server">
+  <component name="RunManager" selected="Python.test">
     <configuration name="install.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
       <module name="DailyStudent_BackEnd" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -282,12 +285,35 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="DailyStudent_BackEnd" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/daylistudent" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/daylistudent/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Bash.install.sh" />
       <item itemvalue="Python.server" />
+      <item itemvalue="Python.test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.server" />
       </list>
     </recent_temporary>
@@ -323,13 +349,13 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295964" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.38452914" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.38452914" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49973643" weight="0.4473094" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3295964" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.45067266" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.45067266" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5002636" side_tool="true" weight="0.39955106" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32996634" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -641,10 +667,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/daylistudent/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/daylistudent/server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="113" column="32" selection-start-line="113" selection-start-column="32" selection-end-line="113" selection-end-column="32" />
+        <state relative-caret-position="357">
+          <caret line="100" column="42" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
         </state>
       </provider>
     </entry>

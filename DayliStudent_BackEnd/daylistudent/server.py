@@ -80,7 +80,7 @@ def postNote():
 
     logger.info('receivedData: {}'.format(request.data))
 
-    note = json.load(json.dumps(request.data))
+    note = json.loads(request.data)
     logger.info('deserializedNote: {}'.format(str(note)))
     logger.info('deserializedNote type: {}'.format(type(note)))
     logger.info('deserializedNote len: {}'.format(len(note)))
@@ -99,6 +99,7 @@ def postNote():
                                                                                                              username,
                                                                                                              title,
                                                                                                              body))
+    logger.info('result: {}'.format(result))
     return json.dumps(result), status.HTTP_200_OK
 
 
@@ -111,7 +112,7 @@ def updateNote(note_id):
 
     logger.info('receivedData: {}'.format(request.data))
 
-    note = json.loads(json.dumps(request.data))
+    note = json.load(request.data)
     logger.info('deserializedNote: {}'.format(str(note)))
 
     if 'username' not in note or 'title' not in note or 'body' not in note:
