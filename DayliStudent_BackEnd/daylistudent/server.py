@@ -128,7 +128,7 @@ def updateNote(note_id):
     return json.dumps(result), status.HTTP_200_OK
 
 
-@app.route("/note/<int:note_id>")
+@app.route("/note/<int:note_id>", methods=['DELETE'])
 def deleteNote(note_id):
     """ Query db to delete a certain Group with group_id """
     logger.info('deleteNote(note_id:{})'.format(note_id))
