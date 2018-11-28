@@ -1,4 +1,8 @@
 class Group(object):
-    def __init__(self, id, name):
-        self.id = id
-        self.name = name
+    @staticmethod
+    def toJson(id, name):
+        group_schema = {
+            'id': id,
+            'name': name
+        }
+        return group_schema

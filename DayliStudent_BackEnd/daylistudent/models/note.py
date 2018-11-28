@@ -1,7 +1,11 @@
 class Note(object):
-    def __init__(self, id, groupId, username, title, body):
-        self.id = id
-        self.groupId = groupId
-        self.username = username
-        self.title = title
-        self.body = body
+    @staticmethod
+    def toJson(id, group_id, username, title, body):
+        note_schema = {
+            'id': id,
+            'groupId': group_id,
+            'username': username,
+            'title': title,
+            'body': body
+        }
+        return note_schema

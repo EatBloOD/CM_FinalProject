@@ -6,6 +6,8 @@ import sqlite3
 from flask import Flask, request, g
 from flask_api import status
 
+from daylistudent.models.group import Group
+from daylistudent.models.note import Note
 from daylistudent.utils.logger import setup_logging
 
 logger = logging.getLogger(__name__)
@@ -23,11 +25,7 @@ def getGroups():
     result_groups = execute_select_query('SELECT * FROM Groups;')
     groups = []
     for result in result_groups:
-        group = {
-            'id': result[0],
-            'name': result[1]
-        }
-        groups.append(group)
+        groups.append(Group.toJson(result[0], result[1]))
     return json.dumps(groups), status.HTTP_200_OK
 
 
@@ -66,20 +64,35 @@ def deleteGroup(group_id):
 def getNotes(group_id):
     """ Query db to get all notes from a certain Group with group_id """
     logger.info('getNotes(group_id:{})'.format(group_id))
-    result = execute_select_query('SELECT * FROM Notes WHERE groupId={};'.format(group_id))
-    return json.dumps(result), status.HTTP_200_OK
+    result_notes = execute_select_query('SELECT * FROM Notes WHERE groupId={};'.format(group_id))
+    notes = []
+    for result in result_notes:
+        notes.append(Note.toJson(result[0], result[1], result[2], result[3], result[4]))
+    return json.dumps(notes), status.HTTP_200_OK
 
 
 @app.route('/note', methods=['POST'])
 def postNote():
     """ Query db to create a new Note from received JSON data """
-    if not request.is_json:
+    if not request.data:
         return status.HTTP_400_BAD_REQUEST
-    content = request.get_json()
-    # groupId, username String, title String, body
 
-    print(content)
-    return 200
+    note = json.loads(request.data)
+
+    if 'username' not in note or 'title' not in note or 'body' not in note:
+        return status.HTTP_400_BAD_REQUEST
+
+    group_id = note['groupId']
+    username = note['username']
+    title = note['title']
+    body = note['body']
+
+    result = execute_insert_query(
+        'INSERT INTO Notes (groupId, username, title, body) VALUES (\'{}\', \'{}\', \'{}\', \'{}\');'.format(group_id,
+                                                                                                             username,
+                                                                                                             title,
+                                                                                                             body))
+    return json.dumps(result), status.HTTP_200_OK
 
 
 @app.route('/note/<int:note_id>', methods=['POST'])
@@ -90,11 +103,14 @@ def updateNote(note_id):
 
     note = json.loads(request.data)
 
+    if 'username' not in note or 'title' not in note or 'body' not in note:
+        return status.HTTP_400_BAD_REQUEST
+
     username = note['username']
     title = note['title']
     body = note['body']
 
-    result = execute_update_query('UPDATE Notes SET username={}, title={}, body={} WHERE noteId={};'
+    result = execute_update_query('UPDATE Notes SET username=\'{}\', title=\'{}\', body=\'{}\' WHERE noteId=\'{}\';'
                                   .format(username, title, body, note_id))
     return json.dumps(result), status.HTTP_200_OK
 
