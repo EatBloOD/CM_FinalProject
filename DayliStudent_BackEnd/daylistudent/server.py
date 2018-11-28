@@ -106,7 +106,7 @@ def postNote():
 @app.route('/note/<int:note_id>', methods=['POST'])
 def updateNote(note_id):
     """ Query db to update a certain Note from received JSON data with a certain note_id """
-    logger.info('updateNote()')
+    logger.info('updateNote(note_id: {})'.format(note_id))
     if not request.data:
         return status.HTTP_400_BAD_REQUEST
 
