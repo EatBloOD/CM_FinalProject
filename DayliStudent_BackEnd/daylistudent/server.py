@@ -82,6 +82,9 @@ def postNote():
 
     note = json.loads(request.data)
     logger.info('deserializedNote: {}'.format(str(note)))
+    logger.info('deserializedNote type: {}'.format(type(note)))
+    logger.info('deserializedNote len: {}'.format(len(note)))
+    logger.info('0 data: {}'.format(note[0]))
 
     if 'groupId' not in note or 'username' not in note or 'title' not in note or 'body' not in note:
         return status.HTTP_400_BAD_REQUEST
