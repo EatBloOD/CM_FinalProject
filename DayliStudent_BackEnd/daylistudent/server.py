@@ -74,18 +74,22 @@ def getNotes(group_id):
 @app.route('/note', methods=['POST'])
 def postNote():
     """ Query db to create a new Note from received JSON data """
+    logger.info('postNote()')
     if not request.data:
         return status.HTTP_400_BAD_REQUEST
 
-    note = json.loads(request.data)
+    logger.info('receivedData: {}'.format(request.data))
 
-    if 'username' not in note or 'title' not in note or 'body' not in note:
+    note = json.loads(request.data)
+    logger.info('deserializedNote: {}'.format(str(note)))
+
+    if 'groupId' not in note or 'username' not in note or 'title' not in note or 'body' not in note:
         return status.HTTP_400_BAD_REQUEST
 
-    group_id = note['groupId']
-    username = note['username']
-    title = note['title']
-    body = note['body']
+    group_id = int(note['groupId'])
+    username = str(note['username'])
+    title = str(note['title'])
+    body = str(note['body'])
 
     result = execute_insert_query(
         'INSERT INTO Notes (groupId, username, title, body) VALUES (\'{}\', \'{}\', \'{}\', \'{}\');'.format(group_id,
@@ -98,17 +102,21 @@ def postNote():
 @app.route('/note/<int:note_id>', methods=['POST'])
 def updateNote(note_id):
     """ Query db to update a certain Note from received JSON data with a certain note_id """
+    logger.info('updateNote()')
     if not request.data:
         return status.HTTP_400_BAD_REQUEST
 
+    logger.info('receivedData: {}'.format(request.data))
+
     note = json.loads(request.data)
+    logger.info('deserializedNote: {}'.format(str(note)))
 
     if 'username' not in note or 'title' not in note or 'body' not in note:
         return status.HTTP_400_BAD_REQUEST
 
-    username = note['username']
-    title = note['title']
-    body = note['body']
+    username = str(note['username'])
+    title = str(note['title'])
+    body = str(note['body'])
 
     result = execute_update_query('UPDATE Notes SET username=\'{}\', title=\'{}\', body=\'{}\' WHERE noteId=\'{}\';'
                                   .format(username, title, body, note_id))
