@@ -2,6 +2,7 @@ import json
 import logging.config
 import os
 import sqlite3
+from ast import literal_eval
 
 from flask import Flask, request, g
 from flask_api import status
@@ -81,11 +82,9 @@ def postNote():
     logger.info('receivedData: {}'.format(request.data))
     logger.info('receivedDataType: {}'.format(type(request.data)))
 
-    note = json.loads(request.data.decode("utf-8"))
+    note = json.loads(literal_eval(request.data.decode("utf8")))
     logger.info('deserializedNote: {}'.format(str(note)))
     logger.info('deserializedNote type: {}'.format(type(note)))
-    logger.info('deserializedNote len: {}'.format(len(note)))
-    logger.info('0 data: {}'.format(note[0]))
 
     if 'groupId' not in note or 'username' not in note or 'title' not in note or 'body' not in note:
         return status.HTTP_400_BAD_REQUEST
@@ -113,8 +112,9 @@ def updateNote(note_id):
 
     logger.info('receivedData: {}'.format(request.data))
 
-    note = json.load(request.data)
+    note = json.loads(literal_eval(request.data.decode("utf8")))
     logger.info('deserializedNote: {}'.format(str(note)))
+    logger.info('deserializedNote type: {}'.format(type(note)))
 
     if 'username' not in note or 'title' not in note or 'body' not in note:
         return status.HTTP_400_BAD_REQUEST
