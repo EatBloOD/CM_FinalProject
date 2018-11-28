@@ -132,7 +132,7 @@ def updateNote(note_id):
 def deleteNote(note_id):
     """ Query db to delete a certain Group with group_id """
     logger.info('deleteNote(note_id:{})'.format(note_id))
-    result = execute_delete_query('DELETE FROM Notes WHERE note_id={};'.format(note_id))
+    result = execute_delete_query('DELETE FROM Notes WHERE id={};'.format(note_id))
     return json.dumps(result), status.HTTP_200_OK
 
 
