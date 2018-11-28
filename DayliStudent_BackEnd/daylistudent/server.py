@@ -80,7 +80,7 @@ def postNote():
 
     logger.info('receivedData: {}'.format(request.data))
 
-    note = json.loads(request.data)
+    note = json.loads(json.dumps(request.data))
     logger.info('deserializedNote: {}'.format(str(note)))
     logger.info('deserializedNote type: {}'.format(type(note)))
     logger.info('deserializedNote len: {}'.format(len(note)))
