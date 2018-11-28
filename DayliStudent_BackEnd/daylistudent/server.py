@@ -79,6 +79,7 @@ def postNote():
         return status.HTTP_400_BAD_REQUEST
 
     logger.info('receivedData: {}'.format(request.data))
+    logger.info('receivedDataType: {}'.format(type(request.data)))
 
     note = json.loads(request.data)
     logger.info('deserializedNote: {}'.format(str(note)))
