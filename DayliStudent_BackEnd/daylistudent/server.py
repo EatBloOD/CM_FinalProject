@@ -123,7 +123,7 @@ def updateNote(note_id):
     title = str(note['title'])
     body = str(note['body'])
 
-    result = execute_update_query('UPDATE Notes SET username=\'{}\', title=\'{}\', body=\'{}\' WHERE noteId=\'{}\';'
+    result = execute_update_query('UPDATE Notes SET username=\'{}\', title=\'{}\', body=\'{}\' WHERE id=\'{}\';'
                                   .format(username, title, body, note_id))
     return json.dumps(result), status.HTTP_200_OK
 
