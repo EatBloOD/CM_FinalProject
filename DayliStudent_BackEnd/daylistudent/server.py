@@ -70,7 +70,7 @@ def deleteGroup(group_id):
         if count != 0:
             raise Exception('group notes are not empty')
         else:
-            modified_rows = execute_delete_query('DELETE FROM Groups WHERE id={};'.format(group_id))
+            modified_rows = execute_delete_query('DELETE FROM Groups WHERE id=\'{}\';'.format(group_id))
             logger.info('modified_rows:', modified_rows)
             return json.dumps(modified_rows), status.HTTP_200_OK
     except Exception as ex:
