@@ -1,6 +1,5 @@
 import json
 import logging.config
-import os
 import sqlite3
 from ast import literal_eval
 
@@ -60,14 +59,21 @@ def postGroup():
 def deleteGroup(group_id):
     """ Query db to delete a certain Group with group_id """
     logger.info('deleteGroup(group_id: {})'.format(group_id))
-    notes_count = execute_select_single_query('SELECT COUNT(id) FROM Notes WHERE groupId=\'{}\';'.format(group_id))
-    logger.info('notes_count: {}'.format(notes_count))
-    logger.info('type(notes_count): {}'.format(type(notes_count)))
-    count = notes_count[0]
-    if count == 0:
-        rows_changed = execute_delete_query('DELETE FROM Groups WHERE id={};'.format(group_id))
-        return json.dumps(rows_changed), status.HTTP_200_OK
-    else:
+    result = execute_select_single_query('SELECT COUNT(id) FROM Notes WHERE groupId=\'{}\';'.format(group_id))
+    logger.info('notes_count: {}'.format(result))
+    logger.info('type(notes_count): {}'.format(type(result)))
+    try:
+        if result is None:
+            raise Exception('no result')
+        count = result[0]
+        if count != 0:
+            raise Exception('group notes are not empty')
+        else:
+            modified_rows = execute_delete_query('DELETE FROM Groups WHERE id={};'.format(group_id))
+            logger.info('modified_rows:', modified_rows)
+            return json.dumps(modified_rows), status.HTTP_200_OK
+    except Exception as ex:
+        logger.error('deleteGroup Exception:', ex)
         return status.HTTP_405_METHOD_NOT_ALLOWED
 
 
