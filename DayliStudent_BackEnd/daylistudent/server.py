@@ -47,7 +47,7 @@ def postGroup():
     rows_changed = execute_insert_query(insert_query)
     if rows_changed > 0:
         logger.info('Group created with name: {}'.format(group_name))
-        query = 'SELECT (id) FROM Groups WHERE name={};'.format(group_name)
+        query = 'SELECT (id) FROM Groups WHERE name=\'{}\';'.format(group_name)
         logger.info('query:', query)
         group_id = execute_select_single_query(query)
         logger.info('Group created with id: {}'.format(group_id))
@@ -60,9 +60,11 @@ def postGroup():
 def deleteGroup(group_id):
     """ Query db to delete a certain Group with group_id """
     logger.info('deleteGroup(group_id: {})'.format(group_id))
-    notes_count = execute_select_single_query('SELECT COUNT(id) FROM Notes WHERE groupId={};'.format(group_id))
+    notes_count = execute_select_single_query('SELECT COUNT(id) FROM Notes WHERE groupId=\'{}\';'.format(group_id))
     logger.info('notes_count: {}'.format(notes_count))
-    if notes_count == 0:
+    logger.info('type(notes_count): {}'.format(type(notes_count)))
+    count = notes_count[0]
+    if count == 0:
         rows_changed = execute_delete_query('DELETE FROM Groups WHERE id={};'.format(group_id))
         return json.dumps(rows_changed), status.HTTP_200_OK
     else:
