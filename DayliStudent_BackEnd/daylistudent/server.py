@@ -43,10 +43,13 @@ def postGroup():
     """ Query db to create a new Group with group_name """
     logger.info('postGroup()')
     group_name = request.args.get('group_name')
-    rows_changed = execute_insert_query('INSERT INTO Groups (name) VALUES (\'{}\');'.format(group_name))
+    insert_query = 'INSERT INTO Groups (name) VALUES (\'{}\');'.format(group_name)
+    rows_changed = execute_insert_query(insert_query)
     if rows_changed > 0:
         logger.info('Group created with name: {}'.format(group_name))
-        group_id = execute_select_query('SELECT id FROM Groups WHERE name={};'.format(group_name))
+        query = 'SELECT id FROM Groups WHERE name={};'.format(group_name)
+        logger.info('query:', query)
+        group_id = execute_select_query(query)
         logger.info('Group created with id: {}'.format(group_id))
         return json.dumps(group_id), status.HTTP_200_OK
     else:
