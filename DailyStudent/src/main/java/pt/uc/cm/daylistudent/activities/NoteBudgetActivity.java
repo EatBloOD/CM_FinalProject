@@ -1,4 +1,4 @@
-package pt.uc.cm.daylistudent.fragments;
+package pt.uc.cm.daylistudent.activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -25,13 +25,11 @@ import pt.uc.cm.daylistudent.adapters.BudgetDbAdapter;
 import pt.uc.cm.daylistudent.adapters.NotesDbAdapter;
 import pt.uc.cm.daylistudent.adapters.WalletDbAdapter;
 import pt.uc.cm.daylistudent.R;
-import pt.uc.cm.daylistudent.activities.CameraActivity;
 import pt.uc.cm.daylistudent.adapters.MySpinnerAdapter;
 import pt.uc.cm.daylistudent.utils.SharedPreferencesUtils;
 
-// TODO: Change this to a fragment
-public class NoteBudget extends AppCompatActivity {
-    private final String TAG = NoteBudget.class.getSimpleName();
+public class NoteBudgetActivity extends AppCompatActivity {
+    private final String TAG = NoteBudgetActivity.class.getSimpleName();
 
     EditText edtxtTitle, edtxtValor, edtxtDesc;
     ImageView myImage;
@@ -97,9 +95,9 @@ public class NoteBudget extends AppCompatActivity {
         objects.addAll(mDbWallet.fetchAllWalletsByParameter("title"));
 
         //INICIALIZA OS SPINNERS
-        spLucroDespesa.setAdapter(new MySpinnerAdapter(NoteBudget.this, R.layout.spinner_row,
+        spLucroDespesa.setAdapter(new MySpinnerAdapter(NoteBudgetActivity.this, R.layout.spinner_row,
                 tipo, images_tipo, getLayoutInflater()));
-        spTipoValor.setAdapter(new MySpinnerAdapter(NoteBudget.this, R.layout.spinner_row,
+        spTipoValor.setAdapter(new MySpinnerAdapter(NoteBudgetActivity.this, R.layout.spinner_row,
                 categoria, images_categoria, getLayoutInflater()));
 
         ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this,

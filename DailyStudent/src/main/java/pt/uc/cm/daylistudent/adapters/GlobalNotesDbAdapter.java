@@ -1,6 +1,5 @@
 package pt.uc.cm.daylistudent.adapters;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -8,12 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import pt.uc.cm.daylistudent.models.MessagePacket;
 
 public class GlobalNotesDbAdapter {
 
@@ -78,37 +73,6 @@ public class GlobalNotesDbAdapter {
         mDbHelper.close();
     }
 
-    public void createGlobalNote(String author, String title, String body) {
-        Date date = new Date();
-        String displayDate = new SimpleDateFormat("MMM dd, yyyy - h:mm a").format(new Date(date.getTime()));
-
-        ContentValues initialValues = new ContentValues();
-        initialValues.put(KEY_AUTHOR, author);
-        initialValues.put(KEY_TITLE, title);
-        initialValues.put(KEY_BODY, body);
-        initialValues.put(KEY_DATE, displayDate);
-
-        mDb.insert(DATABASE_TABLE, null, initialValues);
-    }
-
-    public void deleteGlobalNote(long rowId) {
-        mDb.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null);
-    }
-
-    public Cursor fetchAllGlobalNotes() {
-        return mDb.query(DATABASE_TABLE, new String[]{KEY_ROWID, KEY_AUTHOR, KEY_TITLE,
-                KEY_BODY, KEY_DATE}, null, null, null, null, null);
-    }
-
-    public Cursor fetchGlobalNote(long rowId) throws SQLException {
-        Cursor mCursor = mDb.query(true, DATABASE_TABLE, new String[]{KEY_ROWID, KEY_AUTHOR,
-                        KEY_TITLE, KEY_BODY, KEY_DATE}, KEY_ROWID + "=" + rowId, null,
-                null, null, null, null);
-        if (mCursor != null)
-            mCursor.moveToFirst();
-        return mCursor;
-    }
-
     public List<String[]> getLatestGlobalNotes() {
         List<String[]> data = new ArrayList();
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
@@ -130,40 +94,5 @@ public class GlobalNotesDbAdapter {
         for (int i = data.size(); i < 3; i++)
             data.add(note);
         return data;
-    }
-
-    public MessagePacket getGlobalNoteToSend(long id) {
-        MessagePacket msg = null;
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        String selectQuery = "SELECT  * FROM " + DATABASE_TABLE;
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        if (cursor.moveToFirst()) {
-            do {
-                System.out.println(cursor.getDouble(0) + cursor.getString(1) + cursor.getString(2) + id);
-                if (id == cursor.getDouble(0)) {
-                    String author = cursor.getString(1);
-                    String titulo = cursor.getString(2);
-                    String obs = cursor.getString(3);
-                    msg = new MessagePacket(author, titulo, obs);
-                    break;
-                }
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-
-        return msg;
-    }
-
-    public void updateGlobalNote(long rowId, String author, String title, String body) {
-        ContentValues args = new ContentValues();
-        Date date = new Date();
-        String displayDate = new SimpleDateFormat("MMM dd, yyyy - h:mm a").format(new Date(date.getTime()));
-        args.put(KEY_AUTHOR, author);
-        args.put(KEY_TITLE, title);
-        args.put(KEY_BODY, body);
-        args.put(KEY_DATE, displayDate);
-
-        mDb.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null);
     }
 }

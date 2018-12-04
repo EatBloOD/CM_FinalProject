@@ -1,4 +1,4 @@
-package pt.uc.cm.daylistudent.fragments;
+package pt.uc.cm.daylistudent.activities;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -14,21 +14,19 @@ import pt.uc.cm.daylistudent.R;
 import pt.uc.cm.daylistudent.adapters.NotesDbAdapter;
 import pt.uc.cm.daylistudent.utils.SharedPreferencesUtils;
 
-// TODO: Change this to a fragment
-public class NoteEdit extends AppCompatActivity {
-    private final String TAG = NoteEdit.class.getSimpleName();
+public class ManageNoteActivity extends AppCompatActivity {
+
+    private final String TAG = ManageNoteActivity.class.getSimpleName();
 
     EditText mTitleText, mBodyText;
     Integer mRowId;
     NotesDbAdapter mDbHelper;
-
 
     @Override
     public void onBackPressed() {
         Intent mIntent = new Intent();
         setResult(RESULT_CANCELED, mIntent);
         super.onBackPressed();
-
     }
 
     @Override
@@ -41,8 +39,8 @@ public class NoteEdit extends AppCompatActivity {
         mDbHelper = new NotesDbAdapter(this);
         mDbHelper.open();
 
-        mTitleText = findViewById(R.id.titulo);
-        mBodyText = findViewById(R.id.body);
+        mTitleText = findViewById(R.id.etTitle);
+        mBodyText = findViewById(R.id.etBody);
 
         mRowId = null;
 

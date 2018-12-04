@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-      android:layout_width="wrap_content"
-    	android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <ListView android:id="@+id/lv_notes"
-          android:layout_width="match_parent"
-        	android:layout_height="match_parent"/>
-  	<TextView android:id="@+id/android:empty"
-          android:layout_width="match_parent"
-        	android:layout_height="match_parent"
-        	android:text="@string/noteBudgetListno_notes"
+    <ListView
+        android:id="@+id/lvNotes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@android:id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/default_margin"
         android:fontFamily="sans-serif-condensed"
-        android:textSize="36sp"
         android:gravity="center"
-        android:paddingTop="100dp"
-        android:paddingLeft="100dp" />
+        android:text="@string/NoNotes"
+        android:textSize="36sp" />
 
 </LinearLayout>
-

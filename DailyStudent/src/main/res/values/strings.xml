@@ -57,7 +57,7 @@
     <string name="bgNoteActTitleconta">Conta:</string>
     <string name="bgNoteActTitlevalor">Valor:</string>
     <string name="bgNoteActTitleInsrtValue">Insira o valor:</string>
-    <string name="bgNoteActTitleHintinsira_valor">Insira Valor...</string>
+    <string name="bgNoteActTitleHintinsira_valor">Insira Valor…</string>
     <string name="bgNoteActTitleobserva_es">Observações</string>
     <string name="bgNoteActTitledescri_o">Descrição</string>
     <string name="contentMainResume">Resumo</string>
@@ -75,7 +75,7 @@
     <string name="btconfirme">Confirmar</string>
     <string name="noteBudgetListmovimentos">Movimentos</string>
     <string name="noteBudgetListcontas">Carteiras</string>
-    <string name="noteBudgetListno_notes">Sem Notas!</string>
+    <string name="NoNotes">Sem Notas!</string>
     <string name="registerActivitytitle">Registo</string>
     <string name="registerActivityuser_name">Nome do Utilizador</string>
     <string name="registerActivityemail">Email</string>
@@ -87,7 +87,7 @@
     <string name="walletActivityvalor">Valor:</string>
     <string name="walletActivityMoney">€€€</string>
     <string name="walletActivitytipo">Tipo:</string>
-    <string name="walletActivityinsira_um_tipo_ex_carteira_banco_etc">Ex: carteira, banco, etc...</string>
+    <string name="walletActivityinsira_um_tipo_ex_carteira_banco_etc">Ex: carteira, banco, etc…</string>
     <string name="walletActivitybudget_notes_from_this_wallet">BudgetNotes desta Carteira:</string>
     <string name="ctxtMenuDeleteWallet">Apagar Carteira</string>
     <string name="ctxtMenuDeleteNote">Apagar Nota</string>
@@ -109,7 +109,7 @@
     <string name="DayliStudentActivitySendingSharedNote">Enviar</string>
     <string name="DayliStudentActivityIPSendingSharedNote">IP do telemovel para o qual enviar</string>
     <string name="DayliStudentActivityButtonSendingSharedNote">Ligar</string>
-    <string name="DayliStudentActivityReceivedSharedNote">"RECEBIDA COM SUCESSO A NOTA [ "</string>
+    <string name="DayliStudentActivityReceivedSharedNote">"Nota recebida"</string>
     <string name="DayliStudentActivityReceived2SharedNote">" ] de "</string>
     <string name="SendingSharedNoteSuccess">"Nota enviada com sucesso"</string>
     <string name="SendingSharedNoteFail">"Nota não enviada"</string>
@@ -135,8 +135,7 @@
     <string name="statistics_total_gastos">Total de Gastos</string>
     <string name="statistics_total_ganhos">Total de Ganhos</string>
     <string name="statistics_media">Média de Gastos</string>
-    <string name="waitingConnection">Esperando conecção...</string>
-    <string name="receive">RECEBER</string>
+    <string name="ScanThisWithDayliStudentApp">Faz scan com outra App DayliStudent…</string>
     <string name="statisticsTitle">Estatísticas</string>
     <string name="other">Outro</string>
     <string name="saude">Saúde</string>
@@ -157,4 +156,15 @@
     <string name="error">Erro</string>
     <string name="uc_url">https://www.uc.pt/</string>
     <string name="customization">Definições</string>
+    <string name="GetGroupsError">Erro ao obter grupos! Por favor tente mais tarde.</string>
+    <string name="GetNotesError">Erro ao obter notas! Por favor tente mais tarde.</string>
+    <string name="ExitGroup">Saiste do grupo!</string>
+    <string name="UpdatingNoteError">Erro ao atualizar a nota! Por favor tente mais tarde.</string>
+    <string name="InsertingNoteError">Erro ao criar a nota! Por favor tente mais tarde.</string>
+    <string name="Groups">Grupos</string>
+    <string name="enter_in_group">Entrar no grupo</string>
+    <string name="create_new_group">Criar novo grupo</string>
+    <string name="CreateNewGroupError">Erro ao criar o novo grupo! Por favor tenta novamente.</string>
+    <string name="CreateNewGroupSuccess">Crias-te um novo grupo com sucesso!</string>
+    <string name="ErrorDeletingNote">Erro ao apagar a nota! Por favor tenta novamente.</string>
 </resources>

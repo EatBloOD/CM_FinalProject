@@ -131,7 +131,10 @@ class ScanQrCodeFragment : DialogFragment(), ZXingScannerView.ResultHandler {
     }
 
     override fun handleResult(p0: Result?) {
-        scanQrCodeEvents.onDataScanned(p0!!.text)
+        if (p0 == null)
+            scanQrCodeEvents.onError()
+        else
+            scanQrCodeEvents.onDataScanned(p0.text)
         dismiss()
     }
 

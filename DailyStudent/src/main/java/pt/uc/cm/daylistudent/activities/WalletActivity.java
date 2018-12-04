@@ -1,4 +1,4 @@
-package pt.uc.cm.daylistudent.fragments;
+package pt.uc.cm.daylistudent.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,9 +18,8 @@ import pt.uc.cm.daylistudent.adapters.WalletDbAdapter;
 import pt.uc.cm.daylistudent.models.BudgetNote;
 import pt.uc.cm.daylistudent.utils.SharedPreferencesUtils;
 
-// TODO: Change this to a fragment
-public class Wallet extends AppCompatActivity {
-    private static final String TAG = Wallet.class.getSimpleName();
+public class WalletActivity extends AppCompatActivity {
+    private static final String TAG = WalletActivity.class.getSimpleName();
 
     EditText edtxtTitle, edtxtValor, edtxtTipo;
     String nome;

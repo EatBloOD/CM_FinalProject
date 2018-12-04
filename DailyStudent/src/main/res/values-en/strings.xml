@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DayliStudent</string>
-    <string name="DayliStudentActivityDeleteNote">DELETE</string>
+    <string name="DayliStudentActivityDeleteNote">Delete</string>
     <string name="action_settings">Settings</string>
     <string name="bgNoteActTitle">Title</string>
     <string name="bgNoteActTitleCaracter_sticas">Characteristics</string>
@@ -48,7 +48,7 @@
     <string name="noteBudgetEmptyWallets">You have not selected any wallet</string>
     <string name="noteBudgetListcontas">Wallets</string>
     <string name="noteBudgetListmovimentos">Movements</string>
-    <string name="noteBudgetListno_notes">No Notes!</string>
+    <string name="NoNotes">No Notes!</string>
     <string name="noteBudgetNumberException">You do not have a correct value (eg 8.99)</string>
     <string name="noteBudgetTitle">Create BudgetNote</string>
     <string name="noteBudgetTitleEdit">Edit BudgetNote</string>
@@ -120,8 +120,8 @@
     <string name="DayliStudentActivityShareNote">Share</string>
     <string name="DayliStudentActivitySendingSharedNote">Send</string>
     <string name="DayliStudentActivityButtonSendingSharedNote">Call</string>
-    <string name="DayliStudentActivityReceived2SharedNote">\" ] of \"</string>
-    <string name="DayliStudentActivityReceivedSharedNote">\"SUCCESSFULLY RECEIVED THE NOTE [\"</string>
+    <string name="DayliStudentActivityReceived2SharedNote">from</string>
+    <string name="DayliStudentActivityReceivedSharedNote">Successfully received note</string>
     <string name="SendingSharedNoteSuccess">"Note successfully sent"</string>
     <string name="SendingSharedNoteFail">"Note not sent"</string>
     <string name="PleaseTryAgainLater">"Please try again later"</string>
@@ -133,7 +133,7 @@
     <string name="animais">Pets</string>
     <string name="comida">Food</string>
     <string name="other">Others</string>
-    <string name="receive">RECEIVE</string>
+    <string name="ScanThisWithDayliStudentApp">Scan this with other DayliStudent App…</string>
     <string name="roupa">Clothes</string>
     <string name="saude">Health</string>
     <string name="statisticsTitle">Statistics</string>
@@ -141,7 +141,6 @@
     <string name="statistics_total_ganhos">Total Gains</string>
     <string name="statistics_total_gastos">Total Expenses</string>
     <string name="team">Team:</string>
-    <string name="waitingConnection">Waiting Connection</string>
     <string name="criar_carteira">Create Wallet</string>
     <string name="apaga_nota">Delete Note</string>
     <string name="github_url">https://github.com/EatBloOD/CM_FinalProject</string>
@@ -155,4 +154,15 @@
     <string name="error">Error</string>
     <string name="uc_url">https://www.uc.pt/</string>
     <string name="customization">Customizations</string>
+    <string name="GetGroupsError">Error obtaining groups! Please try again later.</string>
+    <string name="GetNotesError">Cannot get notes from the selected group! Please try again later.</string>
+    <string name="ExitGroup">You exited the current group!</string>
+    <string name="UpdatingNoteError">Error updating note! Please try again later.</string>
+    <string name="InsertingNoteError">Error creating note! Please try again later.</string>
+    <string name="Groups">Groups</string>
+    <string name="enter_in_group">Enter in group</string>
+    <string name="create_new_group">Create new group</string>
+    <string name="CreateNewGroupError">Error creating new group! Please try again.</string>
+    <string name="CreateNewGroupSuccess">You have created a new group with success!</string>
+    <string name="ErrorDeletingNote">Cannot delete note! Please try again later.</string>
 </resources>
