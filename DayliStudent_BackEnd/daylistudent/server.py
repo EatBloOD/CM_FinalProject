@@ -49,7 +49,7 @@ def postGroup():
         logger.info('Group created with name: {}'.format(group_name))
         query = 'SELECT (id) FROM Groups WHERE name={};'.format(group_name)
         logger.info('query:', query)
-        group_id = execute_select_query(query)
+        group_id = execute_select_single_query(query)
         logger.info('Group created with id: {}'.format(group_id))
         return json.dumps(group_id), status.HTTP_200_OK
     else:
@@ -60,7 +60,7 @@ def postGroup():
 def deleteGroup(group_id):
     """ Query db to delete a certain Group with group_id """
     logger.info('deleteGroup(group_id: {})'.format(group_id))
-    notes_count = execute_select_query('SELECT COUNT(id) FROM Notes WHERE groupId={};'.format(group_id))
+    notes_count = execute_select_single_query('SELECT COUNT(id) FROM Notes WHERE groupId={};'.format(group_id))
     logger.info('notes_count: {}'.format(notes_count))
     if notes_count == 0:
         rows_changed = execute_delete_query('DELETE FROM Groups WHERE id={};'.format(group_id))
@@ -180,6 +180,14 @@ def execute_select_query(select_query):
     curr = db_conn.cursor()
     curr.execute(select_query)
     rows = curr.fetchall()
+    return rows
+
+
+def execute_select_single_query(select_query):
+    db_conn = get_db()
+    curr = db_conn.cursor()
+    curr.execute(select_query)
+    rows = curr.fetchone()
     return rows
 
 
