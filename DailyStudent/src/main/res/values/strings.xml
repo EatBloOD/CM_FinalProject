@@ -75,7 +75,7 @@
     <string name="btconfirme">Confirmar</string>
     <string name="noteBudgetListmovimentos">Movimentos</string>
     <string name="noteBudgetListcontas">Carteiras</string>
-    <string name="noteBudgetListno_notes">Sem Notas!</string>
+    <string name="NoNotes">Sem Notas!</string>
     <string name="registerActivitytitle">Registo</string>
     <string name="registerActivityuser_name">Nome do Utilizador</string>
     <string name="registerActivityemail">Email</string>
@@ -162,4 +162,9 @@
     <string name="ExitGroup">Saiste do grupo!</string>
     <string name="UpdatingNoteError">Erro ao atualizar a nota! Por favor tente mais tarde.</string>
     <string name="InsertingNoteError">Erro ao criar a nota! Por favor tente mais tarde.</string>
+    <string name="Groups">Grupos</string>
+    <string name="enter_in_group">Entrar no grupo</string>
+    <string name="create_new_group">Criar novo grupo</string>
+    <string name="CreateNewGroupError">Erro ao criar o novo grupo! Por favor tenta novamente.</string>
+    <string name="CreateNewGroupSuccess">Crias-te um novo grupo com sucesso!</string>
 </resources>

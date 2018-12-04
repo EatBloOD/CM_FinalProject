@@ -18,16 +18,20 @@ import retrofit2.Response
 
 class SelectGroupActivity : AppCompatActivity() {
 
+    private lateinit var retrofit: RetrofitUtils
     private lateinit var selectedGroup: Group
     private var groups = mutableListOf<Group>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_group)
+        title = getString(R.string.Groups)
+
+        retrofit = RetrofitUtils()
 
         val groupId = SharedPreferencesUtils.readSelectedGroupId()
         if (groupId != SharedPreferencesUtils.NONE_GROUP_ID) {
-            startActivity(Intent(this, GlobalNotes::class.java))
+            startActivity(Intent(this, GlobalNotesActivity::class.java))
             finish()
         }
 
@@ -35,7 +39,7 @@ class SelectGroupActivity : AppCompatActivity() {
     }
 
     private fun getGroupsData() {
-        RetrofitUtils().getGroups(object : Callback<List<Group>> {
+        retrofit.getGroups(object : Callback<List<Group>> {
             override fun onFailure(call: Call<List<Group>>, t: Throwable) {
                 Toast.makeText(applicationContext, getText(R.string.GetGroupsError), Toast.LENGTH_LONG).show()
                 finish()
@@ -75,6 +79,25 @@ class SelectGroupActivity : AppCompatActivity() {
     fun onEnterGroupClick(view: View) {
         SharedPreferencesUtils.writeSelectedGroupId(applicationContext, selectedGroup.id)
         finish()
-        startActivity(Intent(this, GlobalNotes::class.java))
+        startActivity(Intent(this, GlobalNotesActivity::class.java))
+    }
+
+    fun onCreateNewGroupClick(view: View) {
+        val groupName = etNewGroupName.text.toString()
+        retrofit.postGroup(groupName, object : Callback<Int> {
+            override fun onFailure(call: Call<Int>, t: Throwable) {
+                Toast.makeText(applicationContext, getString(R.string.CreateNewGroupError),
+                        Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                Toast.makeText(applicationContext, getString(R.string.CreateNewGroupSuccess),
+                        Toast.LENGTH_LONG).show()
+                val groupId = response.body()
+                SharedPreferencesUtils.writeSelectedGroupId(applicationContext, groupId)
+                finish()
+                startActivity(Intent(applicationContext, GlobalNotesActivity::class.java))
+            }
+        })
     }
 }

@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.notes_global_row.view.*
 import pt.uc.cm.daylistudent.R
 import pt.uc.cm.daylistudent.interfaces.INoteClick
 import pt.uc.cm.daylistudent.models.Note
+import pt.uc.cm.daylistudent.utils.SharedPreferencesUtils
 
 class NotesAdapter(val context: Context,
                    var notesList: List<Note>,
@@ -37,7 +38,12 @@ class NotesAdapter(val context: Context,
             itemView.tvGlobalTitle.text = note.title
             itemView.tvAuthor.text = note.username
             itemView.tvGlobalBody.text = note.body
-            itemView.ivDeleteNote!!.setOnClickListener { onClickListener.onDeleteNoteClick(note) }
+            if (note.username != SharedPreferencesUtils.readUserName()) {
+                itemView.ivDeleteNote!!.visibility = View.GONE
+                itemView.ivDeleteNote!!.isEnabled = false
+            } else {
+                itemView.ivDeleteNote!!.setOnClickListener { onClickListener.onDeleteNoteClick(note) }
+            }
             itemView.setOnClickListener { onClickListener.onNoteClick(note) }
         }
     }

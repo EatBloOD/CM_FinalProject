@@ -4,7 +4,6 @@ import android.Manifest
 import android.app.Activity
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -20,11 +19,13 @@ import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.*
-
+import android.widget.AdapterView
+import android.widget.ImageView
+import android.widget.SimpleCursorAdapter
+import android.widget.Toast
 import com.google.gson.Gson
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel
-
+import kotlinx.android.synthetic.main.notes_list.*
 import pt.uc.cm.daylistudent.R
 import pt.uc.cm.daylistudent.adapters.BudgetDbAdapter
 import pt.uc.cm.daylistudent.adapters.NotesDbAdapter
@@ -35,10 +36,10 @@ import pt.uc.cm.daylistudent.utils.EncryptionUtils
 import pt.uc.cm.daylistudent.utils.QRCodeUtils
 import pt.uc.cm.daylistudent.utils.SharedPreferencesUtils
 
-class LocalNoteActivity : AppCompatActivity() {
+class LocalNotesActivity : AppCompatActivity() {
 
     companion object {
-        private val TAG = LocalNoteActivity::class.java.simpleName
+        private val TAG = LocalNotesActivity::class.java.simpleName
 
         private val ACTIVITY_CREATE = 0
         private val ACTIVITY_EDIT = 1
@@ -49,16 +50,11 @@ class LocalNoteActivity : AppCompatActivity() {
 
         private var notificationCounter: Int = 0
 
-
         val NOTIFICATION_CHANNEL_ID = "10001"
-
 
         private var mNotificationManager: NotificationManager? = null
         private var mBuilder: NotificationCompat.Builder? = null
-
     }
-
-    private lateinit var lv_notes: ListView
 
     private var mDbHelper: NotesDbAdapter? = null
     private var mDbBudgetHelper: BudgetDbAdapter? = null
@@ -91,7 +87,6 @@ class LocalNoteActivity : AppCompatActivity() {
                     Log.v(TAG, "Permission is granted2")
                     return true
                 } else {
-
                     Log.v(TAG, "Permission is revoked2")
                     ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 2)
                     return false
@@ -117,10 +112,9 @@ class LocalNoteActivity : AppCompatActivity() {
 
         fillData()
 
-        lv_notes = findViewById(R.id.lv_notes)
-        registerForContextMenu(lv_notes)
+        registerForContextMenu(lvNotes)
 
-        lv_notes.setOnItemClickListener { adapterView, view, position, id ->
+        lvNotes.setOnItemClickListener { _, _, position, _ ->
             val c = mNotesCursor
             c!!.moveToPosition(position)
             val i = Intent(applicationContext, ManageNoteActivity::class.java)
@@ -143,8 +137,8 @@ class LocalNoteActivity : AppCompatActivity() {
         val to = intArrayOf(R.id.tvTitulo, R.id.tvBody, R.id.tvDate)
 
         val notes = SimpleCursorAdapter(this, R.layout.notes_row, mNotesCursor, from, to)
-        lv_notes = findViewById(R.id.lv_notes)
-        lv_notes.adapter = notes
+        lvNotes.adapter = notes
+        lvNotes.emptyView = empty
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -259,42 +253,22 @@ class LocalNoteActivity : AppCompatActivity() {
     }
 
     private fun buildNotification(note: Note) {
-        /*val mBuilder = NotificationCompat.Builder(applicationContext)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle(note.username)
-                .setContentText(note.title)
-        val resultIntent = Intent(applicationContext, GlobalNotes::class.java)
-        val resultPendingIntent = PendingIntent.getActivity(
-                applicationContext,
-                0,
-                resultIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT
-        )
-        mBuilder.setContentIntent(resultPendingIntent)
-
-        notificationCounter++
-        val mNotifyMgr = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        mNotifyMgr.notify(notificationCounter, mBuilder.build())*/
-
         mBuilder = NotificationCompat.Builder(applicationContext)
         mBuilder!!.setSmallIcon(R.drawable.ic_account_balance_wallet_black_24dp)
         mBuilder!!.setContentTitle(note.title)
                 .setContentText(note.body)
                 .setAutoCancel(true)
 
-        mNotificationManager = getSystemService( Context.NOTIFICATION_SERVICE) as NotificationManager
+        mNotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O)
-        {
-            var importance = NotificationManager.IMPORTANCE_HIGH;
-            var notificationChannel = NotificationChannel(NOTIFICATION_CHANNEL_ID, "NOTIFICATION_CHANNEL_NAME", importance);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            val importance = NotificationManager.IMPORTANCE_HIGH
+            val notificationChannel = NotificationChannel(NOTIFICATION_CHANNEL_ID, "NOTIFICATION_CHANNEL_NAME", importance)
             notificationChannel.enableLights(true)
             notificationChannel.enableVibration(true)
-            mBuilder!!.setChannelId(NOTIFICATION_CHANNEL_ID);
-            mNotificationManager!!.createNotificationChannel(notificationChannel);
+            mBuilder!!.setChannelId(NOTIFICATION_CHANNEL_ID)
+            mNotificationManager!!.createNotificationChannel(notificationChannel)
         }
-        mNotificationManager!!.notify(0 /* Request Code */, mBuilder!!.build());
+        mNotificationManager!!.notify(0 /* Request Code */, mBuilder!!.build())
     }
-
-
 }

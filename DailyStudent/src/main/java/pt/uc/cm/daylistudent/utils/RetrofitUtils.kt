@@ -10,9 +10,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitUtils {
-    companion object {
-        val STATUS_CODE_OK = 200
-    }
 
     private val API_BASE_URL: String = "http://35.243.199.87:8080"
 
@@ -32,6 +29,16 @@ class RetrofitUtils {
     fun getGroups(callback: Callback<List<Group>>) {
         val groupsCallBack = client.groups
         groupsCallBack.enqueue(callback)
+    }
+
+    fun postGroup(groupName: String, callback: Callback<Int>) {
+        val groupCallback = client.postGroup(groupName)
+        groupCallback.enqueue(callback)
+    }
+
+    fun deleteGroup(groupId: Int, callback: Callback<Int>) {
+        val groupCallback = client.deleteGroup(groupId)
+        groupCallback.enqueue(callback)
     }
 
     fun getGroupNotes(selectedGroupId: Int, callback: Callback<List<Note>>) {

@@ -18,7 +18,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class GlobalNoteActivity : AppCompatActivity() {
+class ManageGlobalNoteActivity : AppCompatActivity() {
 
     companion object {
         const val INTENT_NOTE_KEY = "note"
@@ -70,9 +70,11 @@ class GlobalNoteActivity : AppCompatActivity() {
 
     fun saveAction(item: MenuItem) {
         val retrofitUtils = RetrofitUtils()
-        if (isEditing) {
+        if (isEditing) { // Edit note
+            note.title = etTitle.text.toString()
+            note.body = etBody.text.toString()
             retrofitUtils.updateNote(note, getCallback(getString(R.string.UpdatingNoteError)))
-        } else {
+        } else { // Create note
             note = Note(groupId = SharedPreferencesUtils.readSelectedGroupId().toString(), title = etTitle.text.toString(), body = etBody.text.toString(), username = SharedPreferencesUtils.readUserName())
             retrofitUtils.postNote(note, getCallback(getString(R.string.InsertingNoteError)))
         }

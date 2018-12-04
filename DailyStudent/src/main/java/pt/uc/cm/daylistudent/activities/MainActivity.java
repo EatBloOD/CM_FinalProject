@@ -393,7 +393,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         if (id == R.id.nav_home) {
         } else if (id == R.id.nav_notes) {
-            Intent i = new Intent(this, LocalNoteActivity.class);
+            Intent i = new Intent(this, LocalNotesActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_budget) {
             Intent i = new Intent(this, BudgetActivity.class);
@@ -426,7 +426,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void goNoteList(View view) {
-        Intent i = new Intent(this, LocalNoteActivity.class);
+        Intent i = new Intent(this, LocalNotesActivity.class);
         startActivity(i);
     }
 }

@@ -37,14 +37,14 @@
         <activity android:name=".activities.CameraActivity" />
         <activity android:name=".activities.ManageNoteActivity" />
         <activity android:name=".activities.NoteBudgetActivity" />
-        <activity android:name=".activities.LocalNoteActivity" />
+        <activity android:name=".activities.LocalNotesActivity" />
         <activity android:name=".activities.BudgetActivity" />
         <activity android:name=".activities.WalletActivity" />
         <activity android:name=".activities.StatisticsActivity" />
         <activity android:name=".activities.CreditsActivity" />
-        <activity android:name=".activities.GlobalNotes" />
+        <activity android:name=".activities.GlobalNotesActivity" />
         <activity android:name=".activities.SelectGroupActivity"></activity>
-        <activity android:name=".activities.GlobalNoteActivity"></activity>
+        <activity android:name=".activities.ManageGlobalNoteActivity"></activity>
         <activity
             android:name=".activities.SettingsActivity"
             android:theme="@style/AppTheme" />

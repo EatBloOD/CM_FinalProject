@@ -48,7 +48,7 @@
     <string name="noteBudgetEmptyWallets">You have not selected any wallet</string>
     <string name="noteBudgetListcontas">Wallets</string>
     <string name="noteBudgetListmovimentos">Movements</string>
-    <string name="noteBudgetListno_notes">No Notes!</string>
+    <string name="NoNotes">No Notes!</string>
     <string name="noteBudgetNumberException">You do not have a correct value (eg 8.99)</string>
     <string name="noteBudgetTitle">Create BudgetNote</string>
     <string name="noteBudgetTitleEdit">Edit BudgetNote</string>
@@ -160,4 +160,9 @@
     <string name="ExitGroup">You exited the current group!</string>
     <string name="UpdatingNoteError">Error updating note! Please try again later.</string>
     <string name="InsertingNoteError">Error creating note! Please try again later.</string>
+    <string name="Groups">Groups</string>
+    <string name="enter_in_group">Enter in group</string>
+    <string name="create_new_group">Create new group</string>
+    <string name="CreateNewGroupError">Error creating new group! Please try again.</string>
+    <string name="CreateNewGroupSuccess">You have created a new group with success!</string>
 </resources>

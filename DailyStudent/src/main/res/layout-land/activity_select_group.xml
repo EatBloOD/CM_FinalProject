@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="@string/enter_in_group"
+            android:text="Enter in group"
             android:textSize="20sp" />
 
         <Spinner
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="@string/create_new_group"
+            android:text="Create new group"
             android:textSize="20sp" />
 
         <EditText

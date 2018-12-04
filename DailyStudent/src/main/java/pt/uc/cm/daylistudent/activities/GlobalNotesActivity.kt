@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -21,7 +22,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class GlobalNotes : AppCompatActivity() {
+class GlobalNotesActivity : AppCompatActivity() {
 
     private lateinit var retrofitUtils: RetrofitUtils
     private lateinit var notesAdapter: NotesAdapter
@@ -30,7 +31,7 @@ class GlobalNotes : AppCompatActivity() {
     private var selectedGroupId = -1
 
     companion object {
-        private val TAG = GlobalNotes::class.java.simpleName
+        private val TAG = GlobalNotesActivity::class.java.simpleName
 
         private const val ACTIVITY_CREATE = 0
         private const val ACTIVITY_EDIT = 1
@@ -57,8 +58,8 @@ class GlobalNotes : AppCompatActivity() {
             }
 
             override fun onNoteClick(note: Note) {
-                val editNoteIntent = Intent(applicationContext, GlobalNoteActivity::class.java)
-                editNoteIntent.putExtra(GlobalNoteActivity.INTENT_NOTE_KEY, note)
+                val editNoteIntent = Intent(applicationContext, ManageGlobalNoteActivity::class.java)
+                editNoteIntent.putExtra(ManageGlobalNoteActivity.INTENT_NOTE_KEY, note)
                 startActivityForResult(editNoteIntent, ACTIVITY_EDIT)
             }
         })
@@ -67,15 +68,33 @@ class GlobalNotes : AppCompatActivity() {
 
     private fun refreshListData() {
         notesAdapter.setNotes(this.notesList)
+        if (this.notesList.isEmpty()) {
+            rvGlobalNotes.visibility = View.GONE;
+            empty!!.visibility = View.VISIBLE;
+        } else {
+            rvGlobalNotes.visibility = View.VISIBLE;
+            empty!!.visibility = View.GONE;
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
-        inflater.inflate(R.menu.menu_sup_globa, menu)
+        inflater.inflate(R.menu.menu_global_notes, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     fun onExitGroupAction(item: MenuItem) {
+        val groupId = SharedPreferencesUtils.readSelectedGroupId()
+        retrofitUtils.deleteGroup(groupId, object : Callback<Int> {
+            override fun onFailure(call: Call<Int>, t: Throwable) {
+                Toast.makeText(applicationContext, "Error exiting group!", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                Log.d(TAG, "deleted groups: ${response.body()}")
+                Toast.makeText(applicationContext, "Success exiting group!", Toast.LENGTH_LONG).show()
+            }
+        })
         Toast.makeText(applicationContext, getString(R.string.ExitGroup), Toast.LENGTH_LONG).show()
         SharedPreferencesUtils.writeSelectedGroupId(applicationContext, NONE_GROUP_ID)
         finish()
@@ -87,7 +106,7 @@ class GlobalNotes : AppCompatActivity() {
     }
 
     fun createBudgetAction(item: MenuItem) {
-        startActivityForResult(Intent(this, GlobalNoteActivity::class.java), ACTIVITY_CREATE)
+        startActivityForResult(Intent(this, ManageGlobalNoteActivity::class.java), ACTIVITY_CREATE)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
@@ -107,11 +126,9 @@ class GlobalNotes : AppCompatActivity() {
         retrofitUtils.getGroupNotes(selectedGroupId, object : Callback<List<Note>> {
             override fun onFailure(call: Call<List<Note>>, t: Throwable) {
                 Toast.makeText(applicationContext, getString(R.string.GetNotesError), Toast.LENGTH_LONG).show()
-                tvEmpty!!.visibility = View.VISIBLE
             }
 
             override fun onResponse(call: Call<List<Note>>, response: Response<List<Note>>) {
-                tvEmpty!!.visibility = View.GONE
                 notesList = response.body()
                 refreshListData()
             }
