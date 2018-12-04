@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aac17d9c-0640-4218-92c8-7fa55c430a98" name="Default Changelist" comment="" />
+    <list default="true" id="aac17d9c-0640-4218-92c8-7fa55c430a98" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/DailyStudent_BackEnd.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DailyStudent_BackEnd.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +17,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/daylistudent/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2040">
-              <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
+            <state relative-caret-position="187">
+              <caret line="47" column="45" lean-forward="true" selection-start-line="47" selection-start-column="45" selection-end-line="47" selection-end-column="45" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -152,11 +156,11 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="260" />
-    <option name="y" value="52" />
-    <option name="width" value="1390" />
-    <option name="height" value="1008" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="180" />
+    <option name="y" value="62" />
+    <option name="width" value="1380" />
+    <option name="height" value="1015" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -333,10 +337,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
+    <frame x="180" y="62" width="1380" height="1015" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49916247" visible="true" weight="0.14654718" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49916247" visible="true" weight="0.20486367" />
       <window_info id="Structure" order="1" sideWeight="0.5008375" side_tool="true" weight="0.18133895" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -347,7 +351,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3295964" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.45067266" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.47072598" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5002636" side_tool="true" weight="0.39955106" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32996634" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -400,88 +404,20 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/daylistudent/statistics/timestamp.py" />
     <entry file="file://$PROJECT_DIR$/daylistudent/structures/span_tree.py" />
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/assortativity/connectivity.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-206">
-          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/dag.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="104" column="4" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/shortest_paths/generic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/assortativity/mixing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
-          <caret line="90" column="4" selection-start-line="90" selection-start-column="4" selection-end-line="90" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/distance_measures.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="279" column="4" selection-start-line="279" selection-start-column="4" selection-end-line="279" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/components/connected.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/classes/graph.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-308">
-          <caret line="646" column="8" selection-start-line="646" selection-start-column="8" selection-end-line="646" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/boundary.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="99" column="4" selection-start-line="99" selection-start-column="4" selection-end-line="99" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/assortativity/correlation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
-          <caret line="80" column="4" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/assortativity/neighbor_degree.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-289">
-          <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/assortativity/connectivity.py" />
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/dag.py" />
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/shortest_paths/generic.py" />
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/assortativity/mixing.py" />
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/distance_measures.py" />
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/components/connected.py" />
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/classes/graph.py" />
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/boundary.py" />
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/assortativity/correlation.py" />
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/assortativity/neighbor_degree.py" />
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/__init__.py" />
     <entry file="file://$PROJECT_DIR$/graphy.egg-info/requires.txt" />
     <entry file="file://$PROJECT_DIR$/graphy.egg-info/dependency_links.txt" />
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/cycles.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="491" column="12" selection-start-line="491" selection-start-column="12" selection-end-line="491" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/networkx/algorithms/cycles.py" />
     <entry file="file://$PROJECT_DIR$/scripts/docker-zipkin-stop-rm-all.sh" />
     <entry file="file://$PROJECT_DIR$/docs/README.md" />
     <entry file="file://$PROJECT_DIR$/daylistudent/utils/profile.py">
@@ -507,13 +443,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/click_log/core.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="67" column="4" selection-start-line="67" selection-start-column="4" selection-end-line="67" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/click_log/core.py" />
     <entry file="file://$PROJECT_DIR$/daily_student/utils/convert_json.py" />
     <entry file="file://$PROJECT_DIR$/daily_student/utils/zipkin.py" />
     <entry file="file://$PROJECT_DIR$/daily_student/utils/files.py" />
@@ -560,12 +490,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/daylistudent/db/sqlitedb.py" />
-    <entry file="file://$PROJECT_DIR$/daylistudent/info.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daylistudent/errors.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/daylistudent/info.log" />
+    <entry file="file://$PROJECT_DIR$/daylistudent/errors.log" />
     <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-1982124780/_sqlite3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
@@ -624,10 +550,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/flask/app.py">
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/flask/app.py" />
+    <entry file="file://$PROJECT_DIR$/daylistudent/models/note.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="1460" selection-start-line="1460" selection-end-line="1460" />
+        <state relative-caret-position="34">
+          <caret line="2" column="27" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daylistudent/test.py" />
+    <entry file="file://$PROJECT_DIR$/daylistudent/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="47" column="45" lean-forward="true" selection-start-line="47" selection-start-column="45" selection-end-line="47" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daylistudent/db/db_schema.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="65" selection-start-line="1" selection-start-column="58" selection-end-line="1" selection-end-column="65" />
         </state>
       </provider>
     </entry>
@@ -642,40 +587,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1581">
           <caret line="93" selection-start-line="93" selection-end-line="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daylistudent/models/note.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="27" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daylistudent/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daylistudent/db/db_schema.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="65" selection-start-line="1" selection-start-column="58" selection-end-line="1" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daylistudent/server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2040">
-          <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

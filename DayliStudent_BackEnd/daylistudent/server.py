@@ -45,7 +45,10 @@ def postGroup():
     group_name = request.args.get('group_name')
     rows_changed = execute_insert_query('INSERT INTO Groups (name) VALUES (\'{}\');'.format(group_name))
     if rows_changed > 0:
-        return json.dumps(rows_changed), status.HTTP_200_OK
+        logger.info('Group created with name: {}'.format(group_name))
+        group_id = execute_select_query('SELECT id FROM Groups WHERE name={};'.format(group_name))
+        logger.info('Group created with id: {}'.format(group_id))
+        return json.dumps(group_id), status.HTTP_200_OK
     else:
         return status.HTTP_404_NOT_FOUND
 
