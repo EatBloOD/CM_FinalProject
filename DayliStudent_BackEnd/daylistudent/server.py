@@ -53,12 +53,12 @@ def postGroup():
         return status.HTTP_404_NOT_FOUND
 
 
-@app.route("/group/<int:group_id>", methods=['DELETE'])
+@app.route("/group/<str:group_id>", methods=['DELETE'])
 def deleteGroup(group_id):
     """ Query db to delete a certain Group with group_id """
-    logger.info('deleteGroup(group_id:{})'.format(group_id))
+    logger.info('deleteGroup(group_id: {})'.format(group_id))
     notes_count = execute_select_query('SELECT COUNT(id) FROM Notes WHERE groupId={};'.format(group_id))
-    logger.info('')
+    logger.info('notes_count: {}'.format(notes_count))
     if notes_count == 0:
         rows_changed = execute_delete_query('DELETE FROM Groups WHERE id={};'.format(group_id))
         return json.dumps(rows_changed), status.HTTP_200_OK
