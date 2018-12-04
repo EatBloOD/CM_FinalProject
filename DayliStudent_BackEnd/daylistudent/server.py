@@ -48,8 +48,8 @@ def postGroup():
     rows_changed = execute_insert_query(insert_query)
     if rows_changed > 0:
         logger.info('Group created with name: {}'.format(group_name))
-        query = 'SELECT (id) FROM Groups WHERE name=\'{}\';'.format(group_name)
-        logger.info('query:', query)
+        query = 'SELECT (id) FROM Groups WHERE name=\'{0}\';'.format(group_name)
+        logger.info('query: {}'.format(query))
         group_id = execute_select_single_query(query)
         logger.info('Group created with id: {}'.format(group_id))
         return json.dumps(group_id), status.HTTP_200_OK
@@ -68,6 +68,8 @@ def deleteGroup(group_id):
         if result is None:
             raise Exception('no result')
         count = result[0]
+        logger.debug('type(count): {}'.format(type(count)))
+        logger.debug('count: {}'.format(count))
         if count != 0:
             raise Exception('group notes are not empty')
         else:
