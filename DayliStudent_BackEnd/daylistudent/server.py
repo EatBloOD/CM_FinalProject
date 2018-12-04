@@ -44,15 +44,15 @@ def postGroup():
     """ Query db to create a new Group with group_name """
     logger.info('postGroup()')
     group_name = str(request.args.get('group_name'))
-    insert_query = 'INSERT INTO Groups (name) VALUES (\'{}\');'.format(group_name)
+    insert_query = 'INSERT INTO Groups (name) VALUES (\'{0}\');'.format(group_name)
     rows_changed = execute_insert_query(insert_query)
     if rows_changed > 0:
-        logger.info('Group created with name: {}'.format(group_name))
+        logger.info('group created with name: {0}'.format(group_name))
         query = 'SELECT (id) FROM Groups WHERE name=\'{0}\';'.format(group_name)
-        logger.info('query: {}'.format(query))
+        logger.info('query: {0}'.format(query))
         group_id = execute_select_single_query(query)
-        logger.info('Group created with id: {}'.format(group_id))
-        return json.dumps(group_id), status.HTTP_200_OK
+        logger.info('group created with id: {0}'.format(group_id))
+        return json.dumps(str(group_id[0])), status.HTTP_200_OK
     else:
         return status.HTTP_404_NOT_FOUND
 
@@ -60,16 +60,16 @@ def postGroup():
 @app.route("/group/<int:group_id>", methods=['DELETE'])
 def deleteGroup(group_id):
     """ Query db to delete a certain Group with group_id """
-    logger.info('deleteGroup(group_id: {})'.format(group_id))
+    logger.info('deleteGroup(group_id: {0})'.format(group_id))
     result = execute_select_single_query('SELECT COUNT(id) FROM Notes WHERE groupId=\'{0}\';'.format(group_id))
-    logger.debug('notes_count: {}'.format(result))
-    logger.debug('type(notes_count): {}'.format(type(result)))
+    logger.debug('notes_count: {0}'.format(result))
+    logger.debug('type(notes_count): {0}'.format(type(result)))
     try:
         if result is None:
             raise Exception('no result')
         count = result[0]
-        logger.debug('type(count): {}'.format(type(count)))
-        logger.debug('count: {}'.format(count))
+        logger.debug('type(count): {0}'.format(type(count)))
+        logger.debug('count: {0}'.format(count))
         if count != 0:
             raise Exception('group notes are not empty')
         else:
