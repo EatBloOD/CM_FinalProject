@@ -52,7 +52,7 @@ def postGroup():
         logger.info('query: {0}'.format(query))
         group_id = execute_select_single_query(query)
         logger.info('group created with id: {0}'.format(group_id))
-        return json.dumps(str(group_id[0])), status.HTTP_200_OK
+        return json.dumps(group_id[0]), status.HTTP_200_OK
     else:
         return status.HTTP_404_NOT_FOUND
 
