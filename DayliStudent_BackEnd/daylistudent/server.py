@@ -13,10 +13,11 @@ from daylistudent.utils.logger import setup_logging
 
 logger = logging.getLogger(__name__)
 
-# Endpoints ------------------------------------------------------------------------------------------------------------
-
 app = Flask(__name__)
 app.config['DEBUG'] = True
+
+
+# Endpoints ------------------------------------------------------------------------------------------------------------
 
 
 @app.route("/groups", methods=['GET'])
@@ -61,8 +62,8 @@ def deleteGroup(group_id):
     """ Query db to delete a certain Group with group_id """
     logger.info('deleteGroup(group_id: {})'.format(group_id))
     result = execute_select_single_query('SELECT COUNT(id) FROM Notes WHERE groupId=\'{}\';'.format(group_id))
-    logger.info('notes_count: {}'.format(result))
-    logger.info('type(notes_count): {}'.format(type(result)))
+    logger.debug('notes_count: {}'.format(result))
+    logger.debug('type(notes_count): {}'.format(type(result)))
     try:
         if result is None:
             raise Exception('no result')
@@ -71,8 +72,8 @@ def deleteGroup(group_id):
             raise Exception('group notes are not empty')
         else:
             modified_rows = execute_delete_query('DELETE FROM Groups WHERE id=\'{}\';'.format(group_id))
-            logger.info('modified_rows:', modified_rows[0])
-            return json.dumps(modified_rows[0]), status.HTTP_200_OK
+            logger.debug('len(modified_rows):', len(modified_rows))
+            return json.dumps(len(modified_rows)), status.HTTP_200_OK
     except Exception as ex:
         logger.error('deleteGroup Exception:', ex)
         return status.HTTP_405_METHOD_NOT_ALLOWED
@@ -149,15 +150,17 @@ def updateNote(note_id):
 def deleteNote(note_id):
     """ Query db to delete a certain Group with group_id """
     logger.info('deleteNote(note_id:{})'.format(note_id))
-    result = execute_delete_query('DELETE FROM Notes WHERE id={};'.format(note_id))
-    logger.info('result: {}'.format(result))
-    return json.dumps(result), status.HTTP_200_OK
+    modified_rows = execute_delete_query('DELETE FROM Notes WHERE id=\'{}\';'.format(note_id))
+    logger.debug('modified_rows:', modified_rows)
+    logger.debug('len(modified_rows):', len(modified_rows))
+    return json.dumps(len(modified_rows)), status.HTTP_200_OK
 
 
-DATABASE = "./database.db"
+DATABASE = 'database.db'
+DATABASE_SCHEMA = 'db/db_schema.sql'
 
 if not os.path.exists(DATABASE):
-    db_schema_lines = open('db/db_schema.sql', 'r').readlines()
+    db_schema_lines = open(DATABASE_SCHEMA, 'r').readlines()
     logger.info(db_schema_lines)
     conn = sqlite3.connect(DATABASE)
     cur = conn.cursor()
@@ -221,13 +224,13 @@ def execute_delete_query(delete_query):
     curr = db_conn.cursor()
     curr.execute(delete_query)
     db_conn.commit()
-    return curr.rowcount
+    return curr.fetchall()
 
 
 def run():
     setup_logging()
     logger.info('Dayli Student started')
-    app.run(host="0.0.0.0", port=8080)
+    app.run(host="0.0.0.0", port=8080, threaded=True)
 
 
 if __name__ == '__main__':
