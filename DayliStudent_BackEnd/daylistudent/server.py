@@ -34,8 +34,8 @@ def getGroups():
 @app.route('/group/<int:group_id>', methods=['GET'])
 def getGroup(group_id):
     """ Query db to get Group with group_id """
-    logger.info('getGroup(group_id:{})'.format(group_id))
-    result = execute_select_query('SELECT * FROM Groups WHERE id={};'.format(group_id))
+    logger.info('getGroup(group_id:{0})'.format(group_id))
+    result = execute_select_query('SELECT * FROM Groups WHERE id={0};'.format(group_id))
     return json.dumps(result), status.HTTP_200_OK
 
 
@@ -152,10 +152,10 @@ def updateNote(note_id):
 @app.route("/note/<int:note_id>", methods=['DELETE'])
 def deleteNote(note_id):
     """ Query db to delete a certain Group with group_id """
-    logger.info('deleteNote(note_id:{})'.format(note_id))
-    modified_rows = execute_delete_query('DELETE FROM Notes WHERE id=\'{}\';'.format(note_id))
-    logger.debug('modified_rows:', modified_rows)
-    logger.debug('len(modified_rows):', len(modified_rows))
+    logger.info('deleteNote(note_id:{0})'.format(note_id))
+    modified_rows = execute_delete_query('DELETE FROM Notes WHERE id=\'{0}\';'.format(note_id))
+    logger.debug('modified_rows: {0}', modified_rows)
+    logger.debug('len(modified_rows): {0}', len(modified_rows))
     return json.dumps(len(modified_rows)), status.HTTP_200_OK
 
 
