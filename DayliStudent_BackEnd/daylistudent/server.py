@@ -53,7 +53,7 @@ def postGroup():
         return status.HTTP_404_NOT_FOUND
 
 
-@app.route("/group/<str:group_id>", methods=['DELETE'])
+@app.route("/group/<int:group_id>", methods=['DELETE'])
 def deleteGroup(group_id):
     """ Query db to delete a certain Group with group_id """
     logger.info('deleteGroup(group_id: {})'.format(group_id))
