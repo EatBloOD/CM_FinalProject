@@ -381,7 +381,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // Inflate the menu; this adds notesList to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -393,7 +393,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         if (id == R.id.nav_home) {
         } else if (id == R.id.nav_notes) {
-            Intent i = new Intent(this, DailyStudentActivity.class);
+            Intent i = new Intent(this, LocalNoteActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_budget) {
             Intent i = new Intent(this, BudgetActivity.class);
@@ -402,7 +402,7 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(this, StatisticsActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_global_notes) {
-            Intent i = new Intent(this, GlobalNotes.class);
+            Intent i = new Intent(this, SelectGroupActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_credits) {
             Intent i = new Intent(this, CreditsActivity.class);
@@ -426,7 +426,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void goNoteList(View view) {
-        Intent i = new Intent(this, DailyStudentActivity.class);
+        Intent i = new Intent(this, LocalNoteActivity.class);
         startActivity(i);
     }
 }

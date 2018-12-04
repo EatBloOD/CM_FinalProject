@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DayliStudent</string>
-    <string name="DayliStudentActivityDeleteNote">DELETE</string>
+    <string name="DayliStudentActivityDeleteNote">Delete</string>
     <string name="action_settings">Settings</string>
     <string name="bgNoteActTitle">Title</string>
     <string name="bgNoteActTitleCaracter_sticas">Characteristics</string>
@@ -120,8 +120,8 @@
     <string name="DayliStudentActivityShareNote">Share</string>
     <string name="DayliStudentActivitySendingSharedNote">Send</string>
     <string name="DayliStudentActivityButtonSendingSharedNote">Call</string>
-    <string name="DayliStudentActivityReceived2SharedNote">\" ] of \"</string>
-    <string name="DayliStudentActivityReceivedSharedNote">\"SUCCESSFULLY RECEIVED THE NOTE [\"</string>
+    <string name="DayliStudentActivityReceived2SharedNote">from</string>
+    <string name="DayliStudentActivityReceivedSharedNote">Successfully received note</string>
     <string name="SendingSharedNoteSuccess">"Note successfully sent"</string>
     <string name="SendingSharedNoteFail">"Note not sent"</string>
     <string name="PleaseTryAgainLater">"Please try again later"</string>
@@ -155,4 +155,9 @@
     <string name="error">Error</string>
     <string name="uc_url">https://www.uc.pt/</string>
     <string name="customization">Customizations</string>
+    <string name="GetGroupsError">Error obtaining groups! Please try again later.</string>
+    <string name="GetNotesError">Cannot get notes from the selected group! Please try again later.</string>
+    <string name="ExitGroup">You exited the current group!</string>
+    <string name="UpdatingNoteError">Error updating note! Please try again later.</string>
+    <string name="InsertingNoteError">Error creating note! Please try again later.</string>
 </resources>

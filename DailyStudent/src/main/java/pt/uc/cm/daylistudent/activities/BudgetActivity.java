@@ -17,8 +17,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import pt.uc.cm.daylistudent.R;
-import pt.uc.cm.daylistudent.fragments.NoteBudget;
-import pt.uc.cm.daylistudent.fragments.Wallet;
 import pt.uc.cm.daylistudent.adapters.BudgetDbAdapter;
 import pt.uc.cm.daylistudent.adapters.WalletDbAdapter;
 import pt.uc.cm.daylistudent.models.BudgetNote;
@@ -98,7 +96,7 @@ public class BudgetActivity extends AppCompatActivity {
         lv_bgnotes.setOnItemClickListener((adapterView, view, position, id) -> {
             Cursor c = mBudgetCursor;
             c.moveToPosition(position);
-            Intent i = new Intent(getApplicationContext(), NoteBudget.class);
+            Intent i = new Intent(getApplicationContext(), NoteBudgetActivity.class);
             i.putExtra(BudgetDbAdapter.KEY_ROWID, id);
             i.putExtra(BudgetDbAdapter.KEY_TITLE, c.getString(c.getColumnIndexOrThrow(BudgetDbAdapter.KEY_TITLE)));
             i.putExtra(BudgetDbAdapter.KEY_GENDER, c.getString(c.getColumnIndexOrThrow(BudgetDbAdapter.KEY_GENDER)));
@@ -121,12 +119,12 @@ public class BudgetActivity extends AppCompatActivity {
     }
 
     public void createBudgetAction(MenuItem item) {
-        Intent i = new Intent(this, NoteBudget.class);
+        Intent i = new Intent(this, NoteBudgetActivity.class);
         startActivityForResult(i, ACTIVITY_CREATE);
     }
 
     public void createWalletAction(MenuItem item) {
-        Intent i = new Intent(this, Wallet.class);
+        Intent i = new Intent(this, WalletActivity.class);
         startActivityForResult(i, ACTIVITY_WALLET_CREATE);
     }
 
@@ -187,7 +185,7 @@ public class BudgetActivity extends AppCompatActivity {
     }
 
     private void updateWallet(int position, long id) {
-        Intent i = new Intent(this, Wallet.class);
+        Intent i = new Intent(this, WalletActivity.class);
         Cursor c = mWalletCursor;
         c.moveToPosition(position);
         i.putExtra(WalletDbAdapter.KEY_ROWID, id);

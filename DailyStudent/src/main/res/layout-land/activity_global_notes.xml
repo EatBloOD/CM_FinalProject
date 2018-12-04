@@ -4,17 +4,20 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <ListView android:id="@+id/lvGlobalNotes"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvGlobalNotes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-    <TextView android:id="@+id/android:empty"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/tvEmpty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/noteBudgetListno_notes"
         android:fontFamily="sans-serif-condensed"
-        android:textSize="36sp"
         android:gravity="center"
+        android:paddingLeft="100dp"
         android:paddingTop="100dp"
-        android:paddingLeft="100dp" />
+        android:text="@string/noteBudgetListno_notes"
+        android:textSize="36sp" />
 
 </LinearLayout>

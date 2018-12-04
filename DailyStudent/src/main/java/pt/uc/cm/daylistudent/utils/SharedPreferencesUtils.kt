@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import android.util.Log
 import android.widget.TextView
-
 import pt.uc.cm.daylistudent.R
 
 object SharedPreferencesUtils {
@@ -16,6 +15,9 @@ object SharedPreferencesUtils {
 
     private val NOME = "nameKey"
     private val EMAIL = "emailKey"
+    private val GROUP_ID = "groupIdKey"
+
+    val NONE_GROUP_ID = -1
 
     fun readInfoUser(context: Context, tvUserName: TextView, tvEmail: TextView) {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
@@ -35,7 +37,20 @@ object SharedPreferencesUtils {
         }
     }
 
-    fun readUserName(): String{
-        return sharedPreferences!!.getString(NOME, "Default")
+    fun readUserName(): String {
+        return sharedPreferences!!.getString(NOME, "Default")!!
+    }
+
+    fun readSelectedGroupId(): Int {
+        return sharedPreferences!!.getString(GROUP_ID, NONE_GROUP_ID.toString())!!.toInt()
+    }
+
+    fun writeSelectedGroupId(context: Context, id: Int) {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        val sharedPreferencesEditor = sharedPreferences.edit()
+        sharedPreferencesEditor.putString(GROUP_ID, id.toString())
+        sharedPreferencesEditor.apply()
     }
 }
+
+

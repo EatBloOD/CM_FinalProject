@@ -109,7 +109,7 @@
     <string name="DayliStudentActivitySendingSharedNote">Enviar</string>
     <string name="DayliStudentActivityIPSendingSharedNote">IP do telemovel para o qual enviar</string>
     <string name="DayliStudentActivityButtonSendingSharedNote">Ligar</string>
-    <string name="DayliStudentActivityReceivedSharedNote">"RECEBIDA COM SUCESSO A NOTA [ "</string>
+    <string name="DayliStudentActivityReceivedSharedNote">"Nota recebida"</string>
     <string name="DayliStudentActivityReceived2SharedNote">" ] de "</string>
     <string name="SendingSharedNoteSuccess">"Nota enviada com sucesso"</string>
     <string name="SendingSharedNoteFail">"Nota não enviada"</string>
@@ -157,4 +157,9 @@
     <string name="error">Erro</string>
     <string name="uc_url">https://www.uc.pt/</string>
     <string name="customization">Definições</string>
+    <string name="GetGroupsError">Erro ao obter grupos! Por favor tente mais tarde.</string>
+    <string name="GetNotesError">Erro ao obter notas! Por favor tente mais tarde.</string>
+    <string name="ExitGroup">Saiste do grupo!</string>
+    <string name="UpdatingNoteError">Erro ao atualizar a nota! Por favor tente mais tarde.</string>
+    <string name="InsertingNoteError">Erro ao criar a nota! Por favor tente mais tarde.</string>
 </resources>

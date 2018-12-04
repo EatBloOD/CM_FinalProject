@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/actionTextNotes"
-        android:icon="@drawable/signing"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/iReceiveNote"
+        android:icon="@drawable/share"
         android:title=""
+        android:onClick="onReceiveNoteAction"
+        android:visible="true"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/actionTextNotes"
+        android:icon="@drawable/signing"
         android:onClick="createBudgetAction"
-        android:showAsAction="always"
+        android:title=""
         android:visible="true"
         app:showAsAction="always" />
+
 </menu>

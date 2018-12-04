@@ -29,7 +29,7 @@
 			android:layout_gravity="center_vertical|center_horizontal|center"
 			android:textAlignment="center" />
 
-		<EditText android:id="@+id/titulo"
+		<EditText android:id="@+id/etTitle"
 		  android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_weight="1"
@@ -52,7 +52,7 @@
     android:textAlignment="center"
     android:layout_gravity="center" />
 
-		<EditText android:id="@+id/body" android:layout_width="match_parent"
+		<EditText android:id="@+id/etBody" android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:scrollbars="vertical"
