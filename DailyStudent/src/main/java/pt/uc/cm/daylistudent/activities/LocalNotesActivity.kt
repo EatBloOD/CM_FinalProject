@@ -50,7 +50,7 @@ class LocalNotesActivity : AppCompatActivity() {
 
         private var notificationCounter: Int = 0
 
-        val NOTIFICATION_CHANNEL_ID = "10001"
+        private val NOTIFICATION_CHANNEL_ID = "10001"
 
         private var mNotificationManager: NotificationManager? = null
         private var mBuilder: NotificationCompat.Builder? = null
@@ -247,7 +247,7 @@ class LocalNotesActivity : AppCompatActivity() {
         imageView.setImageBitmap(qrCodeBitmap)
 
         val dialog = AlertDialog.Builder(this)
-        dialog.setTitle(getString(R.string.receive))
+        dialog.setTitle(getString(R.string.ScanThisWithDayliStudentApp))
         dialog.setView(alertDialog)
         dialog.show()
     }
@@ -263,7 +263,8 @@ class LocalNotesActivity : AppCompatActivity() {
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             val importance = NotificationManager.IMPORTANCE_HIGH
-            val notificationChannel = NotificationChannel(NOTIFICATION_CHANNEL_ID, "NOTIFICATION_CHANNEL_NAME", importance)
+            val notificationChannel = NotificationChannel(NOTIFICATION_CHANNEL_ID,
+                    "NOTIFICATION_CHANNEL_NAME", importance)
             notificationChannel.enableLights(true)
             notificationChannel.enableVibration(true)
             mBuilder!!.setChannelId(NOTIFICATION_CHANNEL_ID)

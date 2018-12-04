@@ -87,11 +87,8 @@ class ManageGlobalNoteActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
-                if (response.body() > 0) {
-                    setResult(Activity.RESULT_OK, Intent())
-                    finish()
-                } else
-                    Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
+                setResult(Activity.RESULT_OK, Intent())
+                finish()
             }
         }
     }

@@ -3,6 +3,7 @@ package pt.uc.cm.daylistudent.activities
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -21,6 +22,10 @@ class SelectGroupActivity : AppCompatActivity() {
     private lateinit var retrofit: RetrofitUtils
     private lateinit var selectedGroup: Group
     private var groups = mutableListOf<Group>()
+
+    companion object {
+        val TAG: String = SelectGroupActivity::class.java.simpleName
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

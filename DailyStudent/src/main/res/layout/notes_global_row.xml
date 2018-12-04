@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,10 +8,8 @@
     <LinearLayout
         android:id="@+id/llresumo_cMain"
         style="@style/linearLayoutStyle"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
@@ -26,8 +23,8 @@
             <TextView
                 android:id="@+id/tvGlobalTitle"
                 android:layout_width="0dp"
-                android:layout_weight="5"
                 android:layout_height="wrap_content"
+                android:layout_weight="5"
                 android:text="TITLE"
                 android:textAlignment="center"
                 android:textSize="20sp"
@@ -37,9 +34,9 @@
                 android:id="@+id/ivDeleteNote"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_gravity="center"
-                android:src="@android:drawable/ic_delete"/>
+                android:layout_weight="1"
+                android:src="@android:drawable/ic_delete" />
 
         </LinearLayout>
 
@@ -57,11 +54,11 @@
 
             <TextView
                 android:id="@+id/tvAuthor"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                android:gravity="left|center"
+                android:gravity="start|center"
                 android:text="AUTHOR" />
 
         </LinearLayout>
@@ -69,36 +66,21 @@
         <LinearLayout
             android:id="@+id/llresumo_in1_cMain"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/tvGlobalBody"
+                style="@style/linearLayoutStyle"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tvGlobalBody"
-                    style="@style/linearLayoutStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_weight="1"
-                    android:text="BODY"
-                    android:textStyle="normal|italic" />
-
-                <TextView
-                    android:id="@+id/tvGlobalDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="DATE" />
-
-            </LinearLayout>
+                android:text="BODY"
+                android:textStyle="normal|italic" />
 
         </LinearLayout>
 

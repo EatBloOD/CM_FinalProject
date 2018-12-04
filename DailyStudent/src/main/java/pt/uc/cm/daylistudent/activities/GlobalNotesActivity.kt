@@ -35,8 +35,6 @@ class GlobalNotesActivity : AppCompatActivity() {
 
         private const val ACTIVITY_CREATE = 0
         private const val ACTIVITY_EDIT = 1
-
-        private const val DELETE_ID = Menu.FIRST + 1
     }
 
     public override fun onCreate(savedInstanceState: Bundle?) {
@@ -138,15 +136,11 @@ class GlobalNotesActivity : AppCompatActivity() {
     private fun deleteGroupNote(noteId: String) {
         retrofitUtils.deleteGroupNote(noteId, object : Callback<Int> {
             override fun onFailure(call: Call<Int>, t: Throwable) {
-                Toast.makeText(applicationContext, "Cannot delete note! Please try again later.", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, getString(R.string.ErrorDeletingNote), Toast.LENGTH_LONG).show()
             }
 
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
-                if (response.body() == 0)
-                    Toast.makeText(applicationContext, "Cannot delete note! Please try again later.", Toast.LENGTH_LONG).show()
-                else {
-                    getGroupNotes(selectedGroupId)
-                }
+                getGroupNotes(selectedGroupId)
             }
         })
     }
