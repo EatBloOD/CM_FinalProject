@@ -42,7 +42,7 @@ def getGroup(group_id):
 def postGroup():
     """ Query db to create a new Group with group_name """
     logger.info('postGroup()')
-    group_name = request.args.get('group_name')
+    group_name = str(request.args.get('group_name'))
     insert_query = 'INSERT INTO Groups (name) VALUES (\'{}\');'.format(group_name)
     rows_changed = execute_insert_query(insert_query)
     if rows_changed > 0:
