@@ -57,11 +57,13 @@ def postGroup():
 def deleteGroup(group_id):
     """ Query db to delete a certain Group with group_id """
     logger.info('deleteGroup(group_id:{})'.format(group_id))
-    rows_changed = execute_delete_query('DELETE FROM Groups WHERE id={}'.format(group_id))
-    if rows_changed > 0:
+    notes_count = execute_select_query('SELECT COUNT(id) FROM Notes WHERE groupId={};'.format(group_id))
+    logger.info('')
+    if notes_count == 0:
+        rows_changed = execute_delete_query('DELETE FROM Groups WHERE id={};'.format(group_id))
         return json.dumps(rows_changed), status.HTTP_200_OK
     else:
-        return status.HTTP_404_NOT_FOUND
+        return status.HTTP_405_METHOD_NOT_ALLOWED
 
 
 @app.route('/notes/<int:group_id>', methods=['GET'])
