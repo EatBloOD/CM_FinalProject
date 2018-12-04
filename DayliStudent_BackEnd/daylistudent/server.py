@@ -71,8 +71,8 @@ def deleteGroup(group_id):
             raise Exception('group notes are not empty')
         else:
             modified_rows = execute_delete_query('DELETE FROM Groups WHERE id=\'{}\';'.format(group_id))
-            logger.info('modified_rows:', modified_rows)
-            return json.dumps(modified_rows), status.HTTP_200_OK
+            logger.info('modified_rows:', modified_rows[0])
+            return json.dumps(modified_rows[0]), status.HTTP_200_OK
     except Exception as ex:
         logger.error('deleteGroup Exception:', ex)
         return status.HTTP_405_METHOD_NOT_ALLOWED
