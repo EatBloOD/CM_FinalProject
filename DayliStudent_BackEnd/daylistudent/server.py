@@ -61,7 +61,7 @@ def postGroup():
 def deleteGroup(group_id):
     """ Query db to delete a certain Group with group_id """
     logger.info('deleteGroup(group_id: {})'.format(group_id))
-    result = execute_select_single_query('SELECT COUNT(id) FROM Notes WHERE groupId=\'{}\';'.format(group_id))
+    result = execute_select_single_query('SELECT COUNT(id) FROM Notes WHERE groupId=\'{0}\';'.format(group_id))
     logger.debug('notes_count: {}'.format(result))
     logger.debug('type(notes_count): {}'.format(type(result)))
     try:
@@ -73,8 +73,9 @@ def deleteGroup(group_id):
         if count != 0:
             raise Exception('group notes are not empty')
         else:
-            modified_rows = execute_delete_query('DELETE FROM Groups WHERE id=\'{}\';'.format(group_id))
-            logger.debug('len(modified_rows):', len(modified_rows))
+            modified_rows = execute_delete_query('DELETE FROM Groups WHERE id=\'{0}\';'.format(group_id))
+            logger.debug('len(modified_rows): {0}'.format(len(modified_rows)))
+            logger.debug('modified_rows: {0}'.format(modified_rows))
             return json.dumps(len(modified_rows)), status.HTTP_200_OK
     except Exception as ex:
         logger.error('deleteGroup Exception:', ex)
