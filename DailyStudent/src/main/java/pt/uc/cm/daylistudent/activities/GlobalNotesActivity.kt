@@ -39,7 +39,7 @@ class GlobalNotesActivity : AppCompatActivity() {
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        SharedPreferencesUtils.readPreferencesUser(applicationContext)
+        setTheme(SharedPreferencesUtils.readTheme(applicationContext))
         setContentView(R.layout.activity_global_notes)
         title = getString(R.string.DayliStudentActivitySharedNote)
 

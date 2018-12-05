@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onPostResume() {
-        SharedPreferencesUtils.INSTANCE.readPreferencesUser(getApplicationContext());
+        setTheme(SharedPreferencesUtils.INSTANCE.readTheme(getApplicationContext()));
         SharedPreferencesUtils.INSTANCE.readInfoUser(getApplicationContext(), tvUserName, tvEmail);
         super.onPostResume();
 
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferencesUtils.INSTANCE.readPreferencesUser(getApplicationContext());
+        setTheme(SharedPreferencesUtils.INSTANCE.readTheme(getApplicationContext()));
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -325,8 +325,6 @@ public class MainActivity extends AppCompatActivity
                 keyCode != KeyEvent.KEYCODE_BACK || event.getAction() != KeyEvent.ACTION_UP);
         // APANHA AS REFERÊNCIAS PARA TODOS OS OBJECTOS NECESSÁRIOS
         final EditText editTextUserName = dialog.findViewById(R.id.editTextUserName);
-        final EditText editTextPassword = dialog.findViewById(R.id.editTextPassword);
-        final EditText editTextConfirmPassword = dialog.findViewById(R.id.editTextConfirmPassword);
         final EditText editTextEmail = dialog.findViewById(R.id.editTextEmail);
 
         final Button btnRegister = dialog.findViewById(R.id.buttonCreateAccount);
@@ -336,16 +334,9 @@ public class MainActivity extends AppCompatActivity
             // VAI BUSCAR O USER NAME E A PASSWORD
             String userName = editTextUserName.getText().toString();
             String email = editTextEmail.getText().toString();
-            String password = editTextPassword.getText().toString();
-            String confirmPassword = editTextConfirmPassword.getText().toString();
             // VERIFICA SE ESTÁ TUDO BEM FORMATADO
-            if (userName.equals("") || password.equals("") || confirmPassword.equals("")) {
+            if (userName.equals("") || email.equals("")) {
                 Toast.makeText(getApplicationContext(), R.string.mainActivityRegisterEmptyFields, Toast.LENGTH_LONG).show();
-                return;
-            }
-            // VERIFICA SE AS PASSWORDS SÃO IGUAIS
-            if (!password.equals(confirmPassword)) {
-                Toast.makeText(getApplicationContext(), R.string.mainActivityRegisterPasNotMatch, Toast.LENGTH_LONG).show();
                 return;
             }
             if (!email.contains("@") || !email.contains(".")) {
@@ -358,7 +349,6 @@ public class MainActivity extends AppCompatActivity
 
                 editor.putString(NOME, userName);
                 editor.putString(EMAIL, email);
-                editor.putString(PASSWORD, password);
                 editor.commit();
 
                 SharedPreferencesUtils.INSTANCE.readInfoUser(getApplicationContext(), tvUserName, tvEmail);
@@ -391,8 +381,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if (id == R.id.nav_home) {
-        } else if (id == R.id.nav_notes) {
+        if (id == R.id.nav_notes) {
             Intent i = new Intent(this, LocalNotesActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_budget) {

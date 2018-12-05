@@ -14,7 +14,7 @@ public class CreditsActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferencesUtils.INSTANCE.readPreferencesUser(getApplicationContext());
+        setTheme(SharedPreferencesUtils.INSTANCE.readTheme(getApplicationContext()));
         setContentView(R.layout.creditos);
 
         ImageView imgUC = findViewById(R.id.ivUC);

@@ -118,10 +118,10 @@
     <string name="apostas">Bets</string>
     <string name="DayliStudentActivitySharedNote">Shared Notes</string>
     <string name="DayliStudentActivityShareNote">Share</string>
-    <string name="DayliStudentActivitySendingSharedNote">Send</string>
+    <string name="DayliStudentActivitySendingSharedNote">Receive note</string>
     <string name="DayliStudentActivityButtonSendingSharedNote">Call</string>
     <string name="DayliStudentActivityReceived2SharedNote">from</string>
-    <string name="DayliStudentActivityReceivedSharedNote">Successfully received note</string>
+    <string name="DayliStudentActivityReceivedSharedNote">Received note</string>
     <string name="SendingSharedNoteSuccess">"Note successfully sent"</string>
     <string name="SendingSharedNoteFail">"Note not sent"</string>
     <string name="PleaseTryAgainLater">"Please try again later"</string>

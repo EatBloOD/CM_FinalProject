@@ -38,7 +38,7 @@ public class WalletActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferencesUtils.INSTANCE.readPreferencesUser(getApplicationContext());
+        setTheme(SharedPreferencesUtils.INSTANCE.readTheme(getApplicationContext()));
         mDbBudgetHelper = new BudgetDbAdapter(this);
 
         setContentView(R.layout.wallet);
