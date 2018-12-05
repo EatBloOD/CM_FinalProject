@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="CM_Project_Prev" company="" webLink="http://" view-date="2018-12-02" view-index="0" gantt-divider-location="947" resource-divider-location="300" version="2.8.9" locale="en_GB">
+<?xml version="1.0" encoding="UTF-8"?><project name="CM_Project_Prev" company="" webLink="http://" view-date="2018-12-07" view-index="0" gantt-divider-location="947" resource-divider-location="300" version="2.8.9" locale="en_GB">
     <description/>
     <view zooming-state="default:2" id="gantt-chart">
         <field id="tpd3" name="Name" width="397" order="0"/>
@@ -67,23 +67,26 @@
                 <depend id="35" type="2" difference="0" hardness="Strong"/>
             </task>
             <task id="35" name="09 - Implement Sensors." color="#8cb6ce" meeting="false" start="2018-11-26" duration="2" complete="0" thirdDate="2018-11-20" thirdDate-constraint="0" expand="true">
-                <depend id="40" type="2" difference="0" hardness="Strong"/>
+                <depend id="56" type="2" difference="0" hardness="Strong"/>
             </task>
         </task>
-        <task id="25" name="Sprint #4" color="#000000" meeting="false" start="2018-11-28" duration="9" complete="0" thirdDate="2018-11-26" thirdDate-constraint="1" expand="true">
+        <task id="25" name="Sprint #4" color="#000000" meeting="false" start="2018-11-28" duration="11" complete="0" thirdDate="2018-11-26" thirdDate-constraint="1" expand="true">
             <depend id="26" type="2" difference="0" hardness="Strong"/>
-            <task id="40" name="10 - Implement Parallelism." color="#8cb6ce" meeting="false" start="2018-11-28" duration="3" complete="0" thirdDate="2018-11-30" thirdDate-constraint="0" expand="true">
+            <task id="56" name="10 - Implement the Back-End server." color="#8cb6ce" meeting="false" start="2018-11-28" duration="2" complete="0" thirdDate="2018-12-03" thirdDate-constraint="0" expand="true">
+                <depend id="40" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="40" name="11 - Implement Parallelism." color="#8cb6ce" meeting="false" start="2018-11-30" duration="3" complete="0" thirdDate="2018-11-30" thirdDate-constraint="0" expand="true">
                 <depend id="42" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="42" name="11 - Implement networking." color="#8cb6ce" meeting="false" start="2018-12-03" duration="3" complete="0" thirdDate="2018-11-30" thirdDate-constraint="0" expand="true">
+            <task id="42" name="12 - Implement networking." color="#8cb6ce" meeting="false" start="2018-12-05" duration="3" complete="0" thirdDate="2018-11-30" thirdDate-constraint="0" expand="true">
                 <depend id="39" type="2" difference="0" hardness="Strong"/>
             </task>
-            <task id="39" name="12 - Implement Distributed Computing Mechanisms." color="#8cb6ce" meeting="false" start="2018-12-06" duration="3" complete="0" thirdDate="2018-11-30" thirdDate-constraint="0" expand="true">
+            <task id="39" name="13 - Implement Distributed Computing Mechanisms." color="#8cb6ce" meeting="false" start="2018-12-10" duration="3" complete="0" thirdDate="2018-11-30" thirdDate-constraint="0" expand="true">
                 <depend id="44" type="2" difference="0" hardness="Strong"/>
             </task>
         </task>
-        <task id="26" name="Sprint #5" color="#000000" meeting="false" start="2018-12-11" duration="13" complete="0" thirdDate="2018-12-11" thirdDate-constraint="0" expand="true">
-            <task id="44" name="13 - Report final version." color="#8cb6ce" meeting="false" start="2018-12-11" duration="13" complete="0" thirdDate="2018-12-14" thirdDate-constraint="0" expand="true"/>
+        <task id="26" name="Sprint #5" color="#000000" meeting="false" start="2018-12-13" duration="11" complete="0" thirdDate="2018-12-11" thirdDate-constraint="0" expand="true">
+            <task id="44" name="14 - Report final version." color="#8cb6ce" meeting="false" start="2018-12-13" duration="11" complete="0" thirdDate="2018-12-14" thirdDate-constraint="0" expand="true"/>
         </task>
     </tasks>
     <resources/>
