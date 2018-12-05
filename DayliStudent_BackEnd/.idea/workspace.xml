@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aac17d9c-0640-4218-92c8-7fa55c430a98" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/daylistudent/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/daylistudent/server.py" afterDir="false" />
-    </list>
+    <list default="true" id="aac17d9c-0640-4218-92c8-7fa55c430a98" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,8 +13,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/daylistudent/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
+            <state relative-caret-position="230">
               <caret line="159" lean-forward="true" selection-start-line="159" selection-end-line="159" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -327,7 +328,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="180" y="62" width="1690" height="1015" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49916247" visible="true" weight="0.16676664" />
       <window_info id="Structure" order="1" sideWeight="0.5008375" side_tool="true" weight="0.18133895" />
@@ -577,8 +577,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/daylistudent/server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
+        <state relative-caret-position="230">
           <caret line="159" lean-forward="true" selection-start-line="159" selection-end-line="159" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
