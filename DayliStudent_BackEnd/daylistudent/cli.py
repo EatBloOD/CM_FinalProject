@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 @click_log.simple_verbosity_option(logger)
 @click.version_option()
 def cli(info, debug, error):
-    """ DayliStudent is back end server for the DayliStudent app """
+    """ DayliStudent is a back end server for the DayliStudent app """
     if not info and not debug and not error:
         setup_logging(logging_level=logging.NOTSET)
         logger.info('logging_level: NOTSET')

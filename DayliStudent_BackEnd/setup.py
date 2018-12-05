@@ -33,7 +33,8 @@ class RunTests(Command):
 
     def run(self):
         """Run all tests!"""
-        error = call(['py.test', '--cov=daylistudent', '--cov-report=term-missing'])
+        error = call(['py.test', '--cov=daylistudent',
+                      '--cov-report=term-missing'])
         raise SystemExit(error)
 
 
@@ -44,7 +45,7 @@ setup(
     long_description=readme,
     author='André Bento and Jorge Silva',
     author_email='apbento@student.dei.uc.pt',
-    url='https://github.com/...',
+    url='https://github.com/EatBloOD/CM_FinalProject.git',
     license=license,
     classifiers=[
         'Intended Audience :: Developers',
