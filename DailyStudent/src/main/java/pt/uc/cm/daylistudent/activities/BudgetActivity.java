@@ -42,7 +42,7 @@ public class BudgetActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferencesUtils.INSTANCE.readPreferencesUser(getApplicationContext());
+        setTheme(SharedPreferencesUtils.INSTANCE.readTheme(getApplicationContext()));
         setContentView(R.layout.notes_budget_list);
         setTitle(getString(R.string.budgetActivityTitle));
 

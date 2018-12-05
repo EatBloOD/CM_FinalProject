@@ -106,7 +106,7 @@
     <string name="Statisticsganhos">Ganhos</string>
     <string name="DayliStudentActivityShareNote">Partilhar</string>
     <string name="DayliStudentActivitySharedNote">Notas Partilhadas</string>
-    <string name="DayliStudentActivitySendingSharedNote">Enviar</string>
+    <string name="DayliStudentActivitySendingSharedNote">Receber Nota</string>
     <string name="DayliStudentActivityIPSendingSharedNote">IP do telemovel para o qual enviar</string>
     <string name="DayliStudentActivityButtonSendingSharedNote">Ligar</string>
     <string name="DayliStudentActivityReceivedSharedNote">"Nota recebida"</string>

@@ -3,10 +3,6 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_home_black_24dp"
-            android:title="@string/drawerHome" />
-        <item
             android:id="@+id/nav_global_notes"
             android:icon="@drawable/global"
             android:title="@string/notas_partilhadas" />
@@ -19,10 +15,10 @@
             android:icon="@drawable/ic_shopping_cart_black_24dp"
             android:title="@string/drawerNotas_budget" />
         <item
+            android:id="@+id/nav_statistics"
             android:icon="@drawable/barchart"
-            android:title="@string/drawerEstatisticas"
-            android:id="@+id/nav_statistics" />
-        </group>
+            android:title="@string/drawerEstatisticas" />
+    </group>
 
 
     <item android:title="">

@@ -32,7 +32,7 @@ public class ManageNoteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferencesUtils.INSTANCE.readPreferencesUser(getApplicationContext());
+        setTheme(SharedPreferencesUtils.INSTANCE.readTheme(getApplicationContext()));
         setContentView(R.layout.note_edit);
         setTitle(getString(R.string.noteEditTitle));
 

@@ -36,7 +36,7 @@ class ManageGlobalNoteActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        SharedPreferencesUtils.readPreferencesUser(applicationContext)
+        setTheme(SharedPreferencesUtils.readTheme(applicationContext))
         setContentView(R.layout.note_edit)
         title = getString(R.string.noteEditTitle)
 

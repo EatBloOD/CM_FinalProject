@@ -37,6 +37,17 @@ object SharedPreferencesUtils {
         }
     }
 
+    fun readTheme(context: Context): Int {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        Log.d(TAG, "selected theme ${sharedPreferences!!.getString("themeKey", "THEMERED")!!}")
+        when (sharedPreferences!!.getString("themeKey", "THEMEYELLOW")) {
+            "RedTheme" -> return R.style.RedTheme
+            "YellowTheme" -> return R.style.YellowTheme
+            "GreenTheme" -> return R.style.GreenTheme
+        }
+        return R.style.DayliTheme
+    }
+
     fun readUserName(): String {
         return sharedPreferences!!.getString(NOME, "Default")!!
     }

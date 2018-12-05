@@ -445,147 +445,148 @@
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:id="@+id/llresumoGroupNote_cMain"
                 style="@style/linearLayoutStyle"
-                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/llresumoNote_cMain"
                 android:layout_alignParentStart="true"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
 
                 <TextView
-                    android:text="@string/ultimas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textStyle="normal|bold"
-                    android:textAlignment="center"
                     android:layout_marginBottom="20dp"
-                    android:textSize="18sp" />
+                    android:text="@string/ultimas"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold" />
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:text="Author"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:id="@+id/tvGlobalNote_AUTHOR"
-                        android:layout_weight="1"
-                        android:textSize="16sp"
-                        android:textStyle="normal|bold"
-                        android:textAlignment="center" />
-
-                    <TextView
-                        android:text="Title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/tvGlobalNote_TITLE"
                         android:layout_weight="1"
-                        android:textStyle="normal|bold"
+                        android:text="Author"
+                        android:textAlignment="center"
                         android:textSize="16sp"
-                        android:textAlignment="center" />
+                        android:textStyle="normal|bold" />
+
+                    <TextView
+                        android:id="@+id/tvGlobalNote_TITLE"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Title"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:textStyle="normal|bold" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
                     <LinearLayout
-                        android:orientation="horizontal"
+                        style="@style/linearLayoutStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/linearLayoutStyle">
+                        android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/avatar"
                             android:id="@+id/ivGlobalNote1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="top|left"
-                            android:layout_marginRight="10dp" />
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/avatar" />
 
                         <TextView
-                            android:text="TextView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
                             android:id="@+id/tvGlobalNote_author1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:text="TextView"
                             android:textStyle="normal|bold" />
 
                         <TextView
-                            android:text="TextView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
                             android:id="@+id/tvGlobalNote_title1"
-                            android:layout_weight="1" />
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="TextView" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:orientation="horizontal"
+                        style="@style/linearLayoutStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        style="@style/linearLayoutStyle">
+                        android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/avatar"
                             android:id="@+id/ivGlobalNote2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="top|left"
-                            android:layout_marginRight="10dp" />
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/avatar" />
 
                         <TextView
-                            android:text="TextView"
+                            android:id="@+id/tvGlobalNote_author2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/tvGlobalNote_author2"
                             android:layout_weight="1"
+                            android:text="TextView"
                             android:textStyle="normal|bold" />
 
                         <TextView
-                            android:text="TextView"
+                            android:id="@+id/tvGlobalNote_title2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/tvGlobalNote_title2"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"
+                            android:text="TextView" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:orientation="horizontal"
+                        style="@style/linearLayoutStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        style="@style/linearLayoutStyle">
+                        android:orientation="horizontal">
 
                         <ImageView
+                            android:id="@+id/ivGlobalNote3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/avatar"
-                            android:id="@+id/ivGlobalNote3"
                             android:layout_gravity="top|left"
-                            android:layout_marginRight="10dp" />
+                            android:layout_marginRight="10dp"
+                            android:src="@drawable/avatar" />
 
                         <TextView
-                            android:text="TextView"
+                            android:id="@+id/tvGlobalNote_author3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/tvGlobalNote_author3"
                             android:layout_weight="1"
+                            android:text="TextView"
                             android:textStyle="normal|bold" />
 
                         <TextView
-                            android:text="TextView"
+                            android:id="@+id/tvGlobalNote_title3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/tvGlobalNote_title3"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"
+                            android:text="TextView" />
                     </LinearLayout>
 
                 </LinearLayout>

@@ -45,24 +45,6 @@
             android:layout_weight="1"
             android:textAlignment="center" />
 
-        <EditText
-            android:id="@+id/editTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/registerActivitypassword"
-            android:inputType="textPassword"
-            android:layout_weight="1"
-            android:textAlignment="center" />
-
-        <EditText
-            android:id="@+id/editTextConfirmPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/registerActivityconfirm_password"
-            android:inputType="textPassword"
-            android:layout_weight="1"
-            android:textAlignment="center" />
-
         <Button
             android:id="@+id/buttonCreateAccount"
             android:layout_width="match_parent"
