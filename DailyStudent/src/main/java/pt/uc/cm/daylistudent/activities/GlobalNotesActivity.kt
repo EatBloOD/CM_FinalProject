@@ -39,12 +39,15 @@ class GlobalNotesActivity : AppCompatActivity() {
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(SharedPreferencesUtils.readTheme(applicationContext))
+        SharedPreferencesUtils.readPreferencesUser(applicationContext)
         setContentView(R.layout.activity_global_notes)
         title = getString(R.string.DayliStudentActivitySharedNote)
 
         retrofitUtils = RetrofitUtils()
+    }
 
+    override fun onResume() {
+        super.onResume()
         selectedGroupId = SharedPreferencesUtils.readSelectedGroupId()
         getGroupNotes(selectedGroupId)
 
