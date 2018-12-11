@@ -2,7 +2,9 @@ package pt.uc.cm.daylistudent.activities
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -21,6 +23,10 @@ import pt.uc.cm.daylistudent.utils.SharedPreferencesUtils.NONE_GROUP_ID
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.graphics.Typeface
+import android.widget.TextView
+
+
 
 class GlobalNotesActivity : AppCompatActivity() {
 
@@ -93,9 +99,11 @@ class GlobalNotesActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
                 Log.d(TAG, "deleted groups: ${response.body()}")
+
                 Toast.makeText(applicationContext, "Success exiting group!", Toast.LENGTH_LONG).show()
             }
         })
+
         Toast.makeText(applicationContext, getString(R.string.ExitGroup), Toast.LENGTH_LONG).show()
         SharedPreferencesUtils.writeSelectedGroupId(applicationContext, NONE_GROUP_ID)
         finish()
@@ -126,7 +134,13 @@ class GlobalNotesActivity : AppCompatActivity() {
     private fun getGroupNotes(selectedGroupId: Int) {
         retrofitUtils.getGroupNotes(selectedGroupId, object : Callback<List<Note>> {
             override fun onFailure(call: Call<List<Note>>, t: Throwable) {
-                Toast.makeText(applicationContext, getString(R.string.GetNotesError), Toast.LENGTH_LONG).show()
+
+                val snackbar  = Snackbar.make(window.decorView, getString(R.string.GetNotesError), Snackbar.LENGTH_LONG)
+                val snackbarTextView = snackbar.view.findViewById(android.support.design.R.id.snackbar_text) as TextView
+                snackbar.view.setBackgroundColor(Color.RED)
+                snackbarTextView.setTextColor(Color.WHITE)
+                snackbarTextView.setTypeface(snackbarTextView.typeface, Typeface.BOLD)
+                snackbar.show()
             }
 
             override fun onResponse(call: Call<List<Note>>, response: Response<List<Note>>) {
@@ -139,7 +153,12 @@ class GlobalNotesActivity : AppCompatActivity() {
     private fun deleteGroupNote(noteId: String) {
         retrofitUtils.deleteGroupNote(noteId, object : Callback<Int> {
             override fun onFailure(call: Call<Int>, t: Throwable) {
-                Toast.makeText(applicationContext, getString(R.string.ErrorDeletingNote), Toast.LENGTH_LONG).show()
+                val snackbar  = Snackbar.make(window.decorView, getString(R.string.ErrorDeletingNote), Snackbar.LENGTH_LONG)
+                val snackbarTextView = snackbar.view.findViewById(android.support.design.R.id.snackbar_text) as TextView
+                snackbar.view.setBackgroundColor(Color.RED)
+                snackbarTextView.setTextColor(Color.WHITE)
+                snackbarTextView.setTypeface(snackbarTextView.typeface, Typeface.BOLD)
+                snackbar.show()
             }
 
             override fun onResponse(call: Call<Int>, response: Response<Int>) {

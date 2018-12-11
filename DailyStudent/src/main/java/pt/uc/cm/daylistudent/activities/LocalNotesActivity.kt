@@ -8,8 +8,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.NotificationCompat
 import android.support.v7.app.AlertDialog
@@ -19,10 +22,7 @@ import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ImageView
-import android.widget.SimpleCursorAdapter
-import android.widget.Toast
+import android.widget.*
 import com.google.gson.Gson
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel
 import kotlinx.android.synthetic.main.notes_list.*
@@ -214,7 +214,12 @@ class LocalNotesActivity : AppCompatActivity() {
         scanQrCodeFragment.title = getString(R.string.DayliStudentActivitySendingSharedNote)
         scanQrCodeFragment.scanQrCodeEvents = object : IScanQrCodeEvents {
             override fun onError() {
-                Toast.makeText(applicationContext, getString(R.string.error), Toast.LENGTH_LONG).show()
+                val snackbar  = Snackbar.make(window.decorView, getString(R.string.error), Snackbar.LENGTH_LONG)
+                val snackbarTextView = snackbar.view.findViewById(android.support.design.R.id.snackbar_text) as TextView
+                snackbar.view.setBackgroundColor(Color.RED)
+                snackbarTextView.setTextColor(Color.WHITE)
+                snackbarTextView.setTypeface(snackbarTextView.typeface, Typeface.BOLD)
+                snackbar.show()
             }
 
             override fun onDataScanned(scannedText: String) {
@@ -223,10 +228,15 @@ class LocalNotesActivity : AppCompatActivity() {
                 mDbHelper!!.createNote(note.title, note.body)
                 fillData()
 
-                Toast.makeText(applicationContext,
-                        "${getString(R.string.DayliStudentActivityReceivedSharedNote)} ${note.title}"
-                                + "${getString(R.string.DayliStudentActivityReceived2SharedNote)} ${note.username}.",
-                        Toast.LENGTH_LONG).show()
+                val snackbar  = Snackbar.make(window.decorView, "${getString(R.string.DayliStudentActivityReceivedSharedNote)} ${note.title}"
+                        + "${getString(R.string.DayliStudentActivityReceived2SharedNote)} ${note.username}.", Snackbar.LENGTH_LONG)
+                val snackbarTextView = snackbar.view.findViewById(android.support.design.R.id.snackbar_text) as TextView
+                snackbar.view.setBackgroundColor(Color.GREEN)
+                snackbarTextView.setTextColor(Color.BLACK)
+                snackbarTextView.setTypeface(snackbarTextView.typeface, Typeface.BOLD)
+                snackbar.show()
+
+//                Toast.makeText(applicationContext,"${getString(R.string.DayliStudentActivityReceivedSharedNote)} ${note.title}"+ "${getString(R.string.DayliStudentActivityReceived2SharedNote)} ${note.username}.", Toast.LENGTH_LONG).show()
 
                 buildNotification(note)
             }

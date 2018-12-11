@@ -165,4 +165,6 @@
     <string name="CreateNewGroupError">Error creating new group! Please try again.</string>
     <string name="CreateNewGroupSuccess">You have created a new group with success!</string>
     <string name="ErrorDeletingNote">Cannot delete note! Please try again later.</string>
+    <string name="ErrorMoneyValueFormat">Money value invalid</string>
+    <string name="walletEmptyAmount">You did not enter a amount value</string>
 </resources>

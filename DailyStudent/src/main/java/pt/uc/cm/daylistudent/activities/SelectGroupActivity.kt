@@ -1,12 +1,18 @@
 package pt.uc.cm.daylistudent.activities
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_select_group.*
 import pt.uc.cm.daylistudent.R
@@ -91,8 +97,12 @@ class SelectGroupActivity : AppCompatActivity() {
         val groupName = etNewGroupName.text.toString()
         retrofit.postGroup(groupName, object : Callback<Int> {
             override fun onFailure(call: Call<Int>, t: Throwable) {
-                Toast.makeText(applicationContext, getString(R.string.CreateNewGroupError),
-                        Toast.LENGTH_LONG).show()
+                val snackbar  = Snackbar.make(window.decorView, getString(R.string.ExitGroup), Snackbar.LENGTH_LONG)
+                val snackbarTextView = snackbar.view.findViewById(android.support.design.R.id.snackbar_text) as TextView
+                snackbar.view.setBackgroundColor(Color.RED)
+                snackbarTextView.setTextColor(Color.WHITE)
+                snackbarTextView.setTypeface(snackbarTextView.typeface, Typeface.BOLD)
+                snackbar.show()
             }
 
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
