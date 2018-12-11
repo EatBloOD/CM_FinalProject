@@ -1,6 +1,10 @@
 package pt.uc.cm.daylistudent.activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -18,6 +22,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -135,7 +141,11 @@ public class NoteBudgetActivity extends AppCompatActivity {
             if (obs != null)
                 edtxtDesc.setText(obs);
             if (photo != null) {
-                createFile(photo);
+                try {
+                    createFile(photo);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
@@ -204,22 +214,22 @@ public class NoteBudgetActivity extends AppCompatActivity {
                 finish();
             } else {
                 if (edtxtTitle.getText().length() <= 0) {
-                    new SnackBarUtil().showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyTitle, true);
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyTitle, true);
                 } else if (spContas.getCount() <= 0) { // TEM QUE SER UM PORQUE MESMO QUE APAGUE TODAS TEM LA SEMPRE O N/D
-                    new SnackBarUtil().showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyWallet, true);
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyWallet, true);
                 } else if (spContas.getSelectedItem() == null) {
-                    new SnackBarUtil().showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyWallets, true);
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyWallets, true);
                     Snackbar snackbar  = Snackbar.make(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyWallets, Snackbar.LENGTH_LONG);
                 } else if (spLucroDespesa.getSelectedItem().toString().compareTo("N/D") == 0) {
-                    new SnackBarUtil().showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyType, true);
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyType, true);
                 } else if (spTipoValor.getSelectedItem().toString().compareTo("N/D") == 0) {
-                    new SnackBarUtil().showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyCategorie, true);
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyCategorie, true);
                 } else {
-                    new SnackBarUtil().showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmpty, true);
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmpty, true);
                 }
             }
         } catch (NumberFormatException e) {
-            new SnackBarUtil().showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetNumberException, true);
+            SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetNumberException, true);
         }
     }
 
@@ -236,7 +246,11 @@ public class NoteBudgetActivity extends AppCompatActivity {
                 case ACTIVITY_PHOTO:
                     imageURL = extras.getString("TITULO");
                     Log.i(TAG, imageURL);
-                    createFile(imageURL);
+                    try {
+                        createFile(imageURL);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 default:
                     Log.i(TAG, "Back error");
@@ -244,13 +258,60 @@ public class NoteBudgetActivity extends AppCompatActivity {
         }
     }
 
-    public void createFile(String imagem) {
+    public void createFile(String imagem) throws IOException {
+        ExifInterface ei = new ExifInterface(imagem);
+        int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                ExifInterface.ORIENTATION_UNDEFINED);
+
+        Bitmap rotatedBitmap = null;
+        Bitmap bitmap = getBitmap(imagem);
+        switch(orientation) {
+
+            case ExifInterface.ORIENTATION_ROTATE_90:
+                rotatedBitmap = rotateImage(bitmap, 90);
+                break;
+
+            case ExifInterface.ORIENTATION_ROTATE_180:
+                rotatedBitmap = rotateImage(bitmap, 180);
+                break;
+
+            case ExifInterface.ORIENTATION_ROTATE_270:
+                rotatedBitmap = rotateImage(bitmap, 270);
+                break;
+
+            case ExifInterface.ORIENTATION_NORMAL:
+            default:
+                rotatedBitmap = bitmap;
+        }
+        myImage.setImageBitmap(bitmap);
+        /*
         File imgFile = new File(imagem);
 
         if (imgFile.exists()) {
             myImage.setImageURI(Uri.fromFile(imgFile));
-        }
+        }*/
     }
+
+    public static Bitmap rotateImage(Bitmap source, float angle) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(angle);
+        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(),
+                matrix, true);
+    }
+
+    public Bitmap getBitmap(String path) {
+        try {
+            Bitmap bitmap=null;
+            File f= new File(path);
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+
+            bitmap = BitmapFactory.decodeStream(new FileInputStream(f), null, options);
+            return bitmap;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }}
 
     public void openGallery(View view) {
         if(photo != null) {
@@ -258,7 +319,7 @@ public class NoteBudgetActivity extends AppCompatActivity {
             StrictMode.setVmPolicy(builder.build());
             File root = new File(photo);
             Intent intent = new Intent();
-            intent.setAction(Intent.ACTION_VIEW);
+            intent.setAction(android.content.Intent.ACTION_VIEW);
             intent.setData(Uri.fromFile(root));
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             intent.setDataAndType(Uri.fromFile(root), "image/*");

@@ -97,7 +97,7 @@ class LocalNotesActivity : AppCompatActivity() {
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        SharedPreferencesUtils.readPreferencesUser(applicationContext)
+        setTheme(SharedPreferencesUtils.readTheme(applicationContext))
         setContentView(R.layout.notes_list)
 
         title = getString(R.string.dayliStudentActivityTitle)
@@ -212,7 +212,7 @@ class LocalNotesActivity : AppCompatActivity() {
         scanQrCodeFragment.title = getString(R.string.DayliStudentActivitySendingSharedNote)
         scanQrCodeFragment.scanQrCodeEvents = object : IScanQrCodeEvents {
             override fun onError() {
-                SnackBarUtil().showSnackBar(window.decorView.rootView, R.string.error, true)
+                SnackBarUtil.showSnackBar(window.decorView.rootView, R.string.error, true)
             }
 
             override fun onDataScanned(scannedText: String) {
@@ -221,7 +221,7 @@ class LocalNotesActivity : AppCompatActivity() {
                 mDbHelper!!.createNote(note.title, note.body)
                 fillData()
 
-                SnackBarUtil().showSnackBarStr(window.decorView.rootView, "${getString(R.string.DayliStudentActivityReceivedSharedNote)} ${note.title}" + "${getString(R.string.DayliStudentActivityReceived2SharedNote)} ${note.username}.", false)
+                SnackBarUtil.showSnackBarStr(window.decorView.rootView, "${getString(R.string.DayliStudentActivityReceivedSharedNote)} ${note.title}" + "${getString(R.string.DayliStudentActivityReceived2SharedNote)} ${note.username}.", false)
 
                 buildNotification(note)
             }
@@ -249,9 +249,9 @@ class LocalNotesActivity : AppCompatActivity() {
 
     private fun buildNotification(note: Note) {
         mBuilder = NotificationCompat.Builder(applicationContext)
-        mBuilder!!.setSmallIcon(R.drawable.ic_account_balance_wallet_black_24dp)
-        mBuilder!!.setContentTitle(note.title)
-                .setContentText(note.body)
+        mBuilder!!.setSmallIcon(R.drawable.edit)
+        mBuilder!!.setContentTitle(getString(R.string.DayliStudentActivityReceivedSharedNote))
+                .setContentText("${getString(R.string.contentMainultimas_notas_tiradas_title)} ${note.title}")
                 .setAutoCancel(true)
 
         mNotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager

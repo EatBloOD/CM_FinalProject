@@ -8,10 +8,8 @@ import android.widget.TextView;
 
 
 public class SnackBarUtil {
-    public SnackBarUtil() {
-    }
 
-    public void showSnackBar(View v, int resID, boolean error) {
+    public static void showSnackBar(View v, int resID, boolean error) {
         Snackbar snackbar  = Snackbar.make(v, resID, Snackbar.LENGTH_LONG);
         TextView snackbarTextView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
         snackbarTextView.setTypeface(snackbarTextView.getTypeface(), Typeface.BOLD);
@@ -28,7 +26,7 @@ public class SnackBarUtil {
         }
     }
 
-    public void showSnackBarStr(View v, String resID, boolean error) {
+    public static void showSnackBarStr(View v, String resID, boolean error) {
         Snackbar snackbar  = Snackbar.make(v, resID, Snackbar.LENGTH_LONG);
         TextView snackbarTextView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
         snackbarTextView.setTypeface(snackbarTextView.getTypeface(), Typeface.BOLD);

@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onPostResume() {
-        SharedPreferencesUtils.INSTANCE.readPreferencesUser(getApplicationContext());
+        setTheme(SharedPreferencesUtils.INSTANCE.readTheme(getApplicationContext()));
         SharedPreferencesUtils.INSTANCE.readInfoUser(getApplicationContext(), tvUserName, tvEmail);
         super.onPostResume();
 
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferencesUtils.INSTANCE.readPreferencesUser(getApplicationContext());
+        setTheme(SharedPreferencesUtils.INSTANCE.readTheme(getApplicationContext()));
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -333,14 +333,13 @@ public class MainActivity extends AppCompatActivity
             // VAI BUSCAR O USER NAME E A PASSWORD
             String userName = editTextUserName.getText().toString();
             String email = editTextEmail.getText().toString();
-
             // VERIFICA SE ESTÁ TUDO BEM FORMATADO
             if (userName.equals("")) { ;
-                new SnackBarUtil().showSnackBar(getWindow().getDecorView().getRootView(), R.string.mainActivityRegisterEmptyFields, true);
+                SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.mainActivityRegisterEmptyFields, true);
                 return;
             }
             if (!email.contains("@") || !email.contains(".")) {
-                new SnackBarUtil().showSnackBar(getWindow().getDecorView().getRootView(), R.string.mainActivityRegisterEmail, true);
+                SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.mainActivityRegisterEmail, true);
                 return;
             }
             else {

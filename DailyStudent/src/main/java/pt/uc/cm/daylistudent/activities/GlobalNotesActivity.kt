@@ -42,7 +42,7 @@ class GlobalNotesActivity : AppCompatActivity() {
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        SharedPreferencesUtils.readPreferencesUser(applicationContext)
+        setTheme(SharedPreferencesUtils.readTheme(applicationContext))
         setContentView(R.layout.activity_global_notes)
         title = getString(R.string.DayliStudentActivitySharedNote)
 
@@ -96,11 +96,9 @@ class GlobalNotesActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
                 Log.d(TAG, "deleted groups: ${response.body()}")
-
                 Toast.makeText(applicationContext, "Success exiting group!", Toast.LENGTH_LONG).show()
             }
         })
-
         Toast.makeText(applicationContext, getString(R.string.ExitGroup), Toast.LENGTH_LONG).show()
         SharedPreferencesUtils.writeSelectedGroupId(applicationContext, NONE_GROUP_ID)
         finish()
@@ -131,7 +129,7 @@ class GlobalNotesActivity : AppCompatActivity() {
     private fun getGroupNotes(selectedGroupId: Int) {
         retrofitUtils.getGroupNotes(selectedGroupId, object : Callback<List<Note>> {
             override fun onFailure(call: Call<List<Note>>, t: Throwable) {
-                SnackBarUtil().showSnackBar(window.decorView.rootView, R.string.GetNotesError, true)
+                SnackBarUtil.showSnackBar(window.decorView.rootView, R.string.GetNotesError, true)
             }
 
             override fun onResponse(call: Call<List<Note>>, response: Response<List<Note>>) {
@@ -144,7 +142,7 @@ class GlobalNotesActivity : AppCompatActivity() {
     private fun deleteGroupNote(noteId: String) {
         retrofitUtils.deleteGroupNote(noteId, object : Callback<Int> {
             override fun onFailure(call: Call<Int>, t: Throwable) {
-                SnackBarUtil().showSnackBar(window.decorView.rootView, R.string.ErrorDeletingNote, true)
+                SnackBarUtil.showSnackBar(window.decorView.rootView, R.string.ErrorDeletingNote, true)
             }
 
             override fun onResponse(call: Call<Int>, response: Response<Int>) {

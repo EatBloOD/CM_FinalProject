@@ -32,7 +32,7 @@ public class ManageNoteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferencesUtils.INSTANCE.readPreferencesUser(getApplicationContext());
+        setTheme(SharedPreferencesUtils.INSTANCE.readTheme(getApplicationContext()));
         setContentView(R.layout.note_edit);
         setTitle(getString(R.string.noteEditTitle));
 
@@ -78,7 +78,7 @@ public class ManageNoteActivity extends AppCompatActivity {
         try {
             startActivity(Intent.createChooser(email, getString(R.string.noteEditSelectEmailApp)));
         } catch (ActivityNotFoundException e) {
-            new SnackBarUtil().showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteEditNoEmailApp, true);
+            SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteEditNoEmailApp, true);
         }
     }
 
@@ -96,7 +96,7 @@ public class ManageNoteActivity extends AppCompatActivity {
             setResult(RESULT_OK, mIntent);
             finish();
         } else {
-            new SnackBarUtil().showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteEditEmptyTitle, true);
+            SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteEditEmptyTitle, true);
         }
     }
 }

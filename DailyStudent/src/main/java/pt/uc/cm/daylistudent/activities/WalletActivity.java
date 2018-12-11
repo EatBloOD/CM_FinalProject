@@ -38,7 +38,7 @@ public class WalletActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferencesUtils.INSTANCE.readPreferencesUser(getApplicationContext());
+        setTheme(SharedPreferencesUtils.INSTANCE.readTheme(getApplicationContext()));
         mDbBudgetHelper = new BudgetDbAdapter(this);
 
         setContentView(R.layout.wallet);
@@ -95,15 +95,15 @@ public class WalletActivity extends AppCompatActivity {
                         setResult(RESULT_OK, mIntent);
                         finish();
                     }catch(NumberFormatException e){
-                        new SnackBarUtil().showSnackBar(getWindow().getDecorView().getRootView(), R.string.ErrorMoneyValueFormat, true);
+                        SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.ErrorMoneyValueFormat, true);
                     }
                 }
                 else{
-                    new SnackBarUtil().showSnackBar(getWindow().getDecorView().getRootView(), R.string.walletEmptyAmount, true);
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.walletEmptyAmount, true);
                 }
             }
             else{
-                new SnackBarUtil().showSnackBar(getWindow().getDecorView().getRootView(), R.string.walletEmptyTitle, true);
+                SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.walletEmptyTitle, true);
             }
         });
     }
