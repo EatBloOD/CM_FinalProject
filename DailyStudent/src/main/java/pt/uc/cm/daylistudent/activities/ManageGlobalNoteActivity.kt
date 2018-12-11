@@ -14,6 +14,7 @@ import pt.uc.cm.daylistudent.R
 import pt.uc.cm.daylistudent.models.Note
 import pt.uc.cm.daylistudent.utils.RetrofitUtils
 import pt.uc.cm.daylistudent.utils.SharedPreferencesUtils
+import pt.uc.cm.daylistudent.utils.SnackBarUtil
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -64,7 +65,7 @@ class ManageGlobalNoteActivity : AppCompatActivity() {
         try {
             startActivity(Intent.createChooser(email, getString(R.string.noteEditSelectEmailApp)))
         } catch (e: ActivityNotFoundException) {
-            Toast.makeText(applicationContext, R.string.noteEditNoEmailApp, Toast.LENGTH_SHORT).show()
+            SnackBarUtil().showSnackBar(window.decorView.rootView, R.string.noteEditNoEmailApp, true)
         }
     }
 

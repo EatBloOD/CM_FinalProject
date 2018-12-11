@@ -26,7 +26,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.ParseException;
 import java.util.List;
@@ -37,6 +36,7 @@ import pt.uc.cm.daylistudent.adapters.GlobalNotesDbAdapter;
 import pt.uc.cm.daylistudent.adapters.NotesDbAdapter;
 import pt.uc.cm.daylistudent.adapters.WalletDbAdapter;
 import pt.uc.cm.daylistudent.utils.SharedPreferencesUtils;
+import pt.uc.cm.daylistudent.utils.SnackBarUtil;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity
 
     public static final String NOME = "nameKey";
     public static final String EMAIL = "emailKey";
-    public static final String PASSWORD = "passwordKey";
 
     TextView tvUserName, tvEmail, receitas, despesas,
             wallet1, wallet2, total, wallet1_value,
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onPostResume() {
-        setTheme(SharedPreferencesUtils.INSTANCE.readTheme(getApplicationContext()));
+        SharedPreferencesUtils.INSTANCE.readPreferencesUser(getApplicationContext());
         SharedPreferencesUtils.INSTANCE.readInfoUser(getApplicationContext(), tvUserName, tvEmail);
         super.onPostResume();
 
@@ -105,7 +104,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(SharedPreferencesUtils.INSTANCE.readTheme(getApplicationContext()));
+        SharedPreferencesUtils.INSTANCE.readPreferencesUser(getApplicationContext());
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -334,15 +333,17 @@ public class MainActivity extends AppCompatActivity
             // VAI BUSCAR O USER NAME E A PASSWORD
             String userName = editTextUserName.getText().toString();
             String email = editTextEmail.getText().toString();
+
             // VERIFICA SE ESTÁ TUDO BEM FORMATADO
-            if (userName.equals("") || email.equals("")) {
-                Toast.makeText(getApplicationContext(), R.string.mainActivityRegisterEmptyFields, Toast.LENGTH_LONG).show();
+            if (userName.equals("")) { ;
+                new SnackBarUtil().showSnackBar(getWindow().getDecorView().getRootView(), R.string.mainActivityRegisterEmptyFields, true);
                 return;
             }
             if (!email.contains("@") || !email.contains(".")) {
-                Toast.makeText(getApplicationContext(), R.string.mainActivityRegisterEmail, Toast.LENGTH_LONG).show();
+                new SnackBarUtil().showSnackBar(getWindow().getDecorView().getRootView(), R.string.mainActivityRegisterEmail, true);
                 return;
-            } else {
+            }
+            else {
                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
 
                 SharedPreferences.Editor editor = sharedPreferences.edit();
