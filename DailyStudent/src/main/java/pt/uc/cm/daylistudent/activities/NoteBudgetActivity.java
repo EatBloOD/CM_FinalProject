@@ -1,13 +1,12 @@
 package pt.uc.cm.daylistudent.activities;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
-import android.media.ExifInterface;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -19,11 +18,9 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -140,11 +137,7 @@ public class NoteBudgetActivity extends AppCompatActivity {
             if (obs != null)
                 edtxtDesc.setText(obs);
             if (photo != null) {
-                try {
-                    createFile(photo);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                createFile(photo);
             }
         }
 
@@ -213,21 +206,56 @@ public class NoteBudgetActivity extends AppCompatActivity {
                 finish();
             } else {
                 if (edtxtTitle.getText().length() <= 0) {
-                    Toast.makeText(getApplicationContext(), R.string.noteBudgetEmptyTitle, Toast.LENGTH_LONG).show();
+                    Snackbar snackbar  = Snackbar.make(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyTitle, Snackbar.LENGTH_LONG);
+                    TextView snackbarTextView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+                    snackbar.getView().setBackgroundColor(Color.RED);
+                    snackbarTextView.setTextColor(Color.WHITE);
+                    snackbarTextView.setTypeface(snackbarTextView.getTypeface(), Typeface.BOLD);
+                    snackbar.show();
                 } else if (spContas.getCount() <= 0) { // TEM QUE SER UM PORQUE MESMO QUE APAGUE TODAS TEM LA SEMPRE O N/D
-                    Toast.makeText(getApplicationContext(), R.string.noteBudgetEmptyWallet, Toast.LENGTH_LONG).show();
+                    Snackbar snackbar  = Snackbar.make(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyWallet, Snackbar.LENGTH_LONG);
+                    TextView snackbarTextView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+                    snackbar.getView().setBackgroundColor(Color.RED);
+                    snackbarTextView.setTextColor(Color.WHITE);
+                    snackbarTextView.setTypeface(snackbarTextView.getTypeface(), Typeface.BOLD);
+                    snackbar.show();
                 } else if (spContas.getSelectedItem() == null) {
-                    Toast.makeText(getApplicationContext(), R.string.noteBudgetEmptyWallets, Toast.LENGTH_LONG).show();
+                    Snackbar snackbar  = Snackbar.make(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyWallets, Snackbar.LENGTH_LONG);
+                    TextView snackbarTextView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+                    snackbar.getView().setBackgroundColor(Color.RED);
+                    snackbarTextView.setTextColor(Color.WHITE);
+                    snackbarTextView.setTypeface(snackbarTextView.getTypeface(), Typeface.BOLD);
+                    snackbar.show();
                 } else if (spLucroDespesa.getSelectedItem().toString().compareTo("N/D") == 0) {
-                    Toast.makeText(getApplicationContext(), R.string.noteBudgetEmptyType, Toast.LENGTH_LONG).show();
+                    Snackbar snackbar  = Snackbar.make(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyType, Snackbar.LENGTH_LONG);
+                    TextView snackbarTextView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+                    snackbar.getView().setBackgroundColor(Color.RED);
+                    snackbarTextView.setTextColor(Color.WHITE);
+                    snackbarTextView.setTypeface(snackbarTextView.getTypeface(), Typeface.BOLD);
+                    snackbar.show();
                 } else if (spTipoValor.getSelectedItem().toString().compareTo("N/D") == 0) {
-                    Toast.makeText(getApplicationContext(), R.string.noteBudgetEmptyCategorie, Toast.LENGTH_LONG).show();
+                    Snackbar snackbar  = Snackbar.make(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyCategorie, Snackbar.LENGTH_LONG);
+                    TextView snackbarTextView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+                    snackbar.getView().setBackgroundColor(Color.RED);
+                    snackbarTextView.setTextColor(Color.WHITE);
+                    snackbarTextView.setTypeface(snackbarTextView.getTypeface(), Typeface.BOLD);
+                    snackbar.show();
                 } else {
-                    Toast.makeText(getApplicationContext(), R.string.noteBudgetEmpty, Toast.LENGTH_LONG).show();
+                    Snackbar snackbar  = Snackbar.make(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmpty, Snackbar.LENGTH_LONG);
+                    TextView snackbarTextView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+                    snackbar.getView().setBackgroundColor(Color.RED);
+                    snackbarTextView.setTextColor(Color.WHITE);
+                    snackbarTextView.setTypeface(snackbarTextView.getTypeface(), Typeface.BOLD);
+                    snackbar.show();
                 }
             }
         } catch (NumberFormatException e) {
-            Toast.makeText(getApplicationContext(), R.string.noteBudgetNumberException, Toast.LENGTH_LONG).show();
+            Snackbar snackbar  = Snackbar.make(getWindow().getDecorView().getRootView(), R.string.noteBudgetNumberException, Snackbar.LENGTH_LONG);
+            TextView snackbarTextView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+            snackbar.getView().setBackgroundColor(Color.RED);
+            snackbarTextView.setTextColor(Color.WHITE);
+            snackbarTextView.setTypeface(snackbarTextView.getTypeface(), Typeface.BOLD);
+            snackbar.show();
         }
     }
 
@@ -244,11 +272,7 @@ public class NoteBudgetActivity extends AppCompatActivity {
                 case ACTIVITY_PHOTO:
                     imageURL = extras.getString("TITULO");
                     Log.i(TAG, imageURL);
-                    try {
-                        createFile(imageURL);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    createFile(imageURL);
                     break;
                 default:
                     Log.i(TAG, "Back error");
@@ -256,60 +280,13 @@ public class NoteBudgetActivity extends AppCompatActivity {
         }
     }
 
-    public void createFile(String imagem) throws IOException {
-        ExifInterface ei = new ExifInterface(imagem);
-        int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION,
-                ExifInterface.ORIENTATION_UNDEFINED);
-
-        Bitmap rotatedBitmap = null;
-        Bitmap bitmap = getBitmap(imagem);
-        switch(orientation) {
-
-            case ExifInterface.ORIENTATION_ROTATE_90:
-                rotatedBitmap = rotateImage(bitmap, 90);
-                break;
-
-            case ExifInterface.ORIENTATION_ROTATE_180:
-                rotatedBitmap = rotateImage(bitmap, 180);
-                break;
-
-            case ExifInterface.ORIENTATION_ROTATE_270:
-                rotatedBitmap = rotateImage(bitmap, 270);
-                break;
-
-            case ExifInterface.ORIENTATION_NORMAL:
-            default:
-                rotatedBitmap = bitmap;
-        }
-        myImage.setImageBitmap(bitmap);
-        /*
+    public void createFile(String imagem) {
         File imgFile = new File(imagem);
 
         if (imgFile.exists()) {
             myImage.setImageURI(Uri.fromFile(imgFile));
-        }*/
+        }
     }
-
-    public static Bitmap rotateImage(Bitmap source, float angle) {
-        Matrix matrix = new Matrix();
-        matrix.postRotate(angle);
-        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(),
-                matrix, true);
-    }
-
-    public Bitmap getBitmap(String path) {
-        try {
-            Bitmap bitmap=null;
-            File f= new File(path);
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-
-            bitmap = BitmapFactory.decodeStream(new FileInputStream(f), null, options);
-            return bitmap;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }}
 
     public void openGallery(View view) {
         if(photo != null) {
@@ -317,7 +294,7 @@ public class NoteBudgetActivity extends AppCompatActivity {
             StrictMode.setVmPolicy(builder.build());
             File root = new File(photo);
             Intent intent = new Intent();
-            intent.setAction(android.content.Intent.ACTION_VIEW);
+            intent.setAction(Intent.ACTION_VIEW);
             intent.setData(Uri.fromFile(root));
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             intent.setDataAndType(Uri.fromFile(root), "image/*");

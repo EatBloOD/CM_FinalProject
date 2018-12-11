@@ -1,13 +1,16 @@
 package pt.uc.cm.daylistudent.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -38,7 +41,7 @@ public class WalletActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(SharedPreferencesUtils.INSTANCE.readTheme(getApplicationContext()));
+        SharedPreferencesUtils.INSTANCE.readPreferencesUser(getApplicationContext());
         mDbBudgetHelper = new BudgetDbAdapter(this);
 
         setContentView(R.layout.wallet);
@@ -79,19 +82,47 @@ public class WalletActivity extends AppCompatActivity {
         confirmWalletButton.setOnClickListener(view -> {
             Bundle bundle = new Bundle();
             if (edtxtTitle.getText().length() > 0) {
-                bundle.putString(BudgetDbAdapter.KEY_TITLE, edtxtTitle.getText().toString());
-                bundle.putString(BudgetDbAdapter.KEY_TYPE, edtxtTipo.getText().toString());
-                bundle.putString(BudgetDbAdapter.KEY_VALUE, edtxtValor.getText().toString());
+                if(edtxtValor.getText().length() > 0){
+                    try{
+                        Double.parseDouble(edtxtValor.getText().toString());
 
-                if (mRowId != null) //ou seja é uma edição?
-                    bundle.putLong(BudgetDbAdapter.KEY_ROWID, mRowId);
+                        bundle.putString(BudgetDbAdapter.KEY_TITLE, edtxtTitle.getText().toString());
+                        bundle.putString(BudgetDbAdapter.KEY_TYPE, edtxtTipo.getText().toString());
+                        bundle.putString(BudgetDbAdapter.KEY_VALUE, edtxtValor.getText().toString());
 
-                Intent mIntent = new Intent();
-                mIntent.putExtras(bundle);
-                setResult(RESULT_OK, mIntent);
-                finish();
-            } else
-                Toast.makeText(getApplicationContext(), R.string.walletEmptyTitle, Toast.LENGTH_LONG).show();
+                        if (mRowId != null) //ou seja é uma edição?
+                            bundle.putLong(BudgetDbAdapter.KEY_ROWID, mRowId);
+
+                        Intent mIntent = new Intent();
+                        mIntent.putExtras(bundle);
+                        setResult(RESULT_OK, mIntent);
+                        finish();
+                    }catch(NumberFormatException e){
+                        Snackbar snackbar  = Snackbar.make(getWindow().getDecorView().getRootView(), R.string.ErrorMoneyValueFormat, Snackbar.LENGTH_LONG);
+                        TextView snackbarTextView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+                        snackbar.getView().setBackgroundColor(Color.RED);
+                        snackbarTextView.setTextColor(Color.WHITE);
+                        snackbarTextView.setTypeface(snackbarTextView.getTypeface(), Typeface.BOLD);
+                        snackbar.show();
+                    }
+                }
+                else{
+                    Snackbar snackbar  = Snackbar.make(getWindow().getDecorView().getRootView(), R.string.walletEmptyAmount, Snackbar.LENGTH_LONG);
+                    TextView snackbarTextView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+                    snackbar.getView().setBackgroundColor(Color.RED);
+                    snackbarTextView.setTextColor(Color.WHITE);
+                    snackbarTextView.setTypeface(snackbarTextView.getTypeface(), Typeface.BOLD);
+                    snackbar.show();
+                }
+            }
+            else{
+                Snackbar snackbar  = Snackbar.make(getWindow().getDecorView().getRootView(), R.string.walletEmptyTitle, Snackbar.LENGTH_LONG);
+                TextView snackbarTextView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+                snackbar.getView().setBackgroundColor(Color.RED);
+                snackbarTextView.setTextColor(Color.WHITE);
+                snackbarTextView.setTypeface(snackbarTextView.getTypeface(), Typeface.BOLD);
+                snackbar.show();
+            }
         });
     }
 

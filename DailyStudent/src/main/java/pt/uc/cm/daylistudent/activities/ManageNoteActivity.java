@@ -2,12 +2,16 @@ package pt.uc.cm.daylistudent.activities;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import pt.uc.cm.daylistudent.R;
@@ -32,7 +36,7 @@ public class ManageNoteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(SharedPreferencesUtils.INSTANCE.readTheme(getApplicationContext()));
+        SharedPreferencesUtils.INSTANCE.readPreferencesUser(getApplicationContext());
         setContentView(R.layout.note_edit);
         setTitle(getString(R.string.noteEditTitle));
 
@@ -78,7 +82,12 @@ public class ManageNoteActivity extends AppCompatActivity {
         try {
             startActivity(Intent.createChooser(email, getString(R.string.noteEditSelectEmailApp)));
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(getApplicationContext(), R.string.noteEditNoEmailApp, Toast.LENGTH_SHORT).show();
+            Snackbar snackbar  = Snackbar.make(getWindow().getDecorView().getRootView(), R.string.noteEditNoEmailApp, Snackbar.LENGTH_LONG);
+            TextView snackbarTextView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+            snackbar.getView().setBackgroundColor(Color.RED);
+            snackbarTextView.setTextColor(Color.WHITE);
+            snackbarTextView.setTypeface(snackbarTextView.getTypeface(), Typeface.BOLD);
+            snackbar.show();
         }
     }
 
@@ -96,7 +105,12 @@ public class ManageNoteActivity extends AppCompatActivity {
             setResult(RESULT_OK, mIntent);
             finish();
         } else {
-            Toast.makeText(getApplicationContext(), R.string.noteEditEmptyTitle, Toast.LENGTH_LONG).show();
+            Snackbar snackbar  = Snackbar.make(getWindow().getDecorView().getRootView(), R.string.noteEditEmptyTitle, Snackbar.LENGTH_LONG);
+            TextView snackbarTextView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+            snackbar.getView().setBackgroundColor(Color.RED);
+            snackbarTextView.setTextColor(Color.WHITE);
+            snackbarTextView.setTypeface(snackbarTextView.getTypeface(), Typeface.BOLD);
+            snackbar.show();
         }
     }
 }

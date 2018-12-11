@@ -5,10 +5,13 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
@@ -74,7 +77,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onPostResume() {
-        setTheme(SharedPreferencesUtils.INSTANCE.readTheme(getApplicationContext()));
+        SharedPreferencesUtils.INSTANCE.readPreferencesUser(getApplicationContext());
         SharedPreferencesUtils.INSTANCE.readInfoUser(getApplicationContext(), tvUserName, tvEmail);
         super.onPostResume();
 
@@ -105,7 +108,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(SharedPreferencesUtils.INSTANCE.readTheme(getApplicationContext()));
+        SharedPreferencesUtils.INSTANCE.readPreferencesUser(getApplicationContext());
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -334,15 +337,29 @@ public class MainActivity extends AppCompatActivity
             // VAI BUSCAR O USER NAME E A PASSWORD
             String userName = editTextUserName.getText().toString();
             String email = editTextEmail.getText().toString();
+
             // VERIFICA SE ESTÁ TUDO BEM FORMATADO
-            if (userName.equals("") || email.equals("")) {
-                Toast.makeText(getApplicationContext(), R.string.mainActivityRegisterEmptyFields, Toast.LENGTH_LONG).show();
+            if (userName.equals("")) {
+//                Toast.makeText(getApplicationContext(), R.string.mainActivityRegisterEmptyFields, Toast.LENGTH_LONG).show();
+
+                Snackbar snackbar  = Snackbar.make(getWindow().getDecorView().getRootView(), R.string.mainActivityRegisterEmptyFields, Snackbar.LENGTH_LONG);
+                TextView snackbarTextView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+                snackbar.getView().setBackgroundColor(Color.RED);
+                snackbarTextView.setTextColor(Color.WHITE);
+                snackbarTextView.setTypeface(snackbarTextView.getTypeface(), Typeface.BOLD);
+                snackbar.show();
                 return;
             }
             if (!email.contains("@") || !email.contains(".")) {
-                Toast.makeText(getApplicationContext(), R.string.mainActivityRegisterEmail, Toast.LENGTH_LONG).show();
+                Snackbar snackbar  = Snackbar.make(getWindow().getDecorView().getRootView(), R.string.mainActivityRegisterEmail, Snackbar.LENGTH_LONG);
+                TextView snackbarTextView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+                snackbar.getView().setBackgroundColor(Color.RED);
+                snackbarTextView.setTextColor(Color.WHITE);
+                snackbarTextView.setTypeface(snackbarTextView.getTypeface(), Typeface.BOLD);
+                snackbar.show();
                 return;
-            } else {
+            }
+            else {
                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
 
                 SharedPreferences.Editor editor = sharedPreferences.edit();
