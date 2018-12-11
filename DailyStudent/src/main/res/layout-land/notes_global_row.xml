@@ -1,34 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_weight="1"
     android:orientation="horizontal">
 
-
     <LinearLayout
         android:id="@+id/llresumo_cMain"
         style="@style/linearLayoutStyle"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvGlobalTitle"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TITLE"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="normal|bold" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvGlobalTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="TITLE"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="normal|bold" />
+
+            <ImageView
+                android:id="@+id/ivDeleteNote"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@android:drawable/ic_delete" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llresumo_in2_cMain"
@@ -77,13 +88,6 @@
                     android:layout_weight="1"
                     android:text="BODY"
                     android:textStyle="normal|italic" />
-
-                <TextView
-                    android:id="@+id/tvGlobalDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="DATE" />
 
             </LinearLayout>
 

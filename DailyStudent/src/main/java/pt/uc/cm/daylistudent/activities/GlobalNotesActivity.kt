@@ -44,7 +44,10 @@ class GlobalNotesActivity : AppCompatActivity() {
         title = getString(R.string.DayliStudentActivitySharedNote)
 
         retrofitUtils = RetrofitUtils()
+    }
 
+    override fun onResume() {
+        super.onResume()
         selectedGroupId = SharedPreferencesUtils.readSelectedGroupId()
         getGroupNotes(selectedGroupId)
 
