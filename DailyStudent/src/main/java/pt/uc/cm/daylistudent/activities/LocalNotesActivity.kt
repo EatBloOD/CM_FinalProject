@@ -19,10 +19,7 @@ import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ImageView
-import android.widget.SimpleCursorAdapter
-import android.widget.Toast
+import android.widget.*
 import com.google.gson.Gson
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel
 import kotlinx.android.synthetic.main.notes_list.*
@@ -35,6 +32,7 @@ import pt.uc.cm.daylistudent.models.Note
 import pt.uc.cm.daylistudent.utils.EncryptionUtils
 import pt.uc.cm.daylistudent.utils.QRCodeUtils
 import pt.uc.cm.daylistudent.utils.SharedPreferencesUtils
+import pt.uc.cm.daylistudent.utils.SnackBarUtil
 
 class LocalNotesActivity : AppCompatActivity() {
 
@@ -214,7 +212,7 @@ class LocalNotesActivity : AppCompatActivity() {
         scanQrCodeFragment.title = getString(R.string.DayliStudentActivitySendingSharedNote)
         scanQrCodeFragment.scanQrCodeEvents = object : IScanQrCodeEvents {
             override fun onError() {
-                Toast.makeText(applicationContext, getString(R.string.error), Toast.LENGTH_LONG).show()
+                SnackBarUtil.showSnackBar(window.decorView.rootView, R.string.error, true)
             }
 
             override fun onDataScanned(scannedText: String) {
@@ -223,10 +221,7 @@ class LocalNotesActivity : AppCompatActivity() {
                 mDbHelper!!.createNote(note.title, note.body)
                 fillData()
 
-                Toast.makeText(applicationContext,
-                        "${getString(R.string.DayliStudentActivityReceivedSharedNote)} ${note.title}"
-                                + "${getString(R.string.DayliStudentActivityReceived2SharedNote)} ${note.username}.",
-                        Toast.LENGTH_LONG).show()
+                SnackBarUtil.showSnackBarStr(window.decorView.rootView, "${getString(R.string.DayliStudentActivityReceivedSharedNote)} ${note.title}" + "${getString(R.string.DayliStudentActivityReceived2SharedNote)} ${note.username}.", false)
 
                 buildNotification(note)
             }

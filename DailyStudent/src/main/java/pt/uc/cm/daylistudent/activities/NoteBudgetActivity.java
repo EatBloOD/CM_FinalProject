@@ -8,6 +8,7 @@ import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -19,7 +20,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,6 +33,7 @@ import pt.uc.cm.daylistudent.adapters.WalletDbAdapter;
 import pt.uc.cm.daylistudent.R;
 import pt.uc.cm.daylistudent.adapters.MySpinnerAdapter;
 import pt.uc.cm.daylistudent.utils.SharedPreferencesUtils;
+import pt.uc.cm.daylistudent.utils.SnackBarUtil;
 
 public class NoteBudgetActivity extends AppCompatActivity {
     private final String TAG = NoteBudgetActivity.class.getSimpleName();
@@ -213,21 +214,22 @@ public class NoteBudgetActivity extends AppCompatActivity {
                 finish();
             } else {
                 if (edtxtTitle.getText().length() <= 0) {
-                    Toast.makeText(getApplicationContext(), R.string.noteBudgetEmptyTitle, Toast.LENGTH_LONG).show();
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyTitle, true);
                 } else if (spContas.getCount() <= 0) { // TEM QUE SER UM PORQUE MESMO QUE APAGUE TODAS TEM LA SEMPRE O N/D
-                    Toast.makeText(getApplicationContext(), R.string.noteBudgetEmptyWallet, Toast.LENGTH_LONG).show();
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyWallet, true);
                 } else if (spContas.getSelectedItem() == null) {
-                    Toast.makeText(getApplicationContext(), R.string.noteBudgetEmptyWallets, Toast.LENGTH_LONG).show();
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyWallets, true);
+                    Snackbar snackbar  = Snackbar.make(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyWallets, Snackbar.LENGTH_LONG);
                 } else if (spLucroDespesa.getSelectedItem().toString().compareTo("N/D") == 0) {
-                    Toast.makeText(getApplicationContext(), R.string.noteBudgetEmptyType, Toast.LENGTH_LONG).show();
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyType, true);
                 } else if (spTipoValor.getSelectedItem().toString().compareTo("N/D") == 0) {
-                    Toast.makeText(getApplicationContext(), R.string.noteBudgetEmptyCategorie, Toast.LENGTH_LONG).show();
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyCategorie, true);
                 } else {
-                    Toast.makeText(getApplicationContext(), R.string.noteBudgetEmpty, Toast.LENGTH_LONG).show();
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmpty, true);
                 }
             }
         } catch (NumberFormatException e) {
-            Toast.makeText(getApplicationContext(), R.string.noteBudgetNumberException, Toast.LENGTH_LONG).show();
+            SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetNumberException, true);
         }
     }
 

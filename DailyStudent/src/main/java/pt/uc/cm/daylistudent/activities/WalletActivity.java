@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -17,6 +16,7 @@ import pt.uc.cm.daylistudent.adapters.BudgetDbAdapter;
 import pt.uc.cm.daylistudent.adapters.WalletDbAdapter;
 import pt.uc.cm.daylistudent.models.BudgetNote;
 import pt.uc.cm.daylistudent.utils.SharedPreferencesUtils;
+import pt.uc.cm.daylistudent.utils.SnackBarUtil;
 
 public class WalletActivity extends AppCompatActivity {
     private static final String TAG = WalletActivity.class.getSimpleName();
@@ -79,19 +79,32 @@ public class WalletActivity extends AppCompatActivity {
         confirmWalletButton.setOnClickListener(view -> {
             Bundle bundle = new Bundle();
             if (edtxtTitle.getText().length() > 0) {
-                bundle.putString(BudgetDbAdapter.KEY_TITLE, edtxtTitle.getText().toString());
-                bundle.putString(BudgetDbAdapter.KEY_TYPE, edtxtTipo.getText().toString());
-                bundle.putString(BudgetDbAdapter.KEY_VALUE, edtxtValor.getText().toString());
+                if(edtxtValor.getText().length() > 0){
+                    try{
+                        Double.parseDouble(edtxtValor.getText().toString());
 
-                if (mRowId != null) //ou seja é uma edição?
-                    bundle.putLong(BudgetDbAdapter.KEY_ROWID, mRowId);
+                        bundle.putString(BudgetDbAdapter.KEY_TITLE, edtxtTitle.getText().toString());
+                        bundle.putString(BudgetDbAdapter.KEY_TYPE, edtxtTipo.getText().toString());
+                        bundle.putString(BudgetDbAdapter.KEY_VALUE, edtxtValor.getText().toString());
 
-                Intent mIntent = new Intent();
-                mIntent.putExtras(bundle);
-                setResult(RESULT_OK, mIntent);
-                finish();
-            } else
-                Toast.makeText(getApplicationContext(), R.string.walletEmptyTitle, Toast.LENGTH_LONG).show();
+                        if (mRowId != null) //ou seja é uma edição?
+                            bundle.putLong(BudgetDbAdapter.KEY_ROWID, mRowId);
+
+                        Intent mIntent = new Intent();
+                        mIntent.putExtras(bundle);
+                        setResult(RESULT_OK, mIntent);
+                        finish();
+                    }catch(NumberFormatException e){
+                        SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.ErrorMoneyValueFormat, true);
+                    }
+                }
+                else{
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.walletEmptyAmount, true);
+                }
+            }
+            else{
+                SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.walletEmptyTitle, true);
+            }
         });
     }
 

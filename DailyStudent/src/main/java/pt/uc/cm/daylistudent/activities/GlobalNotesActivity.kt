@@ -22,6 +22,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+import pt.uc.cm.daylistudent.utils.SnackBarUtil
+
+
 class GlobalNotesActivity : AppCompatActivity() {
 
     private lateinit var retrofitUtils: RetrofitUtils
@@ -126,7 +129,7 @@ class GlobalNotesActivity : AppCompatActivity() {
     private fun getGroupNotes(selectedGroupId: Int) {
         retrofitUtils.getGroupNotes(selectedGroupId, object : Callback<List<Note>> {
             override fun onFailure(call: Call<List<Note>>, t: Throwable) {
-                Toast.makeText(applicationContext, getString(R.string.GetNotesError), Toast.LENGTH_LONG).show()
+                SnackBarUtil.showSnackBar(window.decorView.rootView, R.string.GetNotesError, true)
             }
 
             override fun onResponse(call: Call<List<Note>>, response: Response<List<Note>>) {
@@ -139,7 +142,7 @@ class GlobalNotesActivity : AppCompatActivity() {
     private fun deleteGroupNote(noteId: String) {
         retrofitUtils.deleteGroupNote(noteId, object : Callback<Int> {
             override fun onFailure(call: Call<Int>, t: Throwable) {
-                Toast.makeText(applicationContext, getString(R.string.ErrorDeletingNote), Toast.LENGTH_LONG).show()
+                SnackBarUtil.showSnackBar(window.decorView.rootView, R.string.ErrorDeletingNote, true)
             }
 
             override fun onResponse(call: Call<Int>, response: Response<Int>) {

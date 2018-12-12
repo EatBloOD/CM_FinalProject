@@ -8,11 +8,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import pt.uc.cm.daylistudent.R;
 import pt.uc.cm.daylistudent.adapters.NotesDbAdapter;
 import pt.uc.cm.daylistudent.utils.SharedPreferencesUtils;
+import pt.uc.cm.daylistudent.utils.SnackBarUtil;
 
 public class ManageNoteActivity extends AppCompatActivity {
 
@@ -78,7 +78,7 @@ public class ManageNoteActivity extends AppCompatActivity {
         try {
             startActivity(Intent.createChooser(email, getString(R.string.noteEditSelectEmailApp)));
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(getApplicationContext(), R.string.noteEditNoEmailApp, Toast.LENGTH_SHORT).show();
+            SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteEditNoEmailApp, true);
         }
     }
 
@@ -96,7 +96,7 @@ public class ManageNoteActivity extends AppCompatActivity {
             setResult(RESULT_OK, mIntent);
             finish();
         } else {
-            Toast.makeText(getApplicationContext(), R.string.noteEditEmptyTitle, Toast.LENGTH_LONG).show();
+            SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteEditEmptyTitle, true);
         }
     }
 }

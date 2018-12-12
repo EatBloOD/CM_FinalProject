@@ -3,7 +3,6 @@ package pt.uc.cm.daylistudent.activities
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -13,6 +12,7 @@ import pt.uc.cm.daylistudent.R
 import pt.uc.cm.daylistudent.models.Group
 import pt.uc.cm.daylistudent.utils.RetrofitUtils
 import pt.uc.cm.daylistudent.utils.SharedPreferencesUtils
+import pt.uc.cm.daylistudent.utils.SnackBarUtil
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -92,8 +92,7 @@ class SelectGroupActivity : AppCompatActivity() {
         val groupName = etNewGroupName.text.toString()
         retrofit.postGroup(groupName, object : Callback<Int> {
             override fun onFailure(call: Call<Int>, t: Throwable) {
-                Toast.makeText(applicationContext, getString(R.string.CreateNewGroupError),
-                        Toast.LENGTH_LONG).show()
+                SnackBarUtil.showSnackBar(window.decorView.rootView, R.string.ExitGroup, true)
             }
 
             override fun onResponse(call: Call<Int>, response: Response<Int>) {
