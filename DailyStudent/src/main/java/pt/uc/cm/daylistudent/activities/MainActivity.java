@@ -334,7 +334,7 @@ public class MainActivity extends AppCompatActivity
             String userName = editTextUserName.getText().toString();
             String email = editTextEmail.getText().toString();
             // VERIFICA SE ESTÁ TUDO BEM FORMATADO
-            if (userName.equals("")) { ;
+            if (userName.equals("") || email.equals("")) {
                 SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.mainActivityRegisterEmptyFields, true);
                 return;
             }
