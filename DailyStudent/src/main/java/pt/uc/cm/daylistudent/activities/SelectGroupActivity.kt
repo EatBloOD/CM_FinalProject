@@ -29,6 +29,7 @@ class SelectGroupActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(SharedPreferencesUtils.readTheme(applicationContext))
         setContentView(R.layout.activity_select_group)
         title = getString(R.string.Groups)
 

@@ -168,5 +168,5 @@
     <string name="CreateNewGroupSuccess">Crias-te um novo grupo com sucesso!</string>
     <string name="ErrorDeletingNote">Erro ao apagar a nota! Por favor tenta novamente.</string>
     <string name="ErrorMoneyValueFormat">O monetario invalido</string>
-    <string name="walletEmptyAmount">NÃƒÂ£o inseriste um montante</string>
+    <string name="walletEmptyAmount">Nao inseriste um montante</string>
 </resources>
