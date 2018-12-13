@@ -92,7 +92,7 @@ class SelectGroupActivity : AppCompatActivity() {
         val groupName = etNewGroupName.text.toString()
         retrofit.postGroup(groupName, object : Callback<Int> {
             override fun onFailure(call: Call<Int>, t: Throwable) {
-                SnackBarUtil.showSnackBar(window.decorView.rootView, R.string.ExitGroup, true)
+                SnackBarUtil.showSnackBar(window.decorView.rootView, applicationContext, R.string.ExitGroup, true)
             }
 
             override fun onResponse(call: Call<Int>, response: Response<Int>) {

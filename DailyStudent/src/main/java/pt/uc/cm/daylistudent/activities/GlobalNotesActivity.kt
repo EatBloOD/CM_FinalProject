@@ -129,7 +129,7 @@ class GlobalNotesActivity : AppCompatActivity() {
     private fun getGroupNotes(selectedGroupId: Int) {
         retrofitUtils.getGroupNotes(selectedGroupId, object : Callback<List<Note>> {
             override fun onFailure(call: Call<List<Note>>, t: Throwable) {
-                SnackBarUtil.showSnackBar(window.decorView.rootView, R.string.GetNotesError, true)
+                SnackBarUtil.showSnackBar(window.decorView.rootView, applicationContext, R.string.GetNotesError, true)
             }
 
             override fun onResponse(call: Call<List<Note>>, response: Response<List<Note>>) {
@@ -142,7 +142,7 @@ class GlobalNotesActivity : AppCompatActivity() {
     private fun deleteGroupNote(noteId: String) {
         retrofitUtils.deleteGroupNote(noteId, object : Callback<Int> {
             override fun onFailure(call: Call<Int>, t: Throwable) {
-                SnackBarUtil.showSnackBar(window.decorView.rootView, R.string.ErrorDeletingNote, true)
+                SnackBarUtil.showSnackBar(window.decorView.rootView, applicationContext, R.string.ErrorDeletingNote, true)
             }
 
             override fun onResponse(call: Call<Int>, response: Response<Int>) {

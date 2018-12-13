@@ -214,22 +214,22 @@ public class NoteBudgetActivity extends AppCompatActivity {
                 finish();
             } else {
                 if (edtxtTitle.getText().length() <= 0) {
-                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyTitle, true);
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), getApplicationContext(), R.string.noteBudgetEmptyTitle, true);
                 } else if (spContas.getCount() <= 0) { // TEM QUE SER UM PORQUE MESMO QUE APAGUE TODAS TEM LA SEMPRE O N/D
-                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyWallet, true);
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), getApplicationContext(), R.string.noteBudgetEmptyWallet, true);
                 } else if (spContas.getSelectedItem() == null) {
-                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyWallets, true);
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), getApplicationContext(), R.string.noteBudgetEmptyWallets, true);
                     Snackbar snackbar  = Snackbar.make(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyWallets, Snackbar.LENGTH_LONG);
                 } else if (spLucroDespesa.getSelectedItem().toString().compareTo("N/D") == 0) {
-                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyType, true);
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), getApplicationContext(), R.string.noteBudgetEmptyType, true);
                 } else if (spTipoValor.getSelectedItem().toString().compareTo("N/D") == 0) {
-                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmptyCategorie, true);
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), getApplicationContext(), R.string.noteBudgetEmptyCategorie, true);
                 } else {
-                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetEmpty, true);
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), getApplicationContext(), R.string.noteBudgetEmpty, true);
                 }
             }
         } catch (NumberFormatException e) {
-            SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteBudgetNumberException, true);
+            SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), getApplicationContext(), R.string.noteBudgetNumberException, true);
         }
     }
 
