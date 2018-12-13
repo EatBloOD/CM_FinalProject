@@ -78,7 +78,7 @@ public class ManageNoteActivity extends AppCompatActivity {
         try {
             startActivity(Intent.createChooser(email, getString(R.string.noteEditSelectEmailApp)));
         } catch (ActivityNotFoundException e) {
-            SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteEditNoEmailApp, true);
+            SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), getApplicationContext(), R.string.noteEditNoEmailApp, true);
         }
     }
 
@@ -96,7 +96,7 @@ public class ManageNoteActivity extends AppCompatActivity {
             setResult(RESULT_OK, mIntent);
             finish();
         } else {
-            SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.noteEditEmptyTitle, true);
+            SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), getApplicationContext(), R.string.noteEditEmptyTitle, true);
         }
     }
 }

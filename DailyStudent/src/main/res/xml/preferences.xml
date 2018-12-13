@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory
-        android:key="group_category"
-        android:title="@string/preferencesCategoryInfoFroup">
-
-        <EditTextPreference
-            android:defaultValue="000.000.000"
-            android:dialogMessage="@string/preferencesIPDialogMessage"
-            android:dialogTitle="@string/preferencesIPDialogTitle"
-            android:inputType="text"
-            android:key="serverKey"
-            android:summary="@string/preferencesIPSummary"
-            android:title="@string/preferencesIP" />
-    </PreferenceCategory>
-
-    <PreferenceCategory
         android:key="personal_category"
         android:title="@string/preferencesCategoryInfo">
 

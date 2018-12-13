@@ -26,6 +26,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".activities.MainActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -34,15 +35,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.CameraActivity" />
-        <activity android:name=".activities.ManageNoteActivity" />
-        <activity android:name=".activities.NoteBudgetActivity" />
-        <activity android:name=".activities.LocalNotesActivity" />
-        <activity android:name=".activities.BudgetActivity" />
-        <activity android:name=".activities.WalletActivity" />
-        <activity android:name=".activities.StatisticsActivity" />
-        <activity android:name=".activities.CreditsActivity" />
-        <activity android:name=".activities.GlobalNotesActivity" />
+        <activity android:name=".activities.CameraActivity"/>
+        <activity android:name=".activities.ManageNoteActivity"/>
+        <activity android:name=".activities.NoteBudgetActivity"/>
+        <activity android:name=".activities.LocalNotesActivity"/>
+        <activity android:name=".activities.BudgetActivity"/>
+        <activity android:name=".activities.WalletActivity"/>
+        <activity android:name=".activities.StatisticsActivity"/>
+        <activity android:name=".activities.CreditsActivity"/>
+        <activity android:name=".activities.GlobalNotesActivity"/>
         <activity android:name=".activities.SelectGroupActivity"></activity>
         <activity android:name=".activities.ManageGlobalNoteActivity"></activity>
         <activity

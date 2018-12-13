@@ -65,10 +65,6 @@
     <string name="preferencesEmailDialogTitle">Enter Your Email Address</string>
     <string name="preferencesEmailSummary">Enter Your Email Address</string>
     <string name="preferencesFontSize">Font Size</string>
-    <string name="preferencesIP">Group IP</string>
-    <string name="preferencesIPDialogMessage">Enter IP</string>
-    <string name="preferencesIPDialogTitle">IP Server</string>
-    <string name="preferencesIPSummary">" Enter here the ip of the server of your Group"</string>
     <string name="preferencesName">Name</string>
     <string name="preferencesNameDialogMessage">Enter Your Complete Name</string>
     <string name="preferencesNameDialogTitle">Your Name</string>
@@ -125,7 +121,6 @@
     <string name="SendingSharedNoteSuccess">"Note successfully sent"</string>
     <string name="SendingSharedNoteFail">"Note not sent"</string>
     <string name="PleaseTryAgainLater">"Please try again later"</string>
-    <string name="DayliStudentActivityIPSendingSharedNote">Cellphone IP to send:</string>
     <string name="ultimas_notas_partilhadas">Last Shared Notes</string>
     <string name="ultimas">Last Shared Notes</string>
     <string name="alojamento">House Rent</string>

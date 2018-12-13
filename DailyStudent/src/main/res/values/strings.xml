@@ -44,10 +44,6 @@
     <string name="preferencesNameDialogTitle">Nome</string>
     <string name="preferencesNameDialogMessage">Introduz o teu Nome Completo</string>
     <string name="preferencesCategoryInfo">Informação Pessoal</string>
-    <string name="preferencesIP">IP do Grupo</string>
-    <string name="preferencesIPSummary">Coloca aqui o ip do servidor do teu Grupo</string>
-    <string name="preferencesIPDialogTitle">IP do Servidor</string>
-    <string name="preferencesIPDialogMessage">Introduz IP</string>
     <string name="preferencesCategoryInfoFroup">Informação do Grupo</string>
     <string name="bgNoteActTitle">Titulo</string>
     <string name="bgNoteActTitleinsira_um_t_tulo">Insira um título</string>

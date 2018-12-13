@@ -26,6 +26,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.util.List;
@@ -335,11 +336,11 @@ public class MainActivity extends AppCompatActivity
             String email = editTextEmail.getText().toString();
             // VERIFICA SE ESTÁ TUDO BEM FORMATADO
             if (userName.equals("") || email.equals("")) {
-                SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.mainActivityRegisterEmptyFields, true);
+                SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), getApplicationContext(), R.string.mainActivityRegisterEmptyFields, true);
                 return;
             }
             if (!email.contains("@") || !email.contains(".")) {
-                SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.mainActivityRegisterEmail, true);
+                SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), getApplicationContext(), R.string.mainActivityRegisterEmail, true);
                 return;
             }
             else {

@@ -95,15 +95,15 @@ public class WalletActivity extends AppCompatActivity {
                         setResult(RESULT_OK, mIntent);
                         finish();
                     }catch(NumberFormatException e){
-                        SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.ErrorMoneyValueFormat, true);
+                        SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), getApplicationContext(), R.string.ErrorMoneyValueFormat, true);
                     }
                 }
                 else{
-                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.walletEmptyAmount, true);
+                    SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), getApplicationContext(), R.string.walletEmptyAmount, true);
                 }
             }
             else{
-                SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), R.string.walletEmptyTitle, true);
+                SnackBarUtil.showSnackBar(getWindow().getDecorView().getRootView(), getApplicationContext(), R.string.walletEmptyTitle, true);
             }
         });
     }

@@ -212,7 +212,7 @@ class LocalNotesActivity : AppCompatActivity() {
         scanQrCodeFragment.title = getString(R.string.DayliStudentActivitySendingSharedNote)
         scanQrCodeFragment.scanQrCodeEvents = object : IScanQrCodeEvents {
             override fun onError() {
-                SnackBarUtil.showSnackBar(window.decorView.rootView, R.string.error, true)
+                SnackBarUtil.showSnackBar(window.decorView.rootView, applicationContext, R.string.error, true)
             }
 
             override fun onDataScanned(scannedText: String) {
@@ -221,7 +221,7 @@ class LocalNotesActivity : AppCompatActivity() {
                 mDbHelper!!.createNote(note.title, note.body)
                 fillData()
 
-                SnackBarUtil.showSnackBarStr(window.decorView.rootView, "${getString(R.string.DayliStudentActivityReceivedSharedNote)} ${note.title}" + "${getString(R.string.DayliStudentActivityReceived2SharedNote)} ${note.username}.", false)
+                SnackBarUtil.showSnackBarStr(window.decorView.rootView, applicationContext, "${getString(R.string.DayliStudentActivityReceivedSharedNote)} ${note.title}" + "${getString(R.string.DayliStudentActivityReceived2SharedNote)} ${note.username}.", false)
 
                 buildNotification(note)
             }

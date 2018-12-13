@@ -65,7 +65,7 @@ class ManageGlobalNoteActivity : AppCompatActivity() {
         try {
             startActivity(Intent.createChooser(email, getString(R.string.noteEditSelectEmailApp)))
         } catch (e: ActivityNotFoundException) {
-            SnackBarUtil.showSnackBar(window.decorView.rootView, R.string.noteEditNoEmailApp, true)
+            SnackBarUtil.showSnackBar(window.decorView.rootView, applicationContext, R.string.noteEditNoEmailApp, true)
         }
     }
 
