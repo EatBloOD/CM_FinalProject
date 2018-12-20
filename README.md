@@ -16,4 +16,8 @@ To properly run this project there are two main ways.
 
 or
 
-1. Download and install the DailyStudent APK. 
+1. [Download and install the DailyStudent APK](https://github.com/EatBloOD/CM_FinalProject/releases/download/v1.0/DailyStudent.apk).
+
+## Report
+
+[Project report](/docs/CM-Relatório-do-Projeto.pdf).
