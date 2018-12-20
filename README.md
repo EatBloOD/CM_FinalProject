@@ -20,4 +20,4 @@ or
 
 ## Report
 
-[Project report](/docs/CM-Relatório-do-Projeto.pdf).
+[Project report](/docs/CM-Final-Report.pdf).
